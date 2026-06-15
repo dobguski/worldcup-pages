@@ -220,18 +220,18 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
 <div class="container">
 
 <div class="tabs">
-  <div class="tab active" onclick="switchTab('standings')"><span data-i18n="tab.standings">📊 积分榜 / Standings</span></div>
-  <div class="tab" onclick="switchTab('matches')"><span data-i18n="tab.matches">📅 比赛 / Matches</span></div>
+  <div class="tab" onclick="switchTab('standings')"><span data-i18n="tab.standings">📊 积分榜 / Standings</span></div>
+  <div class="tab active" onclick="switchTab('matches')"><span data-i18n="tab.matches">📰 最新战报 / Latest</span></div>
   <div class="tab" onclick="switchTab('live')"><span data-i18n="tab.live">🔴 直播 / Live</span></div>
   <div class="tab" onclick="switchTab('teams')"><span data-i18n="tab.teams">👥 球队 / Teams</span></div>
   <div class="tab" onclick="switchTab('bracket')"><span data-i18n="tab.bracket">🏆 淘汰赛 / Bracket</span></div>
 </div>
 
-<div class="tab-content active" id="tab-standings">
+<div class="tab-content" id="tab-standings">
   <div class="groups-grid" id="groupsGrid"></div>
 </div>
 
-<div class="tab-content" id="tab-matches">
+<div class="tab-content active" id="tab-matches">
   <div id="matchesByDate"></div>
 </div>
 
@@ -262,7 +262,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
 const I18N = {
   cn: {
     'tab.standings': '📊 积分榜',
-    'tab.matches': '📅 比赛日程',
+    'tab.matches': '📰 最新战报',
     'tab.live': '🔴 直播中',
     'tab.teams': '👥 球队信息',
     'tab.bracket': '🏆 淘汰赛对阵',
@@ -324,7 +324,7 @@ const I18N = {
   },
   en: {
     'tab.standings': '📊 Standings',
-    'tab.matches': '📅 Matches',
+    'tab.matches': '📰 Latest',
     'tab.live': '🔴 Live',
     'tab.teams': '👥 Teams',
     'tab.bracket': '🏆 Bracket',
@@ -488,7 +488,7 @@ async function loadData() {
       document.getElementById('qualityBadge').textContent = '--';
     }
     renderAll();
-    scrollToRelevantMatch();
+    if (!window._hasAutoScrolled) { scrollToRelevantMatch(); window._hasAutoScrolled = true; }
     let updateText;
     if (currentLang === 'cn') updateText = t('lastUpdate') + ': ' + new Date().toLocaleString('zh-CN');
     else if (currentLang === 'en') updateText = t('lastUpdate') + ': ' + new Date().toLocaleString('en-US');
