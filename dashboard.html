@@ -567,7 +567,10 @@ function renderMatches() {
       const cardClass = isLive ? 'live' : (isDone ? 'finished' : '');
       const statusLabel = isLive ? t('status.live') : (isDone ? t('status.ft') : t('status.scheduled'));
       const statusCls = isLive ? 'status-live' : (isDone ? 'status-ft' : 'status-scheduled');
-      let infoLine = `${match.date} ${match.time||''} ${match.tz||''} · ${match.group||''}${t('group')} · ${match.venue||''}`;
+      let timeDisplay = `${match.time||''} BJT`;
+      if (match.time_label) timeDisplay += ` (${match.time_label})`;
+      if (match.venue_tz) timeDisplay += ` <span style="font-size:.7em;color:#475569">${match.venue_tz}</span>`;
+      let infoLine = `${match.date} ${timeDisplay} · ${match.group||''}${t('group')} · ${match.venue||''}`;
 
       html += `<div class="match-card ${cardClass}" data-date="${match.date}" data-key="${match.home_team}-${match.away_team}">
         <div class="match-date">${infoLine}</div>
@@ -595,7 +598,7 @@ function renderLive() {
     let html = '';
     liveMatches.forEach(m => {
       html += `<div class="match-card live" data-date="${m.date}" data-key="${m.home_team}-${m.away_team}">
-        <div class="match-date">${m.date} ${m.time} ${m.tz} · ${m.group}${t('group')} · ${m.venue}</div>
+        <div class="match-date">${m.date} ${m.time||''} BJT${m.time_label?' ('+m.time_label+')':''} · ${m.group}${t('group')} · ${m.venue}</div>
         <div class="match-teams">
           <div class="team"><div class="team-name">${teamName(m.home_team)}</div></div>
           <div class="score">${m.home_score}-${m.away_score}</div>
