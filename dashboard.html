@@ -971,6 +971,24 @@ function switchTab(name) {
 
 loadData();
 setInterval(loadData, 60000);
+
+// ── Visit counter (syncs with welcome page) ──
+(function(){
+  try {
+    const raw = localStorage.getItem('wc_site_stats');
+    const stats = raw ? JSON.parse(raw) : { uv: 0, pv: 0 };
+    const badge = document.createElement('span');
+    badge.style.cssText = 'font-size:.65em;color:#64748b;margin-left:6px';
+    badge.textContent = '| 👁 ' + stats.pv + ' PV · ' + stats.uv + ' UV';
+    document.querySelector('.last-update')?.parentNode?.appendChild(badge);
+  } catch(e) {}
+})();
 </script>
+
+<footer style="text-align:center;padding:20px;color:#475569;font-size:.72em;border-top:1px solid #1e293b;margin-top:30px">
+  ⚽ TRIONDA · 2026 FIFA World Cup · Dob Guski 世界杯小站<br>
+  📧 建议与反馈：<a href="mailto:dobgusiki@gmail.com" style="color:#64748b;text-decoration:none">dobgusiki@gmail.com</a>
+</footer>
+
 </body>
 </html>
