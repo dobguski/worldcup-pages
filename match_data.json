@@ -547,12 +547,12 @@
     "home_team_cn": "比利时",
     "away_team": "Egypt",
     "away_team_cn": "埃及",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 1,
+    "away_score": 1,
+    "halftime": "0-0",
     "venue": "Seattle",
     "group": "G",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-15",
@@ -637,12 +637,12 @@
     "home_team_cn": "西班牙",
     "away_team": "Cape Verde",
     "away_team_cn": "佛得角",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 0,
+    "away_score": 0,
+    "halftime": "0-0",
     "venue": "Atlanta",
     "group": "H",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-15",
