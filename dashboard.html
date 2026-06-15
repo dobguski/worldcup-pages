@@ -462,6 +462,7 @@ async function loadData() {
       document.getElementById('qualityBadge').textContent = '--';
     }
     renderAll();
+    scrollToRelevantMatch();
     let updateText;
     if (currentLang === 'cn') updateText = t('lastUpdate') + ': ' + new Date().toLocaleString('zh-CN');
     else if (currentLang === 'en') updateText = t('lastUpdate') + ': ' + new Date().toLocaleString('en-US');
@@ -478,6 +479,29 @@ function renderAll() {
   renderLive();
   renderTeams();
   renderBracket();
+}
+
+// Auto-scroll to most relevant match after load
+function scrollToRelevantMatch() {
+  // 1) Live matches first
+  const liveCard = document.querySelector('.match-card.live');
+  if (liveCard) {
+    liveCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  // 2) Today's matches
+  const today = new Date().toISOString().slice(0,10);
+  const todayCard = document.querySelector(`.match-card[data-date="${today}"]`);
+  if (todayCard) {
+    todayCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  // 3) Most recently finished match (last .match-card.finished)
+  const finishedCards = document.querySelectorAll('.match-card.finished');
+  if (finishedCards.length > 0) {
+    finishedCards[finishedCards.length - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
 }
 
 function renderStandings() {
@@ -545,7 +569,7 @@ function renderMatches() {
       const statusCls = isLive ? 'status-live' : (isDone ? 'status-ft' : 'status-scheduled');
       let infoLine = `${match.date} ${match.time||''} ${match.tz||''} · ${match.group||''}${t('group')} · ${match.venue||''}`;
 
-      html += `<div class="match-card ${cardClass}">
+      html += `<div class="match-card ${cardClass}" data-date="${match.date}" data-key="${match.home_team}-${match.away_team}">
         <div class="match-date">${infoLine}</div>
         <div class="match-teams">
           <div class="team"><div class="team-name">${teamName(match.home_team)}</div></div>
@@ -570,7 +594,7 @@ function renderLive() {
     banner.classList.add('active');
     let html = '';
     liveMatches.forEach(m => {
-      html += `<div class="match-card live">
+      html += `<div class="match-card live" data-date="${m.date}" data-key="${m.home_team}-${m.away_team}">
         <div class="match-date">${m.date} ${m.time} ${m.tz} · ${m.group}${t('group')} · ${m.venue}</div>
         <div class="match-teams">
           <div class="team"><div class="team-name">${teamName(m.home_team)}</div></div>
