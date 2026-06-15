@@ -977,6 +977,13 @@ setInterval(loadData, 60000);
   try {
     const raw = localStorage.getItem('wc_site_stats');
     const stats = raw ? JSON.parse(raw) : { uv: 0, pv: 0 };
+    // UV via dedicated flag (one-time per browser)
+    const hasVisited = localStorage.getItem('wc_uv_flag');
+    if (!hasVisited) {
+      stats.uv += 1;
+      localStorage.setItem('wc_uv_flag', '1');
+      localStorage.setItem('wc_site_stats', JSON.stringify(stats));
+    }
     const badge = document.createElement('span');
     badge.style.cssText = 'font-size:.65em;color:#64748b;margin-left:6px';
     badge.textContent = '| 👁 ' + stats.pv + ' PV · ' + stats.uv + ' UV';
