@@ -413,6 +413,32 @@ let matchData = [];
 let standings = {};
 let teamNamesCN = {};
 let teamsData = {};
+
+// User's local timezone (detected from browser)
+const userTZ = (() => {
+  try { return Intl.DateTimeFormat().resolvedOptions().timeZone; }
+  catch(e) { return 'Asia/Shanghai'; }
+})();
+const isBJT = userTZ === 'Asia/Shanghai' || userTZ === 'Asia/Urumqi' || userTZ === 'Asia/Taipei' || userTZ === 'Asia/Hong_Kong' || userTZ === 'Asia/Macau' || userTZ === 'Asia/Singapore' || userTZ === 'Asia/Kuala_Lumpur';
+
+// Format match time from UTC timestamp to user's local timezone
+function formatMatchTime(m) {
+  if (!m.utc_ts) {
+    // Fallback: use stored BJT time
+    return { date: m.date, time: m.time + ' BJT', label: m.time_label || '' };
+  }
+  const dt = new Date(m.utc_ts);
+  const localDate = dt.toLocaleDateString('sv-SE', { timeZone: userTZ }); // ISO yyyy-mm-dd
+  const localTime = dt.toLocaleTimeString('zh-CN', { timeZone: userTZ, hour: '2-digit', minute: '2-digit', hour12: false });
+  // Compute if date differs from venue date
+  let label = '';
+  if (localDate !== m.date) {
+    label = localDate > m.date ? '次日' : '前日';
+  }
+  // Beijing reference (always shown as small hint)
+  const bjRef = m.time + ' BJT' + (m.time_label ? ' (' + m.time_label + ')' : '');
+  return { date: localDate, time: localTime, label: label, bjRef: bjRef };
+}
 let pmData = {};
 let userVotes = {};
 
@@ -541,9 +567,10 @@ function renderMatches() {
   const container = document.getElementById('matchesByDate');
   const byDate = {};
   matchData.forEach(m => {
-    const d = m.date || '?';
+    const t = formatMatchTime(m);
+    const d = t.date || m.date || '?';
     if (!byDate[d]) byDate[d] = [];
-    byDate[d].push(m);
+    byDate[d].push({ match: m, fmt: t });
   });
 
   const sortedDates = Object.keys(byDate).sort();
@@ -551,26 +578,27 @@ function renderMatches() {
   const monthNamesEN = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   let html = '';
   for (const date of sortedDates) {
-    const matches = byDate[date];
+    const items = byDate[date];
     const parts = date.split('-');
     const mo = parseInt(parts[1]), day = parseInt(parts[2]);
     let dateLabel;
-    if (currentLang === 'cn') dateLabel = `📅 ${monthNamesCN[mo]}${day}日 (${matches.length}${t('matches')})`;
-    else if (currentLang === 'en') dateLabel = `📅 ${monthNamesEN[mo]} ${day} (${matches.length} ${t('matches')})`;
-    else dateLabel = `📅 ${monthNamesEN[mo]} ${day} · ${monthNamesCN[mo]}${day}日 (${matches.length} ${t('matches')})`;
+    if (currentLang === 'cn') dateLabel = `📅 ${monthNamesCN[mo]}${day}日 (${items.length}${t('matches')})`;
+    else if (currentLang === 'en') dateLabel = `📅 ${monthNamesEN[mo]} ${day} (${items.length} ${t('matches')})`;
+    else dateLabel = `📅 ${monthNamesEN[mo]} ${day} · ${monthNamesCN[mo]}${day}日 (${items.length} ${t('matches')})`;
 
     html += `<div class="section-title">${dateLabel}</div>`;
     html += '<div class="matches-grid">';
-    matches.forEach(match => {
+    items.forEach(({match, fmt}) => {
       const isLive = !match.is_result && match.home_score !== null && match.home_score !== undefined;
       const isDone = match.is_result;
       const cardClass = isLive ? 'live' : (isDone ? 'finished' : '');
       const statusLabel = isLive ? t('status.live') : (isDone ? t('status.ft') : t('status.scheduled'));
       const statusCls = isLive ? 'status-live' : (isDone ? 'status-ft' : 'status-scheduled');
-      let timeDisplay = `${match.time||''} BJT`;
-      if (match.time_label) timeDisplay += ` (${match.time_label})`;
-      if (match.venue_tz) timeDisplay += ` <span style="font-size:.7em;color:#475569">${match.venue_tz}</span>`;
-      let infoLine = `${match.date} ${timeDisplay} · ${match.group||''}${t('group')} · ${match.venue||''}`;
+      // Local time display + BJT reference for non-BJT users
+      let timeDisplay = `<span style="font-weight:600">${fmt.time}</span>`;
+      if (fmt.label) timeDisplay += ` <span style="font-size:.75em;color:#e2b04a">${fmt.label}</span>`;
+      if (!isBJT) timeDisplay += ` <span style="font-size:.65em;color:#475569;margin-left:3px">(${fmt.bjRef})</span>`;
+      let infoLine = `${fmt.date} ${timeDisplay} · ${match.group||''}${t('group')} · ${match.venue||''}`;
 
       html += `<div class="match-card ${cardClass}" data-date="${match.date}" data-key="${match.home_team}-${match.away_team}">
         <div class="match-date">${infoLine}</div>
@@ -597,8 +625,12 @@ function renderLive() {
     banner.classList.add('active');
     let html = '';
     liveMatches.forEach(m => {
-      html += `<div class="match-card live" data-date="${m.date}" data-key="${m.home_team}-${m.away_team}">
-        <div class="match-date">${m.date} ${m.time||''} BJT${m.time_label?' ('+m.time_label+')':''} · ${m.group}${t('group')} · ${m.venue}</div>
+      const fmt = formatMatchTime(m);
+      let liveTimeDisplay = `<span style="font-weight:600">${fmt.time}</span>`;
+      if (fmt.label) liveTimeDisplay += ` <span style="font-size:.75em;color:#e2b04a">${fmt.label}</span>`;
+      if (!isBJT) liveTimeDisplay += ` <span style="font-size:.65em;color:#475569;margin-left:3px">(${fmt.bjRef})</span>`;
+      html += `<div class="match-card live" data-date="${fmt.date}" data-key="${m.home_team}-${m.away_team}">
+        <div class="match-date">${fmt.date} ${liveTimeDisplay} · ${m.group}${t('group')} · ${m.venue}</div>
         <div class="match-teams">
           <div class="team"><div class="team-name">${teamName(m.home_team)}</div></div>
           <div class="score">${m.home_score}-${m.away_score}</div>
