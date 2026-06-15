@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-06-15T03:43:01.075171+00:00",
+  "layers": {
+    "completeness": {
+      "issues": []
+    },
+    "consistency": {
+      "issues": []
+    },
+    "freshness": {
+      "issues": []
+    },
+    "accuracy": {
+      "issues": [
+        {
+          "layer": "accuracy",
+          "severity": "low",
+          "issue": "PM accuracy stats mismatch: actual=7%, stated=50%"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "total_issues": 1,
+    "critical": 0,
+    "high": 0,
+    "status": "OK",
+    "verdict": "All checks passed"
+  },
+  "quality_score": 99
+}

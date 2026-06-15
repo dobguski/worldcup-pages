@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /$
+Allow: /index.html
+Allow: /dashboard.html
+Allow: /match_data.json
+Allow: /standings.json
+Allow: /team_names.json
+Disallow: /sync_worldcup.py
+Disallow: /*.py$
+Disallow: /*.txt$
+Disallow: /2026--usa/
+Disallow: /*/
+Disallow: /.git/

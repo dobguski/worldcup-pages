@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta name="referrer" content="no-referrer">
+<title>⚽ 2026 世界杯 | FIFA World Cup 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f1724;color:#e2e8f0;min-height:100vh}
+.header{background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);padding:20px;text-align:center;border-bottom:3px solid #e2b04a}
+.header h1{font-size:2em;color:#e2b04a;margin-bottom:5px}
+.header .subtitle{color:#94a3b8;font-size:.9em}
+.top-bar{display:flex;justify-content:space-between;align-items:center;padding:8px 15px;flex-wrap:wrap;gap:8px}
+.last-update{color:#64748b;font-size:.8em}
+.lang-switch{display:flex;gap:4px}
+.lang-btn{padding:4px 12px;background:#1e293b;border:1px solid #334155;color:#94a3b8;border-radius:6px;cursor:pointer;font-size:.8em;transition:all .2s}
+.lang-btn.active{background:#e2b04a;color:#0f1724;border-color:#e2b04a;font-weight:bold}
+.lang-btn:hover{border-color:#e2b04a}
+.container{max-width:1400px;margin:0 auto;padding:0 15px 15px}
+.live-banner{background:#dc2626;color:white;text-align:center;padding:8px;font-weight:bold;display:none;animation:pulse 2s infinite}
+.live-banner.active{display:block}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.7}}
+.live-dot{display:inline-block;width:10px;height:10px;background:#fff;border-radius:50%;margin-right:6px;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.groups-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:15px;margin-top:15px}
+.group-card{background:#1e293b;border-radius:12px;overflow:hidden;border:1px solid #334155}
+.group-header{background:linear-gradient(90deg,#1e40af,#3b82f6);padding:10px 15px;font-weight:bold;font-size:1.1em;color:#fff}
+.group-table{width:100%;border-collapse:collapse}
+.group-table th{background:#0f1724;padding:6px 8px;font-size:.72em;text-transform:uppercase;color:#94a3b8;text-align:center}
+.group-table td{padding:8px;border-bottom:1px solid #1e293b;font-size:.88em}
+.group-table tr:hover{background:#334155}
+.team-col{text-align:left;font-weight:500}
+.num-col{text-align:center;width:26px}
+.pts{font-weight:bold;color:#e2b04a}
+.section-title{font-size:1.3em;color:#e2b04a;margin:25px 0 10px;padding-bottom:8px;border-bottom:2px solid #e2b04a}
+.matches-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:12px}
+.match-card{background:#1e293b;border-radius:10px;padding:15px;border:1px solid #334155;transition:all .2s}
+.match-card:hover{border-color:#e2b04a}
+.match-card.live{border:2px solid #dc2626;animation:glow 2s infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 5px #dc2626}50%{box-shadow:0 0 15px #dc2626}}
+.match-card.finished{opacity:.85}
+.match-date{font-size:.8em;color:#64748b;margin-bottom:8px}
+.match-teams{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.team{flex:1;text-align:center}
+.team-name{font-weight:600;font-size:.95em}
+.score{font-size:1.8em;font-weight:bold;min-width:70px;text-align:center;color:#f8fafc}
+.score.pending{color:#64748b;font-size:1em}
+.match-info{text-align:center;color:#64748b;font-size:.75em;margin-top:8px}
+.match-status{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.7em;font-weight:bold;margin-top:5px}
+.status-live{background:#dc2626;color:#fff}
+.status-ft{background:#16a34a;color:#fff}
+.status-scheduled{background:#334155;color:#94a3b8}
+/* Prediction poll — redesigned */
+.poll-section{margin-top:8px;padding:10px 12px;background:#0a0f1a;border-radius:8px;border:1px solid #1e293b;font-size:.72em}
+.poll-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.poll-title{color:#94a3b8;font-weight:bold;font-size:.9em}
+.poll-title .icon{font-size:1.1em}
+.poll-badge{font-size:.7em;padding:2px 8px;border-radius:10px;font-weight:bold}
+.poll-badge.open{background:#1a3a2a;color:#4ade80}
+.poll-badge.locked{background:#3a1a1a;color:#f87171}
+.poll-badge.closed{background:#1e293b;color:#64748b}
+.poll-options{display:flex;gap:8px}
+.poll-opt{flex:1;padding:8px 4px;border-radius:8px;border:2px solid #334155;background:#0f1724;cursor:pointer;text-align:center;transition:all .2s}
+.poll-opt:hover:not(.locked){transform:translateY(-1px)}
+.poll-opt.locked{cursor:default;opacity:.6}
+.poll-opt.selected{border-color:#e2b04a;box-shadow:0 0 8px rgba(226,176,74,.3)}
+.poll-opt.home{border-left:3px solid #16a34a}
+.poll-opt.draw{border-left:3px solid #e2b04a}
+.poll-opt.away{border-left:3px solid #dc2626}
+.poll-opt.home:hover:not(.locked),.poll-opt.home.selected{background:#1a2a1a;border-color:#22c55e}
+.poll-opt.draw:hover:not(.locked),.poll-opt.draw.selected{background:#2a2510;border-color:#eab308}
+.poll-opt.away:hover:not(.locked),.poll-opt.away.selected{background:#2a1515;border-color:#ef4444}
+.poll-opt-label{font-weight:bold;font-size:1em;margin-bottom:2px}
+.poll-opt-label.home{color:#4ade80}
+.poll-opt-label.draw{color:#facc15}
+.poll-opt-label.away{color:#f87171}
+.poll-opt-count{font-size:.75em;color:#64748b}
+.poll-opt-bar{height:3px;border-radius:2px;margin-top:4px;transition:width .3s}
+.poll-opt-bar.home{background:#16a34a}
+.poll-opt-bar.draw{background:#eab308}
+.poll-opt-bar.away{background:#dc2626}
+.poll-total{text-align:center;color:#475569;font-size:.75em;margin-top:6px}
+.poll-results{display:flex;gap:6px;margin-top:2px}
+.poll-result{flex:1;text-align:center}
+.poll-result-bar{height:6px;border-radius:3px;margin-bottom:2px}
+.poll-result-bar.home{background:linear-gradient(90deg,#166534,#22c55e)}
+.poll-result-bar.draw{background:linear-gradient(90deg,#713f12,#eab308)}
+.poll-result-bar.away{background:linear-gradient(90deg,#7f1d1d,#ef4444)}
+.poll-result-pct{font-weight:bold;font-size:.9em}
+.poll-result-pct.home{color:#4ade80}
+.poll-result-pct.draw{color:#facc15}
+.poll-result-pct.away{color:#f87171}
+.poll-result-label{font-size:.7em;color:#64748b}
+/* PM prediction — redesigned */
+.pm-card{margin-top:8px;padding:10px 12px;background:#0a0f1a;border-radius:8px;border:1px solid #1e293b;font-size:.72em}
+.pm-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.pm-card-title{color:#64748b;font-size:.85em;font-weight:bold;text-transform:uppercase;letter-spacing:.5px}
+.pm-card-source{font-size:.75em;color:#475569;padding:1px 6px;border-radius:3px;background:#1e293b}
+.pm-card-source.real{color:#4ade80;border:1px solid #1a3a2a}
+.pm-bar-row{display:flex;align-items:center;gap:8px;margin:4px 0}
+.pm-bar-label{width:32px;text-align:right;font-weight:bold;font-size:.9em;color:#e2e8f0}
+.pm-bar-label.fav{color:#4ade80}
+.pm-bar-track{flex:1;height:16px;background:#1e293b;border-radius:8px;overflow:hidden;position:relative}
+.pm-bar-fill{height:100%;border-radius:8px;transition:width .3s;min-width:2px}
+.pm-bar-fill.fav{background:linear-gradient(90deg,#166534,#22c55e)}
+.pm-bar-fill.mid{background:linear-gradient(90deg,#713f12,#eab308)}
+.pm-bar-fill.dog{background:linear-gradient(90deg,#7f1d1d,#ef4444)}
+.pm-bar-pct{width:38px;text-align:left;font-weight:bold;font-size:.85em;color:#94a3b8}
+.pm-prediction{margin-top:6px;padding:6px 8px;border-radius:6px;font-weight:bold;text-align:center;font-size:.85em}
+.pm-prediction.fav{background:#1a3a2a;color:#4ade80}
+.pm-prediction.dog{background:#3a1a1a;color:#f87171}
+.pm-prediction.even{background:#3a3010;color:#facc15}
+.pm-compare{margin-top:6px;padding:6px 8px;background:#0f1724;border-radius:6px;font-size:.85em;text-align:center}
+.pm-compare.correct{border-left:3px solid #22c55e;color:#4ade80}
+.pm-compare.wrong{border-left:3px solid #ef4444;color:#f87171}
+.pm-note{font-size:.8em;color:#64748b;margin-top:4px;font-style:italic}
+/* Data quality badge */
+.quality-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:12px;font-size:.7em;font-weight:bold}
+.quality-badge.OK{background:#1a3a2a;color:#4ade80}
+.quality-badge.WARN{background:#3a3510;color:#facc15}
+.quality-badge.FAIL{background:#3a1a1a;color:#f87171}
+.data-sources{font-size:.65em;color:#64748b;margin-top:4px}
+.pm-volume{color:#64748b;font-size:.75em}
+.bracket-container{margin-top:20px;overflow-x:auto}
+/* Waterfall / Masonry layout */
+.filter-bar{display:flex;gap:6px;margin:15px 0;flex-wrap:wrap;position:sticky;top:0;z-index:10;background:#0f1724;padding:10px 0}
+.filter-chip{padding:6px 14px;background:#1e293b;border:1px solid #334155;color:#94a3b8;border-radius:20px;cursor:pointer;font-size:.82em;white-space:nowrap;transition:all .2s}
+.filter-chip.active,.filter-chip:hover{background:#3b82f6;color:#fff;border-color:#3b82f6}
+.waterfall{column-count:3;column-gap:15px}
+@media(max-width:1200px){.waterfall{column-count:2}}
+@media(max-width:768px){.waterfall{column-count:1}}
+.team-card{break-inside:avoid;margin-bottom:15px;background:#1e293b;border-radius:10px;padding:14px;border:1px solid #334155;transition:all .2s}
+.team-card:hover{border-color:#e2b04a}
+.team-card-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.team-card-badge{width:40px;height:40px;object-fit:contain;border-radius:4px}
+.team-card-name{font-weight:bold;font-size:1em;color:#e2b04a}
+.team-card-meta{font-size:.72em;color:#64748b;line-height:1.4}
+.team-card-history{font-size:.7em;color:#94a3b8;margin-top:4px}
+.player-table{width:100%;border-collapse:collapse;font-size:.72em;margin-top:6px}
+.player-table th{color:#64748b;border-bottom:1px solid #334155;padding:3px 4px;text-align:center;font-weight:500}
+.player-name-link{cursor:pointer;transition:color .2s}
+.player-name-link:hover{color:#e2b04a;text-decoration:underline}
+/* Player Detail Modal */
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.75);z-index:1000;justify-content:center;align-items:center;padding:20px}
+.modal-overlay.active{display:flex}
+.modal-card{background:#1a2332;border-radius:14px;border:1px solid #334155;max-width:480px;width:100%;max-height:85vh;overflow-y:auto;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.modal-close{float:right;background:none;border:none;color:#64748b;font-size:1.5em;cursor:pointer;padding:0;line-height:1}
+.modal-close:hover{color:#fff}
+.modal-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.modal-number{font-size:2em;font-weight:bold;color:#e2b04a;min-width:48px;text-align:center}
+.modal-name{font-size:1.3em;font-weight:bold;color:#fff}
+.modal-name-cn{font-size:.9em;color:#94a3b8}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.modal-field{background:#0f1724;border-radius:8px;padding:10px 12px}
+.modal-field-label{font-size:.65em;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.modal-field-value{font-size:.9em;color:#e2e8f0;font-weight:500}
+.modal-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}
+.modal-stat{background:#0f1724;border-radius:8px;padding:10px;text-align:center}
+.modal-stat-value{font-size:1.3em;font-weight:bold;color:#e2b04a}
+.modal-stat-label{font-size:.65em;color:#64748b;margin-top:2px}
+.modal-flag{font-size:.8em;padding:2px 8px;border-radius:10px;display:inline-block;margin:2px}
+.modal-flag.main{background:#1e3a5f;color:#60a5fa}
+.modal-flag.other{background:#1e293b;color:#94a3b8}
+.player-detail-trigger{cursor:pointer;transition:color .2s}
+.player-detail-trigger:hover{color:#e2b04a}
+.player-table td{padding:3px 4px;border-bottom:1px solid #1e293b}
+.player-table tr:hover td{background:#0f1724}
+.player-num{color:#e2b04a;font-weight:bold;text-align:center;width:28px}
+.player-pos{color:#94a3b8;text-align:center;font-size:.85em}
+.player-club{color:#64748b;font-size:.85em}
+.tabs{display:flex;gap:5px;margin:15px 0;flex-wrap:wrap}
+.tab{padding:8px 20px;background:#1e293b;border:1px solid #334155;border-radius:8px 8px 0 0;cursor:pointer;color:#94a3b8;font-size:.9em}
+.tab.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
+.tab-content{display:none}
+.tab-content.active{display:block}
+@media(max-width:768px){
+  .groups-grid{grid-template-columns:1fr}
+  .matches-grid{grid-template-columns:1fr}
+  .header h1{font-size:1.4em}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>⚽ 2026 FIFA 世界杯 · FIFA World Cup</h1>
+  <div class="subtitle">🇨🇦 Canada · 🇺🇸 USA · 🇲🇽 Mexico | Jun 11 – Jul 19 | 48 Teams · 104 Matches / 48队 · 104场</div>
+</div>
+
+<div class="top-bar">
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('dual')" id="btn-dual">中英双语 Dual</button>
+    <button class="lang-btn" onclick="setLang('cn')" id="btn-cn">中文 CN</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">English EN</button>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span class="quality-badge" id="qualityBadge">--</span>
+    <div class="last-update" id="lastUpdate">Loading / 加载中...</div>
+  </div>
+</div>
+
+<div class="live-banner" id="liveBanner">
+  <span class="live-dot"></span><span id="liveBannerText">比赛进行中 · LIVE MATCHES IN PROGRESS</span>
+</div>
+
+<div class="container">
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('standings')"><span data-i18n="tab.standings">📊 积分榜 / Standings</span></div>
+  <div class="tab" onclick="switchTab('matches')"><span data-i18n="tab.matches">📅 比赛 / Matches</span></div>
+  <div class="tab" onclick="switchTab('live')"><span data-i18n="tab.live">🔴 直播 / Live</span></div>
+  <div class="tab" onclick="switchTab('teams')"><span data-i18n="tab.teams">👥 球队 / Teams</span></div>
+  <div class="tab" onclick="switchTab('bracket')"><span data-i18n="tab.bracket">🏆 淘汰赛 / Bracket</span></div>
+</div>
+
+<div class="tab-content active" id="tab-standings">
+  <div class="groups-grid" id="groupsGrid"></div>
+</div>
+
+<div class="tab-content" id="tab-matches">
+  <div id="matchesByDate"></div>
+</div>
+
+<div class="tab-content" id="tab-live">
+  <div class="matches-grid" id="liveMatches"></div>
+</div>
+
+<div class="tab-content" id="tab-teams">
+  <div id="teamsContainer"></div>
+</div>
+
+<div class="tab-content" id="tab-bracket">
+  <div class="bracket-container" id="bracketView"></div>
+</div>
+
+</div>
+
+<!-- PLAYER DETAIL MODAL -->
+<div class="modal-overlay" id="playerModal" onclick="if(event.target===this)closePlayerModal()">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closePlayerModal()">&times;</button>
+    <div id="playerModalContent"></div>
+  </div>
+</div>
+
+<script>
+// ==================== I18N ====================
+const I18N = {
+  cn: {
+    'tab.standings': '📊 积分榜',
+    'tab.matches': '📅 比赛日程',
+    'tab.live': '🔴 直播中',
+    'tab.teams': '👥 球队信息',
+    'tab.bracket': '🏆 淘汰赛对阵',
+    'banner.live': '比赛进行中 · 实时比分',
+    'lastUpdate': '最后更新',
+    'loading': '加载中...',
+    'retrying': '加载失败，重试中...',
+    'group': '组',
+    'table.rank': '#',
+    'table.team': '球队',
+    'table.gp': '赛',
+    'table.w': '胜',
+    'table.d': '平',
+    'table.l': '负',
+    'table.gf': '进',
+    'table.ga': '失',
+    'table.gd': '差',
+    'table.pts': '分',
+    'status.live': '🔴 进行中',
+    'status.ft': '✅ 已结束',
+    'status.scheduled': '⏰ 未开始',
+    'matches': '场',
+    'noLive': '暂无进行中的比赛',
+    'noLiveSub': '下一场比赛即将开始',
+    'bracket.title': '🏆 淘汰赛阶段（小组赛后揭晓）',
+    'bracket.r32': '32强赛',
+    'bracket.r16': '16强赛',
+    'bracket.qf': '1/4决赛',
+    'bracket.sf': '半决赛',
+    'bracket.tp': '三四名决赛',
+    'bracket.final': '🏆 决赛',
+    'bracket.venue.miami': '@ 迈阿密',
+    'bracket.venue.ny': '@ 纽约/新泽西',
+    'team.coach': '主教练',
+    'team.stadium': '主场',
+    'team.ranking': 'FIFA排名',
+    'team.apps': '世界杯参赛',
+    'team.best': '最佳战绩',
+    'team.first': '首次参赛',
+    'team.players': '球员名单',
+    'team.number': '号码',
+    'team.position': '位置',
+    'team.club': '效力俱乐部',
+    'team.birth': '出生',
+    'team.noPlayers': '暂无球员数据',
+    'poll.predict': '我来预测',
+    'poll.home': '胜',
+    'poll.draw': '平',
+    'poll.away': '负',
+    'poll.votes': '票',
+    'poll.totalVotes': '人参与',
+    'poll.noVotes': '快来第一个预测吧！',
+    'poll.open': '预测中',
+    'poll.live': '进行中',
+    'poll.liveLocked': '比赛进行中',
+    'poll.closed': '已结束',
+    'poll.results': '预测结果',
+    'poll.youVoted': '你选了',
+  },
+  en: {
+    'tab.standings': '📊 Standings',
+    'tab.matches': '📅 Matches',
+    'tab.live': '🔴 Live',
+    'tab.teams': '👥 Teams',
+    'tab.bracket': '🏆 Bracket',
+    'banner.live': 'LIVE MATCHES IN PROGRESS',
+    'lastUpdate': 'Last updated',
+    'loading': 'Loading...',
+    'retrying': 'Loading failed, retrying...',
+    'group': 'Group',
+    'table.rank': '#',
+    'table.team': 'Team',
+    'table.gp': 'P',
+    'table.w': 'W',
+    'table.d': 'D',
+    'table.l': 'L',
+    'table.gf': 'GF',
+    'table.ga': 'GA',
+    'table.gd': 'GD',
+    'table.pts': 'Pts',
+    'status.live': '🔴 LIVE',
+    'status.ft': '✅ FT',
+    'status.scheduled': '⏰ Upcoming',
+    'matches': 'matches',
+    'noLive': 'No live matches at the moment',
+    'noLiveSub': 'Next match starting soon',
+    'bracket.title': '🏆 Knockout Stage (revealed after group stage)',
+    'bracket.r32': 'Round of 32',
+    'bracket.r16': 'Round of 16',
+    'bracket.qf': 'Quarter-finals',
+    'bracket.sf': 'Semi-finals',
+    'bracket.tp': '3rd Place',
+    'bracket.final': '🏆 FINAL',
+    'bracket.venue.miami': '@ Miami',
+    'bracket.venue.ny': '@ New York/New Jersey',
+    'team.coach': 'Coach',
+    'team.stadium': 'Stadium',
+    'team.ranking': 'FIFA Rank',
+    'team.apps': 'WC Apps',
+    'team.best': 'Best Finish',
+    'team.first': 'First WC',
+    'team.players': 'Squad',
+    'team.number': '#',
+    'team.position': 'Pos',
+    'team.club': 'Club',
+    'team.birth': 'Born',
+    'team.noPlayers': 'No player data available',
+    'poll.predict': 'Predict',
+    'poll.home': 'Home',
+    'poll.draw': 'Draw',
+    'poll.away': 'Away',
+    'poll.votes': 'votes',
+    'poll.totalVotes': 'voters',
+    'poll.noVotes': 'Be the first to predict!',
+    'poll.open': 'Open',
+    'poll.live': 'LIVE',
+    'poll.liveLocked': 'Match in Progress',
+    'poll.closed': 'Closed',
+    'poll.results': 'Results',
+    'poll.youVoted': 'You picked',
+  }
+};
+
+let currentLang = 'dual';
+
+function t(key) {
+  if (currentLang === 'cn') return I18N.cn[key] || key;
+  if (currentLang === 'en') return I18N.en[key] || key;
+  const c = I18N.cn[key];
+  const e = I18N.en[key];
+  if (c && e && c !== e) return c + ' / ' + e;
+  return c || e || key;
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + lang).classList.add('active');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = t(el.getAttribute('data-i18n'));
+  });
+  document.getElementById('liveBannerText').textContent = t('banner.live');
+  renderAll();
+}
+
+// ==================== DATA ====================
+let matchData = [];
+let standings = {};
+let teamNamesCN = {};
+let teamsData = {};
+let pmData = {};
+let userVotes = {};
+
+function loadVotes() {
+  try { userVotes = JSON.parse(localStorage.getItem('wc_votes') || '{}'); } catch(e) { userVotes = {}; }
+}
+function saveVotes() {
+  localStorage.setItem('wc_votes', JSON.stringify(userVotes));
+}
+
+function teamName(en) {
+  const cn = teamNamesCN[en] || '';
+  if (currentLang === 'cn') return cn || en;
+  if (currentLang === 'dual') return cn ? cn + ' ' + en : en;
+  return en; // 'en'
+}
+
+async function loadData() {
+  try {
+    const [mRes, sRes, tRes, tmRes, pmRes] = await Promise.all([
+      fetch('match_data.json'),
+      fetch('standings.json'),
+      fetch('team_names.json'),
+      fetch('teams.json').catch(() => null),
+      fetch('polymarket.json').catch(() => null)
+    ]);
+    matchData = await mRes.json();
+    standings = await sRes.json();
+    teamNamesCN = await tRes.json();
+    if (tmRes) teamsData = await tmRes.json();
+    else teamsData = {};
+    if (pmRes) pmData = await pmRes.json();
+    else pmData = {};
+    loadVotes();
+    loadPlayerDetails();
+    // Load data quality report
+    try {
+      const vRes = await fetch('verify_report.json');
+      const verify = await vRes.json();
+      const badge = document.getElementById('qualityBadge');
+      const status = verify.summary.status;
+      const score = verify.quality_score || 100;
+      badge.textContent = `📊 ${score}分`;
+      badge.className = `quality-badge ${status}`;
+      badge.title = verify.summary.verdict || '';
+    } catch(e) {
+      document.getElementById('qualityBadge').textContent = '--';
+    }
+    renderAll();
+    let updateText;
+    if (currentLang === 'cn') updateText = t('lastUpdate') + ': ' + new Date().toLocaleString('zh-CN');
+    else if (currentLang === 'en') updateText = t('lastUpdate') + ': ' + new Date().toLocaleString('en-US');
+    else updateText = t('lastUpdate') + ': ' + new Date().toLocaleString('zh-CN') + ' / ' + new Date().toLocaleString('en-US');
+    document.getElementById('lastUpdate').textContent = updateText;
+  } catch(e) {
+    document.getElementById('lastUpdate').textContent = t('retrying');
+  }
+}
+
+function renderAll() {
+  renderStandings();
+  renderMatches();
+  renderLive();
+  renderTeams();
+  renderBracket();
+}
+
+function renderStandings() {
+  const grid = document.getElementById('groupsGrid');
+  const order = 'ABCDEFGHIJKL'.split('');
+  let html = '';
+  for (const g of order) {
+    const table = standings[g] || [];
+    if (!table.length) continue;
+    html += '<div class="group-card">';
+    html += `<div class="group-header">🏆 ${g}${t('group')}</div>`;
+    html += '<table class="group-table"><tr>';
+    ['table.rank','table.team','table.gp','table.w','table.d','table.l','table.gf','table.ga','table.gd','table.pts'].forEach(k => {
+      html += '<th>' + t(k) + '</th>';
+    });
+    html += '</tr>';
+    table.forEach((team, i) => {
+      html += `<tr>
+        <td class="num-col">${i+1}</td>
+        <td class="team-col">${teamName(team.team)}</td>
+        <td class="num-col">${team.gp}</td>
+        <td class="num-col">${team.w}</td>
+        <td class="num-col">${team.d}</td>
+        <td class="num-col">${team.l}</td>
+        <td class="num-col">${team.gf}</td>
+        <td class="num-col">${team.ga}</td>
+        <td class="num-col">${team.gd>0?'+':''}${team.gd}</td>
+        <td class="num-col pts">${team.pts}</td>
+      </tr>`;
+    });
+    html += '</table></div>';
+  }
+  grid.innerHTML = html;
+}
+
+function renderMatches() {
+  const container = document.getElementById('matchesByDate');
+  const byDate = {};
+  matchData.forEach(m => {
+    const d = m.date || '?';
+    if (!byDate[d]) byDate[d] = [];
+    byDate[d].push(m);
+  });
+
+  const sortedDates = Object.keys(byDate).sort();
+  const monthNamesCN = ['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+  const monthNamesEN = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  let html = '';
+  for (const date of sortedDates) {
+    const matches = byDate[date];
+    const parts = date.split('-');
+    const mo = parseInt(parts[1]), day = parseInt(parts[2]);
+    let dateLabel;
+    if (currentLang === 'cn') dateLabel = `📅 ${monthNamesCN[mo]}${day}日 (${matches.length}${t('matches')})`;
+    else if (currentLang === 'en') dateLabel = `📅 ${monthNamesEN[mo]} ${day} (${matches.length} ${t('matches')})`;
+    else dateLabel = `📅 ${monthNamesEN[mo]} ${day} · ${monthNamesCN[mo]}${day}日 (${matches.length} ${t('matches')})`;
+
+    html += `<div class="section-title">${dateLabel}</div>`;
+    html += '<div class="matches-grid">';
+    matches.forEach(match => {
+      const isLive = !match.is_result && match.home_score !== null && match.home_score !== undefined;
+      const isDone = match.is_result;
+      const cardClass = isLive ? 'live' : (isDone ? 'finished' : '');
+      const statusLabel = isLive ? t('status.live') : (isDone ? t('status.ft') : t('status.scheduled'));
+      const statusCls = isLive ? 'status-live' : (isDone ? 'status-ft' : 'status-scheduled');
+      let infoLine = `${match.date} ${match.time||''} ${match.tz||''} · ${match.group||''}${t('group')} · ${match.venue||''}`;
+
+      html += `<div class="match-card ${cardClass}">
+        <div class="match-date">${infoLine}</div>
+        <div class="match-teams">
+          <div class="team"><div class="team-name">${teamName(match.home_team)}</div></div>
+          <div class="score ${!isDone&&!isLive?'pending':''}">${isDone||isLive ? match.home_score+'-'+match.away_score : 'vs'}</div>
+          <div class="team"><div class="team-name">${teamName(match.away_team)}</div></div>
+        </div>
+        <div class="match-info"><span class="match-status ${statusCls}">${statusLabel}</span></div>
+        ${buildPollRow(match)}
+        ${buildPMRow(match)}
+      </div>`;
+    });
+    html += '</div>';
+  }
+  container.innerHTML = html;
+}
+
+function renderLive() {
+  const container = document.getElementById('liveMatches');
+  const liveMatches = matchData.filter(m => !m.is_result && m.home_score !== null && m.home_score !== undefined);
+  const banner = document.getElementById('liveBanner');
+  if (liveMatches.length > 0) {
+    banner.classList.add('active');
+    let html = '';
+    liveMatches.forEach(m => {
+      html += `<div class="match-card live">
+        <div class="match-date">${m.date} ${m.time} ${m.tz} · ${m.group}${t('group')} · ${m.venue}</div>
+        <div class="match-teams">
+          <div class="team"><div class="team-name">${teamName(m.home_team)}</div></div>
+          <div class="score">${m.home_score}-${m.away_score}</div>
+          <div class="team"><div class="team-name">${teamName(m.away_team)}</div></div>
+        </div>
+        <div class="match-info"><span class="match-status status-live">${t('status.live')}</span></div>
+      </div>`;
+    });
+    container.innerHTML = html;
+  } else {
+    banner.classList.remove('active');
+    container.innerHTML = `<div style="text-align:center;color:#64748b;padding:40px;">
+      <p style="font-size:1.2em;">${t('noLive')}</p>
+      <p style="margin-top:8px;">${t('noLiveSub')}</p>
+    </div>`;
+  }
+}
+
+function renderTeams() {
+  const container = document.getElementById('teamsContainer');
+  if (!teamsData || Object.keys(teamsData).length === 0) {
+    container.innerHTML = `<div style="text-align:center;color:#64748b;padding:40px;">
+      <p style="font-size:1.2em;">${t('team.noPlayers')}</p>
+      <p style="margin-top:8px;">Team data is being collected from TheSportsDB API...</p>
+    </div>`;
+    return;
+  }
+
+  // Build filter bar + waterfall
+  const groups = 'ABCDEFGHIJKL'.split('');
+  let html = '<div class="filter-bar">';
+  html += `<span class="filter-chip active" onclick="filterTeams('all')" id="chip-all">🌍 ${t('tab.teams')}</span>`;
+  for (const g of groups) {
+    const groupTeams = Object.values(teamsData).filter(t => t.group === g);
+    if (groupTeams.length > 0) {
+      html += `<span class="filter-chip" onclick="filterTeams('${g}')" id="chip-${g}">${g}${t('group')}</span>`;
+    }
+  }
+  html += '</div>';
+
+  // Waterfall cards
+  html += '<div class="waterfall" id="waterfall">';
+  for (const team of Object.values(teamsData)) {
+    html += buildTeamCard(team);
+  }
+  html += '</div>';
+
+  container.innerHTML = html;
+}
+
+function buildTeamCard(team) {
+  const cnName = team.name_cn || team.name_en;
+  const displayName = currentLang === 'cn' ? cnName :
+                     currentLang === 'dual' ? `${cnName} ${team.name_en}` :
+                     team.name_en;
+  const history = team.history || {};
+  const historyCn = team.history_cn || {};
+  let bestText;
+  if (currentLang === 'cn') bestText = historyCn.best || history.best || '';
+  else if (currentLang === 'dual' && historyCn.best && historyCn.best !== history.best) bestText = `${historyCn.best} ${history.best}`;
+  else bestText = history.best || '';
+
+  let card = `<div class="team-card" data-group="${team.group}">
+    <div class="team-card-header">
+      ${team.badge ? `<img src="${team.badge}" class="team-card-badge" onerror="this.style.display='none'" alt="">` : ''}
+      <div>
+        <div class="team-card-name">${displayName}</div>
+        <div class="team-card-history">${t('team.apps')}: ${history.apps || '?'} · ${t('team.best')}: ${bestText || '?'}</div>
+      </div>
+    </div>`;
+
+  if (team.coach || team.stadium) {
+    card += `<div class="team-card-meta">`;
+    if (team.coach) card += `🧑‍🏫 ${t('team.coach')}: ${team.coach}`;
+    if (team.coach && team.stadium) card += ` · `;
+    if (team.stadium) card += `🏟 ${team.stadium}`;
+    card += `</div>`;
+  }
+
+  const players = team.players || [];
+  if (players.length > 0) {
+    card += `<div style="font-size:.68em;color:#e2b04a;margin:6px 0 2px;font-weight:bold;">${t('team.players')} (${players.length})</div>`;
+    card += `<table class="player-table">
+      <tr><th>${t('team.number')}</th><th>${t('table.team')}</th><th>${t('team.position')}</th><th>${t('team.club')}</th></tr>`;
+    for (const p of players) {
+      let playerDisplay = p.name;
+      if (currentLang === 'cn' && p.name_cn) playerDisplay = p.name_cn;
+      else if (currentLang === 'dual' && p.name_cn && p.name_cn !== p.name) playerDisplay = `${p.name_cn} ${p.name}`;
+
+      let posText = p.position || '';
+      if (currentLang === 'cn' && p.position_cn) posText = p.position_cn;
+      else if (currentLang === 'dual' && p.position_cn && p.position_cn !== p.position) posText = `${p.position_cn} ${p.position}`;
+
+      let clubText = p.club || '';
+      if (currentLang === 'cn' && p.club_cn) clubText = p.club_cn;
+      else if (currentLang === 'dual' && p.club_cn && p.club_cn !== p.club) clubText = `${p.club_cn} ${p.club}`;
+
+      card += `<tr>
+        <td class="player-num">${p.number||'-'}</td>
+        <td class="player-detail-trigger" onclick="openPlayerModal('${p.name.replace(/'/g,"\\'")}')">${playerDisplay}</td>
+        <td class="player-pos">${posText}</td>
+        <td class="player-club">${clubText}</td>
+      </tr>`;
+    }
+    card += '</table>';
+  }
+
+  card += '</div>';
+  return card;
+}
+
+function filterTeams(group) {
+  // Update chips
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  const chipId = group === 'all' ? 'chip-all' : `chip-${group}`;
+  document.getElementById(chipId).classList.add('active');
+  // Show/hide cards
+  document.querySelectorAll('.team-card').forEach(card => {
+    card.style.display = (group === 'all' || card.dataset.group === group) ? '' : 'none';
+  });
+}
+
+function renderBracket() {
+  const container = document.getElementById('bracketView');
+  container.innerHTML = `
+    <div style="text-align:center;color:#94a3b8;padding:30px;">
+      <h3>${t('bracket.title')}</h3>
+      <table style="margin:20px auto;text-align:left;border-collapse:collapse;">
+        <tr><td style="padding:8px;color:#e2b04a;">${t('bracket.r32')}</td><td style="padding:8px;">Jun 28 – Jul 3 / 6月28日–7月3日</td><td style="padding:8px;color:#64748b;">16 ${t('matches')}</td></tr>
+        <tr><td style="padding:8px;color:#e2b04a;">${t('bracket.r16')}</td><td style="padding:8px;">Jul 4 – 7 / 7月4日–7日</td><td style="padding:8px;color:#64748b;">8 ${t('matches')}</td></tr>
+        <tr><td style="padding:8px;color:#e2b04a;">${t('bracket.qf')}</td><td style="padding:8px;">Jul 9 – 11 / 7月9日–11日</td><td style="padding:8px;color:#64748b;">4 ${t('matches')}</td></tr>
+        <tr><td style="padding:8px;color:#e2b04a;">${t('bracket.sf')}</td><td style="padding:8px;">Jul 14 – 15 / 7月14日–15日</td><td style="padding:8px;color:#64748b;">2 ${t('matches')}</td></tr>
+        <tr><td style="padding:8px;color:#e2b04a;">${t('bracket.tp')}</td><td style="padding:8px;">Jul 18 ${t('bracket.venue.miami')}</td><td style="padding:8px;color:#64748b;">1 ${t('matches')}</td></tr>
+        <tr><td style="padding:8px;color:#e2b04a;font-size:1.2em;">${t('bracket.final')}</td><td style="padding:8px;font-size:1.1em;">Jul 19 ${t('bracket.venue.ny')}</td><td style="padding:8px;color:#e2b04a;font-weight:bold;">1 ${t('matches')}</td></tr>
+      </table>
+    </div>`;
+}
+
+// ==================== PREDICTION POLL (REDESIGNED) ====================
+function voteMatch(match, choice) {
+  const key = match.home_team + '_vs_' + match.away_team;
+  if (userVotes['_voted_' + key]) return; // Already voted
+  const current = userVotes[key] || {home:0,draw:0,away:0};
+  current[choice] = (current[choice] || 0) + 1;
+  userVotes[key] = current;
+  userVotes['_voted_' + key] = choice;
+  saveVotes();
+  renderMatches();
+}
+
+function buildPollRow(match) {
+  const key = match.home_team + '_vs_' + match.away_team;
+  const votes = userVotes[key] || {home:0,draw:0,away:0};
+  const total = (votes.home||0) + (votes.draw||0) + (votes.away||0);
+  const myVote = userVotes['_voted_' + key];
+  const isLive = !match.is_result && match.home_score !== null && match.home_score !== undefined;
+  const isDone = match.is_result;
+  const isLocked = isLive || isDone; // Lock when match starts
+
+  const homePct = total > 0 ? Math.round((votes.home||0)/total*100) : 0;
+  const drawPct = total > 0 ? Math.round((votes.draw||0)/total*100) : 0;
+  const awayPct = total > 0 ? Math.round((votes.away||0)/total*100) : 0;
+
+  let html = '<div class="poll-section">';
+
+  // Header
+  html += '<div class="poll-header">';
+  if (!isLocked) {
+    html += `<span class="poll-title"><span class="icon">🎯</span> ${t('poll.predict')}</span>`;
+    html += '<span class="poll-badge open">' + t('poll.open') + '</span>';
+  } else if (isLive) {
+    html += `<span class="poll-title"><span class="icon">🔒</span> ${t('poll.liveLocked')}</span>`;
+    html += '<span class="poll-badge locked">' + t('poll.live') + '</span>';
+  } else {
+    html += `<span class="poll-title"><span class="icon">📊</span> ${t('poll.results')}</span>`;
+    html += '<span class="poll-badge closed">' + t('poll.closed') + '</span>';
+  }
+  html += '</div>';
+
+  if (!isLocked) {
+    // === PRE-MATCH: Active voting ===
+    html += '<div class="poll-options">';
+    html += `<div class="poll-opt home ${myVote==='home'?'selected':''}" onclick="voteMatch(match,'home')">`;
+    html += `<div class="poll-opt-label home">${t('poll.home')}</div>`;
+    html += `<div class="poll-opt-count">${votes.home||0} ${t('poll.votes')}</div>`;
+    if (total > 0) html += `<div class="poll-opt-bar home" style="width:${homePct}%"></div>`;
+    html += '</div>';
+
+    html += `<div class="poll-opt draw ${myVote==='draw'?'selected':''}" onclick="voteMatch(match,'draw')">`;
+    html += `<div class="poll-opt-label draw">${t('poll.draw')}</div>`;
+    html += `<div class="poll-opt-count">${votes.draw||0} ${t('poll.votes')}</div>`;
+    if (total > 0) html += `<div class="poll-opt-bar draw" style="width:${drawPct}%"></div>`;
+    html += '</div>';
+
+    html += `<div class="poll-opt away ${myVote==='away'?'selected':''}" onclick="voteMatch(match,'away')">`;
+    html += `<div class="poll-opt-label away">${t('poll.away')}</div>`;
+    html += `<div class="poll-opt-count">${votes.away||0} ${t('poll.votes')}</div>`;
+    if (total > 0) html += `<div class="poll-opt-bar away" style="width:${awayPct}%"></div>`;
+    html += '</div>';
+    html += '</div>';
+
+    if (total > 0) {
+      html += `<div class="poll-total">${total} ${t('poll.totalVotes')}</div>`;
+    } else {
+      html += `<div class="poll-total">${t('poll.noVotes')}</div>`;
+    }
+  } else {
+    // === MATCH STARTED: Locked results display ===
+    html += '<div class="poll-results">';
+    ['home','draw','away'].forEach(choice => {
+      const pct = choice === 'home' ? homePct : (choice === 'draw' ? drawPct : awayPct);
+      const count = choice === 'home' ? (votes.home||0) : (choice === 'draw' ? (votes.draw||0) : (votes.away||0));
+      html += '<div class="poll-result">';
+      html += `<div class="poll-result-bar ${choice}" style="height:${Math.max(pct*0.3,2)}px"></div>`;
+      html += `<div class="poll-result-pct ${choice}">${pct}%</div>`;
+      html += `<div class="poll-result-label">${count} ${t('poll.votes')}</div>`;
+      html += '</div>';
+    });
+    html += '</div>';
+    html += `<div class="poll-total">${total} ${t('poll.totalVotes')}${myVote ? ' · ' + t('poll.youVoted') + ': ' + t('poll.' + myVote) : ''}</div>`;
+  }
+
+  html += '</div>';
+  return html;
+}
+
+// ==================== POLYMARKET PREDICTION (REDESIGNED) ====================
+function findPMMatch(match) {
+  if (!pmData || !pmData.matches) return null;
+  const key1 = match.home_team + ' vs ' + match.away_team;
+  const key2 = match.away_team + ' vs ' + match.home_team;
+  return pmData.matches[key1] || pmData.matches[key2] || null;
+}
+
+function buildPMRow(match) {
+  const pm = findPMMatch(match);
+  if (!pm) return '';
+
+  const isDone = match.is_result;
+  const hp = Math.round(pm.home_prob * 100);
+  const dp = Math.round(pm.draw_prob * 100);
+  const ap = Math.round(pm.away_prob * 100);
+  const isReal = !pm.source || pm.source !== 'estimated_from_team_strength';
+
+  // Determine which outcome is favored
+  let fav = 'home'; let favPct = hp;
+  if (dp > favPct) { fav = 'draw'; favPct = dp; }
+  if (ap > favPct) { fav = 'away'; favPct = ap; }
+
+  let html = '<div class="pm-card">';
+
+  // Header
+  html += '<div class="pm-card-header">';
+  html += `<span class="pm-card-title">📊 Polymarket ${isReal ? '盘口' : '推算'}</span>`;
+  html += `<span class="pm-card-source ${isReal?'real':''}">${isReal ? '真实盘口' : '冠军赔率推算'}</span>`;
+  html += '</div>';
+
+  // Probability bar: Home
+  html += '<div class="pm-bar-row">';
+  html += `<span class="pm-bar-label ${fav==='home'?'fav':''}">${t('poll.home')}</span>`;
+  html += `<div class="pm-bar-track"><div class="pm-bar-fill ${fav==='home'?'fav':(hp>dp&&hp>ap?'mid':'dog')}" style="width:${Math.max(hp,2)}%"></div></div>`;
+  html += `<span class="pm-bar-pct">${hp}%</span>`;
+  html += '</div>';
+
+  // Probability bar: Draw
+  html += '<div class="pm-bar-row">';
+  html += `<span class="pm-bar-label ${fav==='draw'?'fav':''}">${t('poll.draw')}</span>`;
+  html += `<div class="pm-bar-track"><div class="pm-bar-fill ${fav==='draw'?'fav':'mid'}" style="width:${Math.max(dp,2)}%"></div></div>`;
+  html += `<span class="pm-bar-pct">${dp}%</span>`;
+  html += '</div>';
+
+  // Probability bar: Away
+  html += '<div class="pm-bar-row">';
+  html += `<span class="pm-bar-label ${fav==='away'?'fav':''}">${t('poll.away')}</span>`;
+  html += `<div class="pm-bar-track"><div class="pm-bar-fill ${fav==='away'?'fav':(ap>hp&&ap>dp?'mid':'dog')}" style="width:${Math.max(ap,2)}%"></div></div>`;
+  html += `<span class="pm-bar-pct">${ap}%</span>`;
+  html += '</div>';
+
+  // Prediction direction
+  if (!isDone) {
+    const predTeam = fav === 'home' ? teamName(match.home_team) : (fav === 'away' ? teamName(match.away_team) : '');
+    const predLabel = fav === 'draw' ? '倾向平局' : (predTeam ? `${predTeam} 更被看好` : '');
+    const favClass = favPct > 60 ? 'fav' : (favPct < 45 ? 'dog' : 'even');
+    html += `<div class="pm-prediction ${favClass}">📈 市场预测: ${predLabel} (${favPct}%概率)</div>`;
+  }
+
+  // For completed matches: comparison
+  if (isDone) {
+    const actual = match.home_score > match.away_score ? 'home' : (match.home_score < match.away_score ? 'away' : 'draw');
+    const actualLabel = actual === 'home' ? t('poll.home') : (actual === 'away' ? t('poll.away') : t('poll.draw'));
+    const predLabel = pm.predicted === 'home' ? t('poll.home') : (pm.predicted === 'away' ? t('poll.away') : t('poll.draw'));
+    const ok = (pm.predicted === actual);
+    const okText = ok ? '✅ 预测正确' : '❌ 预测失败';
+    html += `<div class="pm-compare ${ok?'correct':'wrong'}">${okText}: PM预测${predLabel}(${favPct}%) → 实际${actualLabel}(${match.home_score}-${match.away_score})</div>`;
+  }
+
+  // Note/context
+  if (pm.note) {
+    html += `<div class="pm-note">💡 ${pm.note}</div>`;
+  }
+
+  // Volume
+  if (pm.volume && pm.volume !== 'N/A' && pm.volume !== 'est.') {
+    html += `<div class="pm-note">💰 交易量: ${pm.volume}</div>`;
+  }
+
+  html += '</div>';
+  return html;
+}
+
+// ==================== PLAYER DETAIL MODAL ====================
+let playerDetails = {};
+
+async function loadPlayerDetails() {
+  try {
+    const res = await fetch('player_details.json');
+    if (res.ok) playerDetails = await res.json();
+  } catch(e) {}
+}
+
+function openPlayerModal(playerName) {
+  const pd = playerDetails[playerName];
+  if (!pd) return;
+
+  const content = document.getElementById('playerModalContent');
+  const cn = pd.name_cn || '';
+  const age = pd.age || '';
+  const birth = pd.birth_date || '';
+  const birthplace = pd.birth_place || '';
+  const nationality = pd.nationality || '';
+  const nationalityTeam = pd.nationality_team || '';
+  const pos = pd.position || '';
+  const posCn = pd.position_cn || '';
+  const club = pd.club || '';
+  const clubCn = pd.club_cn || '';
+  const number = pd.number || '';
+  const height = pd.height || '';
+  const weight = pd.weight || '';
+
+  // Check if dual nationality
+  const isDual = nationality && nationalityTeam && nationality !== nationalityTeam;
+
+  let html = '<div class="modal-header">';
+  if (number) html += `<div class="modal-number">#${number}</div>`;
+  html += '<div>';
+  html += `<div class="modal-name">${pd.name}</div>`;
+  if (cn && cn !== pd.name) html += `<div class="modal-name-cn">${cn}</div>`;
+  html += '</div></div>';
+
+  // Core info grid
+  html += '<div class="modal-grid">';
+  if (age) html += `<div class="modal-field"><div class="modal-field-label">年龄</div><div class="modal-field-value">${age}岁</div></div>`;
+  if (birth) html += `<div class="modal-field"><div class="modal-field-label">出生日期</div><div class="modal-field-value">${birth}</div></div>`;
+  if (birthplace) html += `<div class="modal-field"><div class="modal-field-label">出生地</div><div class="modal-field-value">${birthplace}</div></div>`;
+  if (posCn || pos) html += `<div class="modal-field"><div class="modal-field-label">位置</div><div class="modal-field-value">${posCn ? posCn+' '+pos : pos}</div></div>`;
+  if (clubCn || club) html += `<div class="modal-field"><div class="modal-field-label">效力俱乐部</div><div class="modal-field-value">${clubCn ? clubCn+' '+club : club}</div></div>`;
+  if (height) html += `<div class="modal-field"><div class="modal-field-label">身高</div><div class="modal-field-value">${height}</div></div>`;
+  if (weight) html += `<div class="modal-field"><div class="modal-field-label">体重</div><div class="modal-field-value">${weight}</div></div>`;
+  html += '</div>';
+
+  // Nationality badges
+  if (nationality) {
+    html += '<div style="margin-top:8px;">';
+    html += `<span class="modal-flag main">🏴 ${nationality}</span>`;
+    if (isDual) html += `<span class="modal-flag other">🌍 代表: ${nationalityTeam}</span>`;
+    html += '</div>';
+  }
+
+  // Stats
+  if (pd.club_goals !== undefined) {
+    html += '<div class="modal-stats">';
+    html += `<div class="modal-stat"><div class="modal-stat-value">${pd.club_goals||0}</div><div class="modal-stat-label">俱乐部进球</div></div>`;
+    html += `<div class="modal-stat"><div class="modal-stat-value">${pd.club_apps||0}</div><div class="modal-stat-label">俱乐部出场</div></div>`;
+    html += `<div class="modal-stat"><div class="modal-stat-value">${pd.intl_goals||0}</div><div class="modal-stat-label">国家队进球</div></div>`;
+    html += `<div class="modal-stat"><div class="modal-stat-value">${pd.intl_apps||0}</div><div class="modal-stat-label">国家队出场</div></div>`;
+    html += `<div class="modal-stat"><div class="modal-stat-value">${pd.career_goals||0}</div><div class="modal-stat-label">职业生涯进球</div></div>`;
+    html += `<div class="modal-stat"><div class="modal-stat-value">${pd.career_apps||0}</div><div class="modal-stat-label">职业生涯出场</div></div>`;
+    html += '</div>';
+  }
+
+  content.innerHTML = html;
+  document.getElementById('playerModal').classList.add('active');
+}
+
+function closePlayerModal() {
+  document.getElementById('playerModal').classList.remove('active');
+}
+
+function switchTab(name) {
+  const tabOrder = {standings:1, matches:2, live:3, teams:4, bracket:5};
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelector(`.tab:nth-child(${tabOrder[name]})`).classList.add('active');
+  document.getElementById(`tab-${name}`).classList.add('active');
+}
+
+loadData();
+setInterval(loadData, 60000);
+</script>
+</body>
+</html>
