@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://datamenu.xyz/">
 <meta property="og:title" content="欢迎来到DobGuski的世界杯小站 | 2026 FIFA World Cup Live">
-<meta property="og:description" content="48支球队·104场比赛·实时比分·球员档案·Polymarket预测赔率。您是小站的第N位客人。扫码或点击进入。">
+<meta property="og:description" content="48支球队·104场比赛·实时比分·球员档案·Polymarket预测赔率。您是小站的第N位客人。点击进入。">
 <meta property="og:image" content="https://datamenu.xyz/assets/trionda.png">
 <meta property="og:image:width" content="330">
 <meta property="og:image:height" content="335">
@@ -77,11 +77,6 @@ h1{font-size:1.7em;color:#e2b04a;margin-bottom:6px;font-weight:800;letter-spacin
 .copied-toast{display:none;position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#22c55e;color:#fff;padding:8px 24px;border-radius:20px;font-size:.85em;font-weight:bold;z-index:100;animation:fadeInOut 2s}
 @keyframes fadeInOut{0%{opacity:0;transform:translateX(-50%) translateY(10px)}15%{opacity:1;transform:translateX(-50%) translateY(0)}85%{opacity:1}100%{opacity:0}}
 
-/* QR section */
-.qr-section{margin-top:16px}
-.qr-code{width:100px;height:100px;border-radius:10px;border:2px solid #334155;padding:3px;background:#fff}
-.qr-label{font-size:.65em;color:#475569;margin-top:6px}
-
 /* Footer */
 .footer{padding:14px;text-align:center;color:#475569;font-size:.7em;border-top:1px solid #1e293b;width:100%}
 .footer a{color:#64748b;text-decoration:none}
@@ -94,7 +89,6 @@ h1{font-size:1.7em;color:#e2b04a;margin-bottom:6px;font-weight:800;letter-spacin
   .visitor-count{font-size:2em}
   .visitor-box{padding:14px 20px}
   .enter-btn{padding:12px 36px;font-size:.95em}
-  .qr-code{width:85px;height:85px}
 }
 </style>
 </head>
@@ -123,12 +117,6 @@ h1{font-size:1.7em;color:#e2b04a;margin-bottom:6px;font-weight:800;letter-spacin
     </div>
 
     <a href="dashboard.html" class="enter-btn">🏟 进入实时看板</a>
-
-    <!-- QR Code -->
-    <div class="qr-section">
-      <img class="qr-code" id="qrCode" src="" alt="扫码访问 datamenu.xyz" onerror="this.style.display='none'">
-      <div class="qr-label">📱 扫码访问 datamenu.xyz</div>
-    </div>
 
     <!-- Share buttons -->
     <div class="share-section">
@@ -197,9 +185,7 @@ h1{font-size:1.7em;color:#e2b04a;margin-bottom:6px;font-weight:800;letter-spacin
   fetch('http://localhost:8888/counter/pv', { mode: 'no-cors' }).catch(() => {});
 })();
 
-// ── QR Code ──
 const pageUrl = 'https://datamenu.xyz/';
-document.getElementById('qrCode').src = 'https://api.qrserver.com/v1/create-qr-code/?size=100x100&bgcolor=ffffff&data=' + encodeURIComponent(pageUrl);
 
 // ── Share buttons ──
 const shareText = encodeURIComponent('🏆 Dob Guski 的世界杯小站 | 2026 FIFA World Cup Live — 实时比分·球员档案·Polymarket预测');
