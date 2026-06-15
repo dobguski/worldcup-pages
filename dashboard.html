@@ -489,6 +489,7 @@ async function loadData() {
     }
     renderAll();
     if (!window._hasAutoScrolled) { scrollToRelevantMatch(); window._hasAutoScrolled = true; }
+    scheduleNextRefresh();  // Adjust refresh rate based on live match status
     let updateText;
     if (currentLang === 'cn') updateText = t('lastUpdate') + ': ' + new Date().toLocaleString('zh-CN');
     else if (currentLang === 'en') updateText = t('lastUpdate') + ': ' + new Date().toLocaleString('en-US');
@@ -507,26 +508,33 @@ function renderAll() {
   renderBracket();
 }
 
-// Auto-scroll to most relevant match after load
+// Auto-scroll to most relevant match after load + switch to right tab
 function scrollToRelevantMatch() {
-  // 1) Live matches first
-  const liveCard = document.querySelector('.match-card.live');
-  if (liveCard) {
-    liveCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return;
-  }
-  // 2) Today's matches
   const today = new Date().toISOString().slice(0,10);
-  const todayCard = document.querySelector(`.match-card[data-date="${today}"]`);
-  if (todayCard) {
-    todayCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const liveCards = document.querySelectorAll('.match-card.live');
+
+  // 1) Live matches — switch to Live tab, scroll to first live match
+  if (liveCards.length > 0) {
+    switchTab('live');
+    liveCards[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
-  // 3) Most recently finished match (last .match-card.finished)
-  const finishedCards = document.querySelectorAll('.match-card.finished');
-  if (finishedCards.length > 0) {
-    finishedCards[finishedCards.length - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  // 2) No live matches — stay on 最新战报, scroll to next upcoming match day
+  const allCards = document.querySelectorAll('.match-card[data-date]');
+  let nextCard = null;
+  for (const card of allCards) {
+    const d = card.getAttribute('data-date');
+    if (d && d >= today) { nextCard = card; break; }
+  }
+  if (nextCard) {
+    nextCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
+  }
+
+  // 3) Fallback: scroll to last match
+  if (allCards.length > 0) {
+    allCards[allCards.length - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
 
@@ -1059,8 +1067,14 @@ function switchTab(name) {
   document.getElementById(`tab-${name}`).classList.add('active');
 }
 
-loadData();
-setInterval(loadData, 60000);
+let refreshTimer = null;
+function scheduleNextRefresh() {
+  if (refreshTimer) clearInterval(refreshTimer);
+  const hasLive = matchData.some(m => !m.is_result && m.home_score !== null && m.home_score !== undefined);
+  const interval = hasLive ? 30000 : 60000;  // 30s during live, 60s otherwise
+  refreshTimer = setInterval(loadData, interval);
+}
+loadData().then(() => { scheduleNextRefresh(); });
 
 // ── Visit counter v2 (global counter.json + localStorage dedup, cumulative only) ──
 (function(){
