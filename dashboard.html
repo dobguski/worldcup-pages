@@ -1003,24 +1003,21 @@ function switchTab(name) {
 loadData();
 setInterval(loadData, 60000);
 
-// ── Visit counter v2 (global counter.json + localStorage dedup) ──
+// ── Visit counter v2 (global counter.json + localStorage dedup, cumulative only) ──
 (function(){
   try {
-    const today = new Date().toISOString().slice(0,10);
-    // Local per-browser tracking
+    // Local per-browser tracking (UV + PV only, always cumulative)
     const raw = localStorage.getItem('wc_site_stats');
-    const stats = raw ? JSON.parse(raw) : { uv: 0, pv: 0, today: 0, lastVisit: '' };
+    const stats = raw ? JSON.parse(raw) : { uv: 0, pv: 0 };
     const hasVisited = localStorage.getItem('wc_uv_flag');
     if (!hasVisited) {
       stats.uv += 1;
       localStorage.setItem('wc_uv_flag', '1');
     }
-    if (stats.lastVisit !== today) { stats.today = 1; } else { stats.today += 1; }
     stats.pv += 1;
-    stats.lastVisit = today;
     localStorage.setItem('wc_site_stats', JSON.stringify(stats));
 
-    // Show badge from local stats (fetches global counter.json for main display)
+    // Show badge (fetches global counter.json for main display)
     function showBadge(pv, uv) {
       const badge = document.createElement('span');
       badge.style.cssText = 'font-size:.65em;color:#64748b;margin-left:6px';
