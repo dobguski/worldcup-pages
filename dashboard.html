@@ -1003,18 +1003,25 @@ function switchTab(name) {
 loadData();
 setInterval(loadData, 60000);
 
-// ── Visit counter (syncs with welcome page) ──
+// ── Visit counter (syncs with welcome page — same engine) ──
 (function(){
   try {
     const raw = localStorage.getItem('wc_site_stats');
-    const stats = raw ? JSON.parse(raw) : { uv: 0, pv: 0 };
+    const stats = raw ? JSON.parse(raw) : { uv: 0, pv: 0, today: 0, lastVisit: '' };
+    const today = new Date().toISOString().slice(0,10);
     // UV via dedicated flag (one-time per browser)
     const hasVisited = localStorage.getItem('wc_uv_flag');
     if (!hasVisited) {
       stats.uv += 1;
       localStorage.setItem('wc_uv_flag', '1');
-      localStorage.setItem('wc_site_stats', JSON.stringify(stats));
     }
+    // Today counter
+    if (stats.lastVisit !== today) { stats.today = 1; } else { stats.today += 1; }
+    // PV always increments
+    stats.pv += 1;
+    stats.lastVisit = today;
+    localStorage.setItem('wc_site_stats', JSON.stringify(stats));
+    // Show badge
     const badge = document.createElement('span');
     badge.style.cssText = 'font-size:.65em;color:#64748b;margin-left:6px';
     badge.textContent = '| 👁 ' + stats.pv + ' PV · ' + stats.uv + ' UV';
