@@ -1,8 +1,21 @@
 {
-  "timestamp": "2026-06-15T11:27:36.349849+00:00",
+  "timestamp": "2026-06-15T11:29:45.010716+00:00",
   "layers": {
     "completeness": {
-      "issues": []
+      "issues": [
+        {
+          "layer": "completeness",
+          "severity": "high",
+          "file": "teams.json",
+          "issue": "Only 50/48 teams"
+        },
+        {
+          "layer": "completeness",
+          "severity": "low",
+          "file": "teams.json",
+          "issue": "2 teams missing coach"
+        }
+      ]
     },
     "consistency": {
       "issues": []
@@ -21,11 +34,11 @@
     }
   },
   "summary": {
-    "total_issues": 1,
+    "total_issues": 3,
     "critical": 0,
-    "high": 0,
-    "status": "OK",
-    "verdict": "All checks passed"
+    "high": 1,
+    "status": "WARN",
+    "verdict": "0 critical, 1 high issues need attention"
   },
-  "quality_score": 99
+  "quality_score": 88
 }

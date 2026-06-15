@@ -655,7 +655,7 @@ function buildTeamCard(team) {
   if (players.length > 0) {
     card += `<div style="font-size:.68em;color:#e2b04a;margin:6px 0 2px;font-weight:bold;">${t('team.players')} (${players.length})</div>`;
     card += `<table class="player-table">
-      <tr><th>${t('team.number')}</th><th>${t('table.team')}</th><th>${t('team.position')}</th><th>${t('team.club')}</th></tr>`;
+      <tr><th>${t('team.number')}</th><th>${t('table.team')}</th><th>A</th><th>${t('team.position')}</th><th>${t('team.club')}</th></tr>`;
     for (const p of players) {
       let playerDisplay = p.name;
       if (currentLang === 'cn' && p.name_cn) playerDisplay = p.name_cn;
@@ -672,11 +672,29 @@ function buildTeamCard(team) {
       card += `<tr>
         <td class="player-num">${p.number||'-'}</td>
         <td class="player-detail-trigger" onclick="openPlayerModal('${p.name.replace(/'/g,"\\'")}')">${playerDisplay}</td>
+        <td style="text-align:center;font-size:.75em;color:#64748b;width:22px">${p.age||''}</td>
         <td class="player-pos">${posText}</td>
         <td class="player-club">${clubText}</td>
       </tr>`;
     }
     card += '</table>';
+  }
+
+  // Dual Nationals
+  if (team.dual_nationals) {
+    card += `<div style="margin-top:6px;padding:6px 8px;background:#111827;border-radius:6px;font-size:.65em;color:#94a3b8;line-height:1.4;border-left:2px solid #3b82f6">
+      <span style="color:#60a5fa;font-weight:bold">🌍 ${currentLang==='cn'?'双重国籍':'Dual Nationals'}:</span> ${team.dual_nationals.substring(0,300)}${team.dual_nationals.length>300?'...':''}</div>`;
+  }
+  // Key Stats
+  if (team.key_stats) {
+    const statsText = team.key_stats.replace(/- /g, '· ').substring(0, 400);
+    card += `<div style="margin-top:4px;padding:5px 8px;background:#111827;border-radius:6px;font-size:.63em;color:#64748b;line-height:1.4">
+      <span style="color:#e2b04a;font-weight:bold">📊 ${currentLang==='cn'?'关键数据':'Key Stats'}:</span> ${statsText}</div>`;
+  }
+  // Historical Note
+  if (team.historical_note) {
+    card += `<div style="margin-top:4px;padding:5px 8px;background:#111827;border-radius:6px;font-size:.63em;color:#64748b;line-height:1.4;border-left:2px solid #78716c">
+      <span style="color:#a8a29e;font-weight:bold">📖 ${currentLang==='cn'?'历史看点':'History'}:</span> ${team.historical_note.substring(0,400)}${team.historical_note.length>400?'...':''}</div>`;
   }
 
   card += '</div>';
