@@ -13,8 +13,9 @@
 body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f1724;color:#e2e8f0;min-height:100vh}
 .header{background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);padding:20px;text-align:center;border-bottom:3px solid #e2b04a}
 .header h1{font-size:2em;color:#e2b04a;margin-bottom:5px;display:flex;align-items:center;justify-content:center;gap:12px}
-/* TRIONDA 2026 Official Match Ball - Pure CSS */
-.trionda-ball{display:inline-block;width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff 0%,#e8e8e8 40%,#d0d0d0 100%);position:relative;box-shadow:2px 3px 8px rgba(0,0,0,.4);vertical-align:middle;flex-shrink:0}
+/* TRIONDA 2026 Official Match Ball - Image + CSS fallback */
+.trionda-img{display:none;width:48px;height:48px;object-fit:contain;vertical-align:middle;flex-shrink:0;filter:drop-shadow(2px 3px 6px rgba(0,0,0,.5))}
+.trionda-fallback{display:none;width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff 0%,#e8e8e8 40%,#d0d0d0 100%);position:relative;box-shadow:2px 3px 8px rgba(0,0,0,.4);vertical-align:middle;flex-shrink:0}
 .trionda-ball::before{content:'';position:absolute;top:5%;left:15%;width:30%;height:40%;background:linear-gradient(135deg,#c41230 0%,#e83950 60%,transparent 61%);border-radius:50% 3px 50% 3px;transform:rotate(-15deg)}
 .trionda-ball::after{content:'';position:absolute;top:10%;right:12%;width:32%;height:45%;background:linear-gradient(225deg,#002868 0%,#1a4fa0 60%,transparent 61%);border-radius:3px 50% 3px 50%;transform:rotate(20deg)}
 .trionda-inner{position:absolute;bottom:8%;left:25%;width:35%;height:38%;background:linear-gradient(0deg,#006847 0%,#009a60 55%,transparent 56%);border-radius:50% 50% 3px 3px;transform:rotate(-8deg)}
@@ -195,7 +196,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
 <body>
 
 <div class="header">
-  <h1><span class="trionda-ball"><span class="trionda-inner"></span><span class="trionda-stripe"></span><span class="trionda-stripe2"></span><span class="trionda-dot"></span></span>2026 FIFA 世界杯 · FIFA World Cup</h1>
+  <h1><img src="assets/trionda.png" alt="TRIONDA" class="trionda-img" onerror="this.parentNode.querySelector('.trionda-fallback').style.display='inline-block';this.style.display='none'" onload="this.style.display='inline';this.nextElementSibling.style.display='none'"><span class="trionda-fallback" style="display:none"><span class="trionda-inner"></span><span class="trionda-stripe"></span><span class="trionda-stripe2"></span><span class="trionda-dot"></span></span>2026 FIFA 世界杯 · FIFA World Cup</h1>
   <div class="subtitle">🇨🇦 Canada · 🇺🇸 USA · 🇲🇽 Mexico | Jun 11 – Jul 19 | 48 Teams · 104 Matches / 48队 · 104场</div>
 </div>
 
