@@ -568,12 +568,12 @@
     "home_team_cn": "瑞典",
     "away_team": "Tunisia",
     "away_team_cn": "突尼斯",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 5,
+    "away_score": 1,
+    "halftime": "2-1",
     "venue": "Monterrey (Guadalupe)",
     "group": "F",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-21",
