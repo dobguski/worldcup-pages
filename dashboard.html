@@ -711,14 +711,15 @@ function renderBracket() {
 }
 
 // ==================== PREDICTION POLL (REDESIGNED) ====================
-function voteMatch(match, choice) {
-  const key = match.home_team + '_vs_' + match.away_team;
-  if (userVotes['_voted_' + key]) return; // Already voted
-  const current = userVotes[key] || {home:0,draw:0,away:0};
+function voteMatch(matchKey, choice) {
+  // matchKey format: "home_team_vs_away_team"
+  if (userVotes['_voted_' + matchKey]) return; // Already voted
+  const current = userVotes[matchKey] || {home:0,draw:0,away:0};
   current[choice] = (current[choice] || 0) + 1;
-  userVotes[key] = current;
-  userVotes['_voted_' + key] = choice;
+  userVotes[matchKey] = current;
+  userVotes['_voted_' + matchKey] = choice;
   saveVotes();
+  // Re-render only the matches section (poll stats update in-place)
   renderMatches();
 }
 
@@ -754,19 +755,19 @@ function buildPollRow(match) {
   if (!isLocked) {
     // === PRE-MATCH: Active voting ===
     html += '<div class="poll-options">';
-    html += `<div class="poll-opt home ${myVote==='home'?'selected':''}" onclick="voteMatch(match,'home')">`;
+    html += `<div class="poll-opt home ${myVote==='home'?'selected':''}" onclick="voteMatch('${key}','home')">`;
     html += `<div class="poll-opt-label home">${t('poll.home')}</div>`;
     html += `<div class="poll-opt-count">${votes.home||0} ${t('poll.votes')}</div>`;
     if (total > 0) html += `<div class="poll-opt-bar home" style="width:${homePct}%"></div>`;
     html += '</div>';
 
-    html += `<div class="poll-opt draw ${myVote==='draw'?'selected':''}" onclick="voteMatch(match,'draw')">`;
+    html += `<div class="poll-opt draw ${myVote==='draw'?'selected':''}" onclick="voteMatch('${key}','draw')">`;
     html += `<div class="poll-opt-label draw">${t('poll.draw')}</div>`;
     html += `<div class="poll-opt-count">${votes.draw||0} ${t('poll.votes')}</div>`;
     if (total > 0) html += `<div class="poll-opt-bar draw" style="width:${drawPct}%"></div>`;
     html += '</div>';
 
-    html += `<div class="poll-opt away ${myVote==='away'?'selected':''}" onclick="voteMatch(match,'away')">`;
+    html += `<div class="poll-opt away ${myVote==='away'?'selected':''}" onclick="voteMatch('${key}','away')">`;
     html += `<div class="poll-opt-label away">${t('poll.away')}</div>`;
     html += `<div class="poll-opt-count">${votes.away||0} ${t('poll.votes')}</div>`;
     if (total > 0) html += `<div class="poll-opt-bar away" style="width:${awayPct}%"></div>`;
