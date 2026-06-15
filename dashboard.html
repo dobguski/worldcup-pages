@@ -608,7 +608,7 @@ function renderMatches() {
       if (!isBJT) timeDisplay += ` <span style="font-size:.65em;color:#475569;margin-left:3px">(${fmt.bjRef})</span>`;
       let infoLine = `${fmt.date} ${timeDisplay} · ${match.group||''}${t('group')} · ${match.venue||''}`;
 
-      html += `<div class="match-card ${cardClass}" data-date="${match.date}" data-key="${match.home_team}-${match.away_team}">
+      html += `<div class="match-card ${cardClass}" data-date="${fmt.date}" data-key="${match.home_team}-${match.away_team}">
         <div class="match-date">${infoLine}</div>
         <div class="match-teams">
           <div class="team"><div class="team-name">${teamName(match.home_team)}</div></div>
