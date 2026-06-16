@@ -36,16 +36,18 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.7}}
 .live-dot{display:inline-block;width:10px;height:10px;background:#fff;border-radius:50%;margin-right:6px;animation:blink 1s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.groups-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:15px;margin-top:15px}
+.groups-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:15px}
 .group-card{background:#1e293b;border-radius:12px;overflow:hidden;border:1px solid #334155}
-.group-header{background:linear-gradient(90deg,#1e40af,#3b82f6);padding:10px 15px;font-weight:bold;font-size:1.1em;color:#fff}
-.group-table{width:100%;border-collapse:collapse}
-.group-table th{background:#0f1724;padding:6px 8px;font-size:.72em;text-transform:uppercase;color:#94a3b8;text-align:center}
-.group-table td{padding:8px;border-bottom:1px solid #1e293b;font-size:.88em}
+.group-header{background:linear-gradient(90deg,#1e40af,#3b82f6);padding:8px 12px;font-weight:bold;font-size:.95em;color:#fff}
+.group-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.group-table th{background:#0f1724;padding:5px 4px;font-size:.65em;text-transform:uppercase;color:#94a3b8;text-align:center;white-space:nowrap}
+.group-table td{padding:5px 4px;border-bottom:1px solid #1e293b;font-size:.78em;text-align:center}
 .group-table tr:hover{background:#334155}
-.team-col{text-align:left;font-weight:500}
-.num-col{text-align:center;width:26px}
-.pts{font-weight:bold;color:#e2b04a}
+.group-table .team-col{text-align:left;font-weight:600;font-size:.8em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:90px}
+.group-table .pts-col{font-weight:bold;color:#e2b04a;font-size:.85em}
+.group-table .gd-col{font-size:.72em}
+.group-table .top1{border-left:3px solid #e2b04a}
+.group-table .top2{border-left:3px solid #94a3b8}
 .section-title{font-size:1.3em;color:#e2b04a;margin:25px 0 10px;padding-bottom:8px;border-bottom:2px solid #e2b04a}
 .matches-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:12px}
 .match-card{background:#1e293b;border-radius:10px;padding:15px;border:1px solid #334155;transition:all .2s}
@@ -549,23 +551,22 @@ function renderStandings() {
     if (!table.length) continue;
     html += '<div class="group-card">';
     html += `<div class="group-header">🏆 ${g}${t('group')}</div>`;
-    html += '<table class="group-table"><tr>';
-    ['table.rank','table.team','table.gp','table.w','table.d','table.l','table.gf','table.ga','table.gd','table.pts'].forEach(k => {
-      html += '<th>' + t(k) + '</th>';
-    });
-    html += '</tr>';
+    html += '<table class="group-table"><thead><tr>';
+    html += '<th>#</th><th class="team-col">' + t('table.team') + '</th>';
+    html += '<th>' + t('table.gp') + '</th><th>' + t('table.w') + '</th>';
+    html += '<th>' + t('table.d') + '</th><th>' + t('table.l') + '</th>';
+    html += '<th>+/-</th><th class="pts-col">' + t('table.pts') + '</th>';
+    html += '</tr></thead><tbody>';
     table.forEach((team, i) => {
-      html += `<tr>
-        <td class="num-col">${i+1}</td>
-        <td class="team-col">${teamName(team.team)}</td>
-        <td class="num-col">${team.gp}</td>
-        <td class="num-col">${team.w}</td>
-        <td class="num-col">${team.d}</td>
-        <td class="num-col">${team.l}</td>
-        <td class="num-col">${team.gf}</td>
-        <td class="num-col">${team.ga}</td>
-        <td class="num-col">${team.gd>0?'+':''}${team.gd}</td>
-        <td class="num-col pts">${team.pts}</td>
+      const rowClass = i < 2 ? ' top' + (i+1) : '';
+      const gdStr = (team.gd > 0 ? '+' : '') + team.gd;
+      const gfga = team.gf + ':' + team.ga;
+      html += `<tr class="${rowClass}">
+        <td style="color:#64748b;font-size:.7em">${i+1}</td>
+        <td class="team-col" title="${teamName(team.team)}">${teamName(team.team)}</td>
+        <td>${team.gp}</td><td>${team.w}</td><td>${team.d}</td><td>${team.l}</td>
+        <td><span class="gd-col">${gdStr}</span><br><span style="font-size:.65em;color:#475569">${gfga}</span></td>
+        <td class="pts-col">${team.pts}</td>
       </tr>`;
     });
     html += '</table></div>';
