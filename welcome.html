@@ -167,7 +167,7 @@ h1{font-size:1.7em;color:#e2b04a;margin-bottom:6px;font-weight:800;letter-spacin
   saveLocal(local);
 
   // Fetch global counter.json (with cache-bust for freshness)
-  fetch('counter.json?t=' + Date.now())
+  fetch('counter.json?v=' + Date.now())
     .then(r => r.json())
     .then(global => {
       document.getElementById('visitCount').textContent = global.uv;

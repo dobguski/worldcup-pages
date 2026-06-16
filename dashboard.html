@@ -458,12 +458,13 @@ function teamName(en) {
 
 async function loadData() {
   try {
+    const cb = '?v=' + Date.now();  // cache-bust to avoid stale data
     const [mRes, sRes, tRes, tmRes, pmRes] = await Promise.all([
-      fetch('match_data.json'),
-      fetch('standings.json'),
-      fetch('team_names.json'),
-      fetch('teams.json').catch(() => null),
-      fetch('polymarket.json').catch(() => null)
+      fetch('match_data.json' + cb),
+      fetch('standings.json' + cb),
+      fetch('team_names.json' + cb),
+      fetch('teams.json' + cb).catch(() => null),
+      fetch('polymarket.json' + cb).catch(() => null)
     ]);
     matchData = await mRes.json();
     standings = await sRes.json();
@@ -476,7 +477,7 @@ async function loadData() {
     loadPlayerDetails();
     // Load data quality report
     try {
-      const vRes = await fetch('verify_report.json');
+      const vRes = await fetch('verify_report.json' + cb);
       const verify = await vRes.json();
       const badge = document.getElementById('qualityBadge');
       const status = verify.summary.status;
