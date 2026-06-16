@@ -229,6 +229,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
   <div class="tab" onclick="switchTab('live')"><span data-i18n="tab.live">🔴 直播 / Live</span></div>
   <div class="tab" onclick="switchTab('teams')"><span data-i18n="tab.teams">👥 球队 / Teams</span></div>
   <div class="tab" onclick="switchTab('bracket')"><span data-i18n="tab.bracket">🏆 淘汰赛 / Bracket</span></div>
+  <div class="tab" onclick="switchTab('pm')"><span data-i18n="tab.pm">📈 PM预测 / PM Picks</span></div>
 </div>
 
 <div class="tab-content" id="tab-standings">
@@ -251,6 +252,10 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
   <div class="bracket-container" id="bracketView"></div>
 </div>
 
+<div class="tab-content" id="tab-pm">
+  <div id="pmContent"></div>
+</div>
+
 </div>
 
 <!-- PLAYER DETAIL MODAL -->
@@ -270,6 +275,7 @@ const I18N = {
     'tab.live': '🔴 直播中',
     'tab.teams': '👥 球队信息',
     'tab.bracket': '🏆 淘汰赛对阵',
+    'tab.pm': '📈 PM预测',
     'banner.live': '比赛进行中 · 实时比分',
     'lastUpdate': '最后更新',
     'loading': '加载中...',
@@ -332,6 +338,7 @@ const I18N = {
     'tab.live': '🔴 Live',
     'tab.teams': '👥 Teams',
     'tab.bracket': '🏆 Bracket',
+    'tab.pm': '📈 PM Picks',
     'banner.live': 'LIVE MATCHES IN PROGRESS',
     'lastUpdate': 'Last updated',
     'loading': 'Loading...',
@@ -511,6 +518,7 @@ function renderAll() {
   renderLive();
   renderTeams();
   renderBracket();
+  renderPM();
 }
 
 // Auto-scroll to most relevant match after load + switch to right tab
@@ -848,6 +856,119 @@ function filterTeams(group) {
   });
 }
 
+function renderPM() {
+  const container = document.getElementById('pmContent');
+  if (!pmData || !pmData.matches) {
+    container.innerHTML = '<div style=\"text-align:center;color:#64748b;padding:40px\">PM数据加载中...</div>';
+    return;
+  }
+
+  let html = '';
+
+  // ── Accuracy Summary Cards ──
+  const stats = pmData.accuracy_stats || {};
+  html += '<div style=\"display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:20px\">';
+  const cards = [
+    {label: '已预测比赛', v: pmData.total_matches||0, u: '场'},
+    {label: '热门胜率', v: stats.hot_win_rate||'--', u: ''},
+    {label: '整体准确率', v: stats.overall_accuracy||'--', u: ''},
+    {label: '冠军交易量', v: (pmData.total_volume_champion_market||'').replace('$',''), u: ''},
+  ];
+  cards.forEach(c => {
+    html += `<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;text-align:center\">
+      <div style=\"font-size:.65em;color:#64748b;margin-bottom:4px\">${c.label}</div>
+      <div style=\"font-size:1.4em;font-weight:bold;color:#e2b04a\">${c.v}<span style=\"font-size:.5em;color:#64748b;margin-left:2px\">${c.u}</span></div>
+    </div>`;
+  });
+  html += '</div>';
+
+  // ── Brier Score ──
+  if (stats.brier_score) {
+    html += `<div style=\"background:#1e293b;border-radius:10px;padding:12px;margin-bottom:20px;border:1px solid #334155;font-size:.75em;color:#94a3b8\">
+      <span style=\"color:#e2b04a;font-weight:bold\">📐 Brier Score:</span> ${stats.brier_score}
+      <span style=\"color:#64748b;margin-left:8px\">| 超级热门BS: ${stats.super_hot_bs||'--'}</span>
+      <span style=\"color:#22c55e;margin-left:8px\">| 甜点区BS: ${stats.sweet_spot_bs||'--'}</span>
+    </div>`;
+  }
+
+  // ── Match Prediction Table ──
+  html += '<div style=\"font-size:1em;color:#e2b04a;margin:16px 0 8px;font-weight:bold\">📊 已结束比赛：PM预测 vs 实际结果</div>';
+  html += '<div style=\"overflow-x:auto\"><table style=\"width:100%;border-collapse:collapse;font-size:.75em\">';
+  html += '<thead><tr style=\"background:#0f1724;color:#94a3b8\">';
+  ['比赛','小组','PM预测','概率','实际','判定'].forEach(h => html += `<th style=\"padding:6px;text-align:center\">${h}</th>`);
+  html += '</tr></thead><tbody>';
+
+  // Match completed matches with PM data
+  const pmMatchKeys = Object.keys(pmData.matches);
+  let rowCount = 0;
+  matchData.forEach(m => {
+    if (!m.is_result) return;
+    const key1 = m.home_team + ' vs ' + m.away_team;
+    const key2 = m.away_team + ' vs ' + m.home_team;
+    const pm = pmData.matches[key1] || pmData.matches[key2];
+    if (!pm) return;
+    rowCount++;
+
+    const predicted = pm.predicted || '';
+    const predLabel = predicted === 'home' ? m.home_team : (predicted === 'away' ? m.away_team : '平局');
+    const actualWinner = m.home_score > m.away_score ? m.home_team : (m.away_score > m.home_score ? m.away_team : '平局');
+    const correct = pm.correct ? '✅' : '❌';
+    const tier = pm.home_prob > 0.75 ? '🔥' : (pm.home_prob > 0.6 ? '⭐' : (pm.home_prob > 0.5 ? '' : '🎲'));
+    const hCn = teamNamesCN[m.home_team] || '';
+    const aCn = teamNamesCN[m.away_team] || '';
+    const homeDisp = `<span style=\"font-size:.85em\">${hCn||m.home_team}</span><br><span style=\"font-size:.62em;color:#64748b\">${m.home_team}</span>`;
+    const awayDisp = `<span style=\"font-size:.85em\">${aCn||m.away_team}</span><br><span style=\"font-size:.62em;color:#64748b\">${m.away_team}</span>`;
+    const teamHtml = `<div style=\"display:flex;align-items:center;gap:8px;justify-content:center\">${homeDisp}<span style=\"font-weight:bold;color:#e2b04a;font-size:1.1em\">${m.home_score}-${m.away_score}</span>${awayDisp}</div>`;
+    const hp = Math.round(pm.home_prob*100), dp = Math.round(pm.draw_prob*100), ap = Math.round(pm.away_prob*100);
+    const probHtml = `<div style=\"display:inline-grid;grid-template-columns:repeat(3,1fr);gap:2px 8px;text-align:center\">` +
+      `<span style=\"font-size:.65em;color:#94a3b8\">胜</span><span style=\"font-size:.65em;color:#94a3b8\">平</span><span style=\"font-size:.65em;color:#94a3b8\">负</span>` +
+      `<span style=\"font-weight:600\">${hp}%</span><span style=\"font-weight:600\">${dp}%</span><span style=\"font-weight:600\">${ap}%</span></div>`;
+
+    html += `<tr style=\"border-bottom:1px solid #1e293b;${pm.correct ? '' : 'background:rgba(220,38,38,.08)'}\">
+      <td style=\"padding:10px 8px;line-height:1.6;text-align:center\">${teamHtml}</td>
+      <td style=\"padding:10px 8px;text-align:center;color:#94a3b8;vertical-align:middle\">${m.group}组</td>
+      <td style=\"padding:10px 8px;text-align:center;vertical-align:middle\">${tier} ${predLabel}</td>
+      <td style=\"padding:10px 8px;text-align:center;vertical-align:middle;line-height:1.6\">${probHtml}</td>
+      <td style=\"padding:10px 8px;text-align:center;font-weight:bold;vertical-align:middle\">${actualWinner}</td>
+      <td style=\"padding:10px 8px;text-align:center;vertical-align:middle;font-size:1.1em\">${correct}</td>
+    </tr>`;
+  });
+
+  if (rowCount === 0) {
+    html += '<tr><td colspan=\"6\" style=\"padding:20px;text-align:center;color:#64748b\">暂无已结束比赛的PM数据</td></tr>';
+  }
+  html += '</tbody></table></div>';
+
+  // ── Champion Odds ──
+  if (pmData.champion_odds) {
+    const odds = pmData.champion_odds;
+    const sorted = Object.entries(odds).sort((a,b) => (b[1]||0) - (a[1]||0)).slice(0, 12);
+    html += '<div style=\"font-size:1em;color:#e2b04a;margin:20px 0 8px;font-weight:bold\">🏆 冠军市场 Top 12</div>';
+    html += '<div style=\"display:flex;flex-wrap:wrap;gap:8px\">';
+    sorted.forEach(([team, prob]) => {
+      const pct = typeof prob === 'number' ? Math.round(prob*100) : prob;
+      const barW = Math.max(2, typeof prob === 'number' ? Math.round(prob*200) : 5);
+      html += `<div style=\"background:#1e293b;border-radius:8px;padding:8px 12px;flex:1;min-width:160px;border:1px solid #334155\">
+        <div style=\"display:flex;justify-content:space-between;font-size:.75em\">
+          <span>${team}</span><span style=\"color:#e2b04a;font-weight:bold\">${pct}%</span>
+        </div>
+        <div style=\"background:#0f1724;border-radius:3px;height:6px;margin-top:4px\">
+          <div style=\"background:linear-gradient(90deg,#e2b04a,#c99520);height:6px;border-radius:3px;width:${barW}px\"></div>
+        </div>
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  // ── Note ──
+  if (pmData.note) {
+    html += `<div style=\"margin-top:16px;padding:10px;background:#111827;border-radius:8px;font-size:.7em;color:#64748b;text-align:center\">⚠️ ${pmData.note}</div>`;
+  }
+  html += `<div style=\"text-align:center;margin-top:8px;font-size:.65em;color:#475569\">更新: ${pmData.updated||'--'} | 来源: ${pmData.source||'--'}</div>`;
+
+  container.innerHTML = html;
+}
+
 function renderBracket() {
   const container = document.getElementById('bracketView');
   container.innerHTML = `
@@ -1116,7 +1237,7 @@ function closePlayerModal() {
 }
 
 function switchTab(name) {
-  const tabOrder = {standings:1, matches:2, live:3, teams:4, bracket:5};
+  const tabOrder = {standings:1, matches:2, live:3, teams:4, bracket:5, pm:6};
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   document.querySelector(`.tab:nth-child(${tabOrder[name]})`).classList.add('active');

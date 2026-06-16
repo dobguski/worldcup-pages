@@ -118,6 +118,11 @@ h1{font-size:1.7em;color:#e2b04a;margin-bottom:6px;font-weight:800;letter-spacin
 
     <a href="dashboard.html" class="enter-btn">🏟 进入实时看板</a>
 
+    <!-- Visitor info -->
+    <div class="visitor-info" id="visitorInfo" style="margin-top:14px;font-size:.65em;color:#475569">
+      <span id="visitorTZ"></span>
+    </div>
+
     <!-- Share buttons -->
     <div class="share-section">
       <div class="share-title">分享给朋友</div>
@@ -183,6 +188,14 @@ h1{font-size:1.7em;color:#e2b04a;margin-bottom:6px;font-weight:800;letter-spacin
     fetch('http://localhost:8888/counter/uv', { mode: 'no-cors' }).catch(() => {});
   }
   fetch('http://localhost:8888/counter/pv', { mode: 'no-cors' }).catch(() => {});
+
+  // Visitor location ping (timezone + language only, no IP/personal data)
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const lang = navigator.language || 'unknown';
+    document.getElementById('visitorTZ').textContent = '📍 ' + tz.replace('_',' ') + ' · ' + lang;
+    fetch('http://localhost:8888/visitor?tz=' + encodeURIComponent(tz) + '&lang=' + encodeURIComponent(lang), { mode: 'no-cors' }).catch(() => {});
+  } catch(e) {}
 })();
 
 const pageUrl = 'https://datamenu.xyz/';
