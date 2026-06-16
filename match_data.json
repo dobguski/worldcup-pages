@@ -784,12 +784,12 @@
     "home_team_cn": "沙特阿拉伯",
     "away_team": "Uruguay",
     "away_team_cn": "乌拉圭",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 1,
+    "away_score": 1,
+    "halftime": "0-0",
     "venue": "Miami (Miami Gardens)",
     "group": "H",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-22",
