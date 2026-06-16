@@ -62,6 +62,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
 .match-info{text-align:center;color:#64748b;font-size:.75em;margin-top:8px}
 .match-status{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.7em;font-weight:bold;margin-top:5px}
 .status-live{background:#dc2626;color:#fff}
+.score.live-pulse{animation:pulse 1.5s ease-in-out infinite}
 .status-ft{background:#16a34a;color:#fff}
 .status-scheduled{background:#334155;color:#94a3b8}
 /* Prediction poll — redesigned */
@@ -628,13 +629,20 @@ function renderMatches() {
 
 function renderLive() {
   const container = document.getElementById('liveMatches');
-  const liveMatches = matchData.filter(m => !m.is_result && m.home_score !== null && m.home_score !== undefined);
+  // Time-window based: match is "live" if now is between kickoff and kickoff+2.5h
+  const now = new Date();
+  const liveMatches = matchData.filter(m => {
+    if (m.is_result || !m.utc_ts) return false;
+    const ko = new Date(m.utc_ts);
+    return now >= ko && now <= new Date(ko.getTime() + 2.5 * 3600000);
+  });
   const banner = document.getElementById('liveBanner');
   if (liveMatches.length > 0) {
     banner.classList.add('active');
     let html = '';
     liveMatches.forEach(m => {
       const fmt = formatMatchTime(m);
+      const hasScore = m.home_score != null && m.away_score != null;
       let liveTimeDisplay = `<span style="font-weight:600">${fmt.time}</span>`;
       if (fmt.label) liveTimeDisplay += ` <span style="font-size:.75em;color:#e2b04a">${fmt.label}</span>`;
       if (!isBJT) liveTimeDisplay += ` <span style="font-size:.65em;color:#475569;margin-left:3px">(${fmt.bjRef})</span>`;
@@ -642,19 +650,43 @@ function renderLive() {
         <div class="match-date">${fmt.date} ${liveTimeDisplay} · ${m.group}${t('group')} · ${m.venue}</div>
         <div class="match-teams">
           <div class="team"><div class="team-name">${teamName(m.home_team)}</div></div>
-          <div class="score">${m.home_score}-${m.away_score}</div>
+          <div class="score live-pulse">${hasScore ? m.home_score+'-'+m.away_score : 'vs'}</div>
           <div class="team"><div class="team-name">${teamName(m.away_team)}</div></div>
         </div>
-        <div class="match-info"><span class="match-status status-live">${t('status.live')}</span></div>
+        <div class="match-info"><span class="match-status status-live">🔴 ${t('status.live')}</span></div>
+        ${buildPollRow(m)}
+        ${buildPMRow(m)}
       </div>`;
     });
     container.innerHTML = html;
   } else {
+    // Fallback: show today's upcoming matches
     banner.classList.remove('active');
-    container.innerHTML = `<div style="text-align:center;color:#64748b;padding:40px;">
-      <p style="font-size:1.2em;">${t('noLive')}</p>
+    const todayLocal = now.toISOString().slice(0,10);
+    const todayUpcoming = matchData.filter(m => !m.is_result && formatMatchTime(m).date === todayLocal);
+    if (todayUpcoming.length > 0) {
+      let html = '<div style="text-align:center;color:#94a3b8;padding:8px;font-size:.78em">📅 ' + (currentLang==='cn'?'今日比赛':'Today') + ' (' + todayUpcoming.length + ')</div>';
+      html += '<div class="matches-grid">';
+      todayUpcoming.forEach(m => {
+        const fmt = formatMatchTime(m);
+        html += `<div class="match-card scheduled" data-date="${fmt.date}" data-key="${m.home_team}-${m.away_team}">
+          <div class="match-date">${fmt.date} <span style="font-weight:600">${fmt.time}</span> · ${m.group}${t('group')} · ${m.venue}</div>
+          <div class="match-teams">
+            <div class="team"><div class="team-name">${teamName(m.home_team)}</div></div>
+            <div class="score pending">vs</div>
+            <div class="team"><div class="team-name">${teamName(m.away_team)}</div></div>
+          </div>
+          <div class="match-info"><span class="match-status status-scheduled">⏳ ${t('status.scheduled')}</span></div>
+        </div>`;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    } else {
+      container.innerHTML = `<div style="text-align:center;color:#64748b;padding:40px;">
+        <p style="font-size:1em;">📅 ${currentLang==='cn'?'今日暂无比赛':'No matches today'}</p>
       <p style="margin-top:8px;">${t('noLiveSub')}</p>
     </div>`;
+    }
   }
 }
 
