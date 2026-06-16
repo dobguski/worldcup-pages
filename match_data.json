@@ -676,12 +676,12 @@
     "home_team_cn": "伊朗",
     "away_team": "New Zealand",
     "away_team_cn": "新西兰",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 2,
+    "away_score": 2,
+    "halftime": "0-0",
     "venue": "Los Angeles (Inglewood)",
     "group": "G",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-22",
