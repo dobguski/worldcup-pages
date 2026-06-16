@@ -630,7 +630,14 @@ function renderMatches() {
     html += `<div class="section-title">${dateLabel}</div>`;
     html += '<div class="matches-grid">';
     items.forEach(({match, fmt}) => {
-      const isLive = !match.is_result && match.home_score !== null && match.home_score !== undefined;
+      // Time-window live detection (same as Live tab)
+      const nowTs = Date.now();
+      const inWindow = !match.is_result && match.utc_ts && (() => {
+        const ko = new Date(match.utc_ts).getTime();
+        return nowTs >= ko && nowTs <= ko + 2.5 * 3600000;
+      })();
+      const hasLiveScore = !match.is_result && match.home_score != null && match.away_score != null;
+      const isLive = inWindow || hasLiveScore;
       const isDone = match.is_result;
       const cardClass = isLive ? 'live' : (isDone ? 'finished' : '');
       const statusLabel = isLive ? t('status.live') : (isDone ? t('status.ft') : t('status.scheduled'));
@@ -1248,7 +1255,7 @@ let refreshTimer = null;
 function scheduleNextRefresh() {
   if (refreshTimer) clearInterval(refreshTimer);
   const hasLive = matchData.some(m => !m.is_result && m.home_score !== null && m.home_score !== undefined);
-  const interval = hasLive ? 30000 : 60000;  // 30s during live, 60s otherwise
+  const interval = hasLive ? 20000 : 45000;  // 20s during live, 45s otherwise
   refreshTimer = setInterval(loadData, interval);
 }
 loadData().then(() => { scheduleNextRefresh(); });
