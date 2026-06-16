@@ -39,17 +39,18 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
 .groups-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:15px}
 .group-card{background:#1e293b;border-radius:12px;overflow:hidden;border:1px solid #334155}
 .group-header{background:linear-gradient(90deg,#1e40af,#3b82f6);padding:8px 12px;font-weight:bold;font-size:.95em;color:#fff}
-.group-table{width:100%;border-collapse:collapse;table-layout:fixed}
-.group-table th{background:#0f1724;padding:5px 4px;font-size:.65em;text-transform:uppercase;color:#94a3b8;text-align:center;white-space:nowrap}
-.group-table td{padding:5px 4px;border-bottom:1px solid #1e293b;font-size:.78em;text-align:center}
+.group-table{width:100%;border-collapse:collapse}
+.group-table th{background:#0f1724;padding:5px 3px;font-size:.62em;text-transform:uppercase;color:#94a3b8;text-align:center;white-space:nowrap}
+.group-table td{padding:8px 3px;border-bottom:1px solid #1e293b;font-size:.78em;text-align:center;line-height:1.5}
 .group-table tr:hover{background:#334155}
-.group-table .team-col{text-align:left;font-weight:600;font-size:.8em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:90px}
+.group-table .team-col{text-align:left;font-weight:600;font-size:.8em;vertical-align:middle}
 .group-table .pts-col{font-weight:bold;color:#e2b04a;font-size:.85em}
 .group-table .gd-col{font-size:.72em}
 .group-table .top1{border-left:3px solid #e2b04a}
 .group-table .top2{border-left:3px solid #94a3b8}
+.group-table .top3{border-left:3px solid #22c55e}
 .section-title{font-size:1.3em;color:#e2b04a;margin:25px 0 10px;padding-bottom:8px;border-bottom:2px solid #e2b04a}
-.matches-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:12px}
+.matches-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:70px;max-width:960px;margin:0 auto}
 .match-card{background:#1e293b;border-radius:10px;padding:15px;border:1px solid #334155;transition:all .2s}
 .match-card:hover{border-color:#e2b04a}
 .match-card.live{border:2px solid #dc2626;animation:glow 2s infinite}
@@ -543,8 +544,26 @@ function scrollToRelevantMatch() {
 }
 
 function renderStandings() {
-  const grid = document.getElementById('groupsGrid');
+  // Mark 8 best third-place teams (only after 2+ matchdays per group)
+  const allThirds = [];
+  let minGP = 99;
   const order = 'ABCDEFGHIJKL'.split('');
+  for (const g of order) {
+    const table = standings[g] || [];
+    if (table.length >= 3) {
+      const third = table[2];
+      third._group = g;
+      allThirds.push(third);
+      if (third.gp < minGP) minGP = third.gp;
+    }
+  }
+  const showBestThird = minGP >= 2;  // Only after 2 matches per team
+  if (showBestThird) {
+    allThirds.sort((a, b) => b.pts - a.pts || (b.gd||0) - (a.gd||0) || (b.gf||0) - (a.gf||0));
+    allThirds.forEach((t, i) => { if (i < 8) t._bestThird = true; });
+  }
+
+  const grid = document.getElementById('groupsGrid');
   let html = '';
   for (const g of order) {
     const table = standings[g] || [];
@@ -552,18 +571,21 @@ function renderStandings() {
     html += '<div class="group-card">';
     html += `<div class="group-header">🏆 ${g}${t('group')}</div>`;
     html += '<table class="group-table"><thead><tr>';
-    html += '<th>#</th><th class="team-col">' + t('table.team') + '</th>';
-    html += '<th>' + t('table.gp') + '</th><th>' + t('table.w') + '</th>';
-    html += '<th>' + t('table.d') + '</th><th>' + t('table.l') + '</th>';
-    html += '<th>+/-</th><th class="pts-col">' + t('table.pts') + '</th>';
+    html += '<th class="team-col">' + t('table.team') + '</th>';
+    html += '<th style="width:20px">' + t('table.gp') + '</th><th style="width:20px">' + t('table.w') + '</th>';
+    html += '<th style="width:20px">' + t('table.d') + '</th><th style="width:20px">' + t('table.l') + '</th>';
+    html += '<th style="width:40px">+/-</th><th class="pts-col" style="width:28px">' + t('table.pts') + '</th>';
     html += '</tr></thead><tbody>';
     table.forEach((team, i) => {
-      const rowClass = i < 2 ? ' top' + (i+1) : '';
+      const rowClass = i < 2 ? ' top' + (i+1) : (i === 2 && team._bestThird ? ' top3' : '');
       const gdStr = (team.gd > 0 ? '+' : '') + team.gd;
       const gfga = team.gf + ':' + team.ga;
+      const cn = teamNamesCN[team.team] || '';
+      const en = team.team || '';
+      const thirdBadge = (i === 2 && team._bestThird) ? ' <span style="font-size:.55em;background:#22c55e;color:#fff;padding:1px 3px;border-radius:3px;vertical-align:middle" title="' + (currentLang==='cn'?'最佳小组第三晋级':'Best 3rd advances') + '">✓</span>' : '';
+      const nameHtml = cn ? `<span style="font-size:.82em">${cn}${thirdBadge}</span><br><span style="font-size:.62em;color:#64748b">${en}</span>` : `<span style="font-size:.82em">${en}${thirdBadge}</span>`;
       html += `<tr class="${rowClass}">
-        <td style="color:#64748b;font-size:.7em">${i+1}</td>
-        <td class="team-col" title="${teamName(team.team)}">${teamName(team.team)}</td>
+        <td class="team-col" title="${cn} ${en}">${nameHtml}</td>
         <td>${team.gp}</td><td>${team.w}</td><td>${team.d}</td><td>${team.l}</td>
         <td><span class="gd-col">${gdStr}</span><br><span style="font-size:.65em;color:#475569">${gfga}</span></td>
         <td class="pts-col">${team.pts}</td>

@@ -810,6 +810,24 @@
     "is_result": false
   },
   {
+    "date": "2026-06-22",
+    "time": "06:00",
+    "tz": "UTC+8",
+    "utc_ts": "2026-06-21T22:00:00Z",
+    "time_label": "次日",
+    "venue_tz": "UTC-4",
+    "home_team": "Uruguay",
+    "home_team_cn": "乌拉圭",
+    "away_team": "Cape Verde",
+    "away_team_cn": "佛得角",
+    "home_score": null,
+    "away_score": null,
+    "halftime": null,
+    "venue": "Miami (Miami Gardens)",
+    "group": "H",
+    "is_result": false
+  },
+  {
     "date": "2026-06-27",
     "time": "08:00",
     "tz": "UTC+8",
