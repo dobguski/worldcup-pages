@@ -892,12 +892,12 @@
     "home_team_cn": "伊拉克",
     "away_team": "Norway",
     "away_team_cn": "挪威",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 1,
+    "away_score": 4,
+    "halftime": "0-0",
     "venue": "Boston (Foxborough)",
     "group": "I",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-23",
