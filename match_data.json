@@ -982,12 +982,12 @@
     "home_team_cn": "阿根廷",
     "away_team": "Algeria",
     "away_team_cn": "阿尔及利亚",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 1,
+    "away_score": 0,
+    "halftime": "0-0",
     "venue": "Kansas City",
     "group": "J",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-17",
