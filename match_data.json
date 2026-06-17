@@ -1000,12 +1000,12 @@
     "home_team_cn": "奥地利",
     "away_team": "Jordan",
     "away_team_cn": "约旦",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 1,
+    "away_score": 0,
+    "halftime": "0-0",
     "venue": "San Francisco Bay Area (Santa Clara)",
     "group": "J",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-23",
