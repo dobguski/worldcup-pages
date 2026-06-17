@@ -420,9 +420,9 @@
       "w": 1,
       "d": 0,
       "l": 0,
-      "gf": 1,
+      "gf": 3,
       "ga": 0,
-      "gd": 1,
+      "gd": 3,
       "team": "Argentina"
     },
     {
@@ -445,7 +445,7 @@
       "gf": 0,
       "ga": 1,
       "gd": -1,
-      "team": "Algeria"
+      "team": "Jordan"
     },
     {
       "pts": 0,
@@ -454,9 +454,9 @@
       "d": 0,
       "l": 1,
       "gf": 0,
-      "ga": 1,
-      "gd": -1,
-      "team": "Jordan"
+      "ga": 3,
+      "gd": -3,
+      "team": "Algeria"
     }
   ],
   "K": [
