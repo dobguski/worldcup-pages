@@ -874,12 +874,12 @@
     "home_team_cn": "法国",
     "away_team": "Senegal",
     "away_team_cn": "塞内加尔",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 3,
+    "away_score": 1,
+    "halftime": "0-0",
     "venue": "New York/New Jersey (East Rutherford)",
     "group": "I",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-17",
