@@ -1108,12 +1108,12 @@
     "home_team_cn": "乌兹别克斯坦",
     "away_team": "Colombia",
     "away_team_cn": "哥伦比亚",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 1,
+    "away_score": 3,
+    "halftime": "0-0",
     "venue": "Mexico City",
     "group": "K",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-24",
