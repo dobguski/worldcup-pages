@@ -1280,7 +1280,7 @@ function scheduleNextRefresh() {
     const ko = new Date(m.utc_ts).getTime();
     return nowTs >= ko && nowTs <= ko + 2.2 * 3600000;
   });
-  const interval = hasLive ? 20000 : 45000;  // 20s during live, 45s otherwise
+  const interval = hasLive ? 15000 : 30000;  // 15s during live, 30s otherwise
   refreshTimer = setInterval(loadData, interval);
 }
 loadData().then(() => { scheduleNextRefresh(); });
