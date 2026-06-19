@@ -1,13 +1,19 @@
 User-agent: *
 Allow: /$
 Allow: /index.html
+Allow: /welcome.html
 Allow: /dashboard.html
 Allow: /match_data.json
 Allow: /standings.json
-Allow: /team_names.json
-Disallow: /sync_worldcup.py
+Allow: /teams.json
+Allow: /counter.json
+Allow: /polymarket.json
+Allow: /sitemap.xml
+Disallow: /stats.html
 Disallow: /*.py$
 Disallow: /*.txt$
 Disallow: /2026--usa/
 Disallow: /*/
 Disallow: /.git/
+
+Sitemap: https://datamenu.xyz/sitemap.xml
