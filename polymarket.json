@@ -800,7 +800,8 @@
     "favorite_lost": 5,
     "favorite_win_rate": 0.5,
     "super_favorite_rate": 0.5,
-    "super_favorite_note": ">75%热门实际胜率仅50%, 巴西/瑞士均被逼平"
+    "super_favorite_note": ">75%热门实际胜率仅50%, 巴西/瑞士均被逼平",
+    "overall_accuracy": "50% (5/10)"
   },
   "note": "已结束比赛基于实际PM盘口; 未开始比赛基于冠军赔率推算+交叉验证",
   "total_matches": 70
