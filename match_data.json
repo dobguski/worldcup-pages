@@ -370,12 +370,12 @@
     "home_team_cn": "美国",
     "away_team": "Australia",
     "away_team_cn": "澳大利亚",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 2,
+    "away_score": 0,
+    "halftime": "0-0",
     "venue": "Seattle",
     "group": "D",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-20",
