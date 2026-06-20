@@ -6,7 +6,9 @@
 <title>🏆 FIFA 2026 预测市场 — DobGuski 仪表盘</title>
 <meta name="description" content="Polymarket FIFA 2026 世界杯冠军赔率实时追踪 · 比赛预测vs结果 · 分层准确度分析">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"
+ onerror="this.onerror=null;this.src='https://unpkg.com/chart.js@4.4.7/dist/chart.umd.min.js'"></script>
+<script>window.ChartReady = typeof Chart !== 'undefined'; if(!window.ChartReady){document.write('<script src=\"https://unpkg.com/chart.js@4.4.7/dist/chart.umd.min.js\"><\/script>')}</script>
 <style>
 :root{--bg:#0f1117;--surface:#1a1d27;--alt:#212433;--border:#2a2d3a;--text:#e1e4ed;--dim:#8b8fa3;--blue:#3b82f6;--green:#22c55e;--red:#ef4444;--yellow:#f59e0b;--orange:#f97316;--radius:8px;--rlg:12px;--mw:1200px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -595,7 +597,8 @@ Chart.defaults.color=COLORS.dim;
 Chart.defaults.borderColor='#2a2d3a';
 Chart.defaults.font.family="-apple-system,BlinkMacSystemFont,'Microsoft YaHei','PingFang SC',sans-serif";
 
-function createBarChart(){
+function safeChart(fn){try{if(typeof Chart==='undefined')return null;return fn()}catch(e){console.warn('Chart error:',e);return null}}
+function createBarChart(){return safeChart(function(){
   const top10=DATA.teams.slice(0,10).reverse();
   const colors=top10.map(t=>t.trend==='up'?COLORS.green:t.trend==='down'?COLORS.red:COLORS.blue);
   new Chart(document.getElementById('barChart'),{type:'bar',data:{
@@ -603,9 +606,9 @@ function createBarChart(){
     datasets:[{label:'冠军概率 (%)',data:top10.map(t=>t.prob),backgroundColor:colors.map(c=>c+'33'),borderColor:colors,borderWidth:1.5,borderRadius:4}]
   },options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
     scales:{x:{max:Math.max(...top10.map(t=>t.prob))*1.2,grid:{color:COLORS.grid}},y:{grid:{display:false}}}}});
-}
+});}
 
-function createTierChart(){
+function createTierChart(){return safeChart(function(){
   const tiers=DATA.analysis.tiers;
   const clrs={super:COLORS.red,strong:COLORS.blue,mild:COLORS.yellow,weak:COLORS.orange};
   new Chart(document.getElementById('tierChart'),{type:'bar',data:{
@@ -617,7 +620,7 @@ function createTierChart(){
   },options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{labels:{color:COLORS.text,usePointStyle:true}}},
     scales:{x:{grid:{display:false}},y:{max:110,grid:{color:COLORS.grid},ticks:{callback:v=>v+'%'}}}}});
-}
+});}
 
 let trendChart=null;
 function updateTrend(teamName){
@@ -626,6 +629,7 @@ function updateTrend(teamName){
   const canvas=document.getElementById('trendChart');
   if(trendChart) trendChart.destroy();
   document.getElementById('trend-label').textContent=team.flag+' '+team.team;
+  if(typeof Chart==='undefined')return;
   trendChart=new Chart(canvas,{type:'line',data:{
     labels:['6/14','6/16','6/18','6/20'],
     datasets:[{label:team.team+' 概率 (%)',data:[team.prob-1.5,team.prob-0.8,team.prob-0.3,team.prob],borderColor:COLORS.blue,backgroundColor:COLORS.blue+'22',borderWidth:2,pointRadius:5,fill:true,tension:.3}]
