@@ -907,31 +907,48 @@ function renderPM() {
 
   let html = '';
 
+  // ── Champion Odds (from Polymarket, real-time daily) ──
+  if (pmData.champion_odds && Object.keys(pmData.champion_odds).length > 5) {
+    const odds = pmData.champion_odds;
+    const sorted = Object.entries(odds).sort((a,b) => (b[1]||0) - (a[1]||0));
+    const volStr = pmData.champion_odds_volume || '';
+    html += '<div style=\"font-size:.95em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">🏆 冠军赔率 · Polymarket' + (volStr ? ' <span style=\"font-size:.6em;color:#475569;font-weight:normal\">(' + volStr + ')</span>' : '') + '</div>';
+    html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;margin-bottom:20px\">';
+    sorted.slice(0, 16).forEach(([team, prob], i) => {
+      const pct = Math.round(prob*100);
+      const barPct = Math.round(prob*500); // scale to max ~90px
+      const color = i < 3 ? '#e2b04a' : (i < 8 ? '#60a5fa' : '#475569');
+      html += `<div style=\"display:flex;align-items:center;gap:8px;margin-bottom:4px;font-size:.78em\">
+        <span style=\"width:20px;text-align:right;color:#64748b;font-size:.7em\">${i+1}</span>
+        <span style=\"width:100px;text-align:right;color:#94a3b8\">${team}</span>
+        <div style=\"flex:1;background:#0f1724;border-radius:3px;height:18px\">
+          <div style=\"background:linear-gradient(90deg,${color},${color}88);height:18px;border-radius:3px;width:${barPct}px;display:flex;align-items:center;justify-content:flex-end;padding-right:4px\">
+            <span style=\"font-size:.7em;font-weight:bold;color:#fff\">${pct}%</span>
+          </div>
+        </div>
+      </div>`;
+    });
+    html += '</div>';
+    html += `<div style=\"text-align:center;font-size:.6em;color:#475569;margin:-12px 0 16px\">更新: ${pmData.champion_odds_updated||pmData.updated||'--'} | 来源: ${pmData.source||'Polymarket'}</div>`;
+  }
+
   // ── Accuracy Summary Cards ──
   const stats = pmData.accuracy_stats || {};
-  html += '<div style=\"display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:20px\">';
+  const accText = stats.overall_accuracy || ''; const correct = parseInt(accText) || 0;
+  html += '<div style=\"display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px\">';
   const cards = [
-    {label: '已预测比赛', v: pmData.total_matches||0, u: '场'},
-    {label: '热门胜率', v: stats.hot_win_rate||'--', u: ''},
-    {label: '整体准确率', v: stats.overall_accuracy||'--', u: ''},
-    {label: '冠军交易量', v: (pmData.total_volume_champion_market||'').replace('$',''), u: ''},
+    {label: '已验证比赛', v: stats.total_matches||0, u: '场', color: '#60a5fa'},
+    {label: '预测正确', v: stats.favorite_won||0, u: '', color: '#22c55e'},
+    {label: '预测错误', v: stats.favorite_lost||0, u: '', color: '#dc2626'},
+    {label: '准确率', v: (stats.overall_accuracy||'--'), u: '', color: correct>=60?'#22c55e':'#e2b04a'},
   ];
   cards.forEach(c => {
-    html += `<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;text-align:center\">
-      <div style=\"font-size:.65em;color:#64748b;margin-bottom:4px\">${c.label}</div>
-      <div style=\"font-size:1.4em;font-weight:bold;color:#e2b04a\">${c.v}<span style=\"font-size:.5em;color:#64748b;margin-left:2px\">${c.u}</span></div>
+    html += `<div style=\"background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px;text-align:center\">
+      <div style=\"font-size:.6em;color:#64748b\">${c.label}</div>
+      <div style=\"font-size:1.3em;font-weight:bold;color:${c.color}\">${c.v}<span style=\"font-size:.45em;color:#64748b\">${c.u}</span></div>
     </div>`;
   });
   html += '</div>';
-
-  // ── Brier Score ──
-  if (stats.brier_score) {
-    html += `<div style=\"background:#1e293b;border-radius:10px;padding:12px;margin-bottom:20px;border:1px solid #334155;font-size:.75em;color:#94a3b8\">
-      <span style=\"color:#e2b04a;font-weight:bold\">📐 Brier Score:</span> ${stats.brier_score}
-      <span style=\"color:#64748b;margin-left:8px\">| 超级热门BS: ${stats.super_hot_bs||'--'}</span>
-      <span style=\"color:#22c55e;margin-left:8px\">| 甜点区BS: ${stats.sweet_spot_bs||'--'}</span>
-    </div>`;
-  }
 
   // ── Match Prediction Table ──
   html += '<div style=\"font-size:1em;color:#e2b04a;margin:16px 0 8px;font-weight:bold\">📊 已结束比赛：PM预测 vs 实际结果</div>';
@@ -981,32 +998,10 @@ function renderPM() {
   }
   html += '</tbody></table></div>';
 
-  // ── Champion Odds ──
-  if (pmData.champion_odds) {
-    const odds = pmData.champion_odds;
-    const sorted = Object.entries(odds).sort((a,b) => (b[1]||0) - (a[1]||0)).slice(0, 12);
-    html += '<div style=\"font-size:1em;color:#e2b04a;margin:20px 0 8px;font-weight:bold\">🏆 冠军市场 Top 12</div>';
-    html += '<div style=\"display:flex;flex-wrap:wrap;gap:8px\">';
-    sorted.forEach(([team, prob]) => {
-      const pct = typeof prob === 'number' ? Math.round(prob*100) : prob;
-      const barW = Math.max(2, typeof prob === 'number' ? Math.round(prob*200) : 5);
-      html += `<div style=\"background:#1e293b;border-radius:8px;padding:8px 12px;flex:1;min-width:160px;border:1px solid #334155\">
-        <div style=\"display:flex;justify-content:space-between;font-size:.75em\">
-          <span>${team}</span><span style=\"color:#e2b04a;font-weight:bold\">${pct}%</span>
-        </div>
-        <div style=\"background:#0f1724;border-radius:3px;height:6px;margin-top:4px\">
-          <div style=\"background:linear-gradient(90deg,#e2b04a,#c99520);height:6px;border-radius:3px;width:${barW}px\"></div>
-        </div>
-      </div>`;
-    });
-    html += '</div>';
-  }
-
-  // ── Note ──
+  // ── Note + source line ──
   if (pmData.note) {
-    html += `<div style=\"margin-top:16px;padding:10px;background:#111827;border-radius:8px;font-size:.7em;color:#64748b;text-align:center\">⚠️ ${pmData.note}</div>`;
+    html += `<div style=\"margin-top:12px;padding:8px;background:#111827;border-radius:6px;font-size:.65em;color:#64748b;text-align:center\">⚠️ ${pmData.note}</div>`;
   }
-  html += `<div style=\"text-align:center;margin-top:8px;font-size:.65em;color:#475569\">更新: ${pmData.updated||'--'} | 来源: ${pmData.source||'--'}</div>`;
 
   container.innerHTML = html;
 }
