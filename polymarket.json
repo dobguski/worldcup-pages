@@ -1,6 +1,6 @@
 {
   "source": "Polymarket/Kalshi/Gate.com 公开市场数据 + 体育媒体交叉验证",
-  "updated": "2026-06-15",
+  "updated": "2026-06-20",
   "total_volume_champion_market": "$23.25亿",
   "matches": {
     "Mexico vs South Africa": {
@@ -122,7 +122,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "出线关键战·捷克稍占优",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": false
     },
     "Mexico vs South Korea": {
       "home_team": "Mexico",
@@ -133,7 +134,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "A组头名之争·主场优势",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "Czech Republic vs Mexico": {
       "home_team": "Czech Republic",
@@ -166,7 +168,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "欧洲内战·瑞士控场能力更强",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "Canada vs Qatar": {
       "home_team": "Canada",
@@ -177,7 +180,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "东道主优势·加拿大进攻犀利",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "Switzerland vs Canada": {
       "home_team": "Switzerland",
@@ -210,7 +214,8 @@
       "volume": "est.",
       "predicted": "away",
       "note": "C组关键战·苏格兰身体对抗优势",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "Brazil vs Haiti": {
       "home_team": "Brazil",
@@ -254,7 +259,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "东道主优势·美澳身体对抗",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "Turkey vs Paraguay": {
       "home_team": "Turkey",
@@ -342,7 +348,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "北欧力量vs北非技术·瑞典新星闪耀",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "Netherlands vs Sweden": {
       "home_team": "Netherlands",
@@ -397,7 +404,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "欧洲红魔vs法老军团·萨拉赫对决",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": false
     },
     "Iran vs New Zealand": {
       "home_team": "Iran",
@@ -408,7 +416,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "亚洲vs大洋洲·伊朗经验占优",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": false
     },
     "Belgium vs Iran": {
       "home_team": "Belgium",
@@ -463,7 +472,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "西班牙碾压优势·佛得角首秀",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": false
     },
     "Saudi Arabia vs Uruguay": {
       "home_team": "Saudi Arabia",
@@ -474,7 +484,8 @@
       "volume": "est.",
       "predicted": "away",
       "note": "沙特vs乌拉圭·乌拉圭实力碾压",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": false
     },
     "Spain vs Saudi Arabia": {
       "home_team": "Spain",
@@ -518,7 +529,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "卫冕亚军首秀·姆巴佩领衔",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "Iraq vs Norway": {
       "home_team": "Iraq",
@@ -529,7 +541,8 @@
       "volume": "est.",
       "predicted": "away",
       "note": "挪威双子星碾压·哈兰德厄德高",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "France vs Iraq": {
       "home_team": "France",
@@ -584,7 +597,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "卫冕冠军首秀·梅西最后一届",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "Austria vs Jordan": {
       "home_team": "Austria",
@@ -595,7 +609,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "奥地利明显占优·约旦荣誉之战",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "Argentina vs Austria": {
       "home_team": "Argentina",
@@ -650,7 +665,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "C罗最后一届·葡萄牙明显占优",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": false
     },
     "Uzbekistan vs Colombia": {
       "home_team": "Uzbekistan",
@@ -661,7 +677,8 @@
       "volume": "est.",
       "predicted": "away",
       "note": "南美vs中亚·哥伦比亚占优",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "Portugal vs Uzbekistan": {
       "home_team": "Portugal",
@@ -716,7 +733,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "欧洲杯重赛·凯恩vs莫德里奇",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "Ghana vs Panama": {
       "home_team": "Ghana",
@@ -727,7 +745,8 @@
       "volume": "est.",
       "predicted": "home",
       "note": "非洲vs中北美·加纳占优",
-      "source": "estimated_from_team_strength"
+      "source": "estimated_from_team_strength",
+      "correct": true
     },
     "England vs Ghana": {
       "home_team": "England",
@@ -795,13 +814,11 @@
     "Morocco": 0.02
   },
   "accuracy_stats": {
-    "total_matches": 10,
-    "favorite_won": 5,
-    "favorite_lost": 5,
-    "favorite_win_rate": 0.5,
-    "super_favorite_rate": 0.5,
-    "super_favorite_note": ">75%热门实际胜率仅50%, 巴西/瑞士均被逼平",
-    "overall_accuracy": "50% (5/10)"
+    "total_matches": 29,
+    "favorite_won": 18,
+    "favorite_lost": 11,
+    "favorite_win_rate": 0.621,
+    "overall_accuracy": "62% (18/29)"
   },
   "note": "已结束比赛基于实际PM盘口; 未开始比赛基于冠军赔率推算+交叉验证",
   "total_matches": 70
