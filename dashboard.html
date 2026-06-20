@@ -81,6 +81,11 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .text-up{color:var(--green)}.text-down{color:var(--red)}.text-dim{color:var(--dim)}
 .text-good{color:var(--green)}.text-warn{color:var(--red)}
 .flex-between{display:flex;justify-content:space-between;align-items:center}
+.trade-btn{font-size:.65rem;padding:3px 10px;background:rgba(59,130,246,.15);color:var(--blue);border:1px solid rgba(59,130,246,.3);border-radius:4px;cursor:pointer;white-space:nowrap;transition:all .15s}
+.trade-btn:hover{background:var(--blue);color:#fff;text-decoration:none}
+.trade-col{width:50px;text-align:center}
+.sticky-cta{position:fixed;bottom:16px;right:16px;z-index:999;background:var(--blue);color:#fff;padding:12px 20px;border-radius:24px;font-weight:700;font-size:.85rem;box-shadow:0 4px 20px rgba(59,130,246,.4);animation:pulse-cta 2s infinite}
+@keyframes pulse-cta{0%,100%{box-shadow:0 4px 20px rgba(59,130,246,.4)}50%{box-shadow:0 4px 30px rgba(59,130,246,.8)}}
 </style>
 </head>
 <body>
@@ -100,11 +105,13 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 <!-- CTA Banner -->
 <div class="cta-banner">
 <div>
-🏗️ <strong>dobguski</strong> · Polymarket Builder &nbsp;|&nbsp;
-通过本站前往 Polymarket 交易，支持项目持续开发
+🏗️ <strong>dobguski</strong> · Polymarket官方Builder &nbsp;|&nbsp;
+<span style="color:#22c55e">⚡ 点击下方任意「交易」按钮前往Polymarket，每一笔交易都直接支持本站</span>
 </div>
-<a href="https://polymarket.com/markets?tag=fifaWorldCup2026&utm_source=dobguski" target="_blank" rel="noopener" class="btn btn-primary">
-🔗 前往 Polymarket 交易 →
+<a href="https://polymarket.com/markets?tag=fifaWorldCup2026&utm_source=dobguski" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:1rem;padding:10px 22px">
+🔗 前往 Polymarket 交易 FIFA 2026 →
+</a>
+</div>
 </a>
 </div>
 
@@ -121,7 +128,7 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 <div class="card">
 <div class="card-header"><span class="card-title">📊 赔率排行</span><span class="card-badge">16 支球队</span></div>
 <table class="odds-table">
-<thead><tr><th>#</th><th>球队</th><th>概率</th><th>趋势</th><th>说明</th></tr></thead>
+<thead><tr><th>#</th><th>球队</th><th>概率</th><th>趋势</th><th>说明</th><th class="trade-col">交易</th></tr></thead>
 <tbody id="odds-tbody"></tbody>
 </table>
 <div class="text-dim mt-8" style="font-size:.75rem">💡 点击行查看趋势图</div>
@@ -221,6 +228,11 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 
 </main>
 
+<!-- 悬浮 CTA -->
+<a href="https://polymarket.com/markets?tag=fifaWorldCup2026&utm_source=dobguski" target="_blank" rel="noopener" class="sticky-cta" style="text-decoration:none">
+⚽ 在 Polymarket 交易
+</a>
+
 <footer class="footer">
 <div class="footer-inner">
 <div>
@@ -239,46 +251,339 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 // 数据
 // ============================================================
 const DATA = {
-  "updated":"2026-06-20","total_volume":"$23.25亿","others_prob":5.5,
-  "teams":[
-    {"rank":1,"team":"法国","flag":"🇫🇷","prob":18.0,"trend":"up","note":"Mbappé领军，小组赛首战3-0完胜"},
-    {"rank":2,"team":"西班牙","flag":"🇪🇸","prob":17.0,"trend":"up","note":"黄金一代，赔率稳步上升"},
-    {"rank":3,"team":"英格兰","flag":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","prob":11.0,"trend":"down","note":"防守端伤病困扰，价格下滑"},
-    {"rank":4,"team":"巴西","flag":"🇧🇷","prob":9.0,"trend":"down","note":"1-1平摩洛哥 + 核心伤病"},
-    {"rank":5,"team":"葡萄牙","flag":"🇵🇹","prob":9.0,"trend":"stable","note":"C罗最后一届，阵容深度良好"},
-    {"rank":6,"team":"阿根廷","flag":"🇦🇷","prob":8.0,"trend":"stable","note":"卫冕冠军，尚未出战"},
-    {"rank":7,"team":"德国","flag":"🇩🇪","prob":5.0,"trend":"up","note":"7-1大胜后信心飙升"},
-    {"rank":8,"team":"挪威","flag":"🇳🇴","prob":3.0,"trend":"stable","note":"Haaland效应持续"},
-    {"rank":9,"team":"荷兰","flag":"🇳🇱","prob":3.0,"trend":"down","note":"2-2被日本逼平后下滑"},
-    {"rank":10,"team":"美国","flag":"🇺🇸","prob":2.0,"trend":"up","note":"4-1大胜巴拉圭，东道主溢价"},
-    {"rank":11,"team":"哥伦比亚","flag":"🇨🇴","prob":2.0,"trend":"stable","note":"南美黑马，小组赛表现稳定"},
-    {"rank":12,"team":"日本","flag":"🇯🇵","prob":2.0,"trend":"up","note":"2-2逼平荷兰，亚洲之光"},
-    {"rank":13,"team":"摩洛哥","flag":"🇲🇦","prob":2.0,"trend":"up","note":"1-1逼平巴西，非洲黑马"},
-    {"rank":14,"team":"墨西哥","flag":"🇲🇽","prob":1.5,"trend":"up","note":"2-0完胜南非，揭幕战表现亮眼"},
-    {"rank":15,"team":"比利时","flag":"🇧🇪","prob":1.0,"trend":"stable","note":"黄金一代逐渐老去"},
-    {"rank":16,"team":"克罗地亚","flag":"🇭🇷","prob":1.0,"trend":"stable","note":"魔笛最后一届世界杯"}
+  "updated": "2026-06-20",
+  "total_volume": "$23.25亿",
+  "others_prob": 5.5,
+  "teams": [
+    {
+      "rank": 1,
+      "team": "法国",
+      "flag": "🇫🇷",
+      "prob": 18.0,
+      "trend": "up",
+      "note": "Mbappé领军，小组赛首战3-0完胜"
+    },
+    {
+      "rank": 2,
+      "team": "西班牙",
+      "flag": "🇪🇸",
+      "prob": 17.0,
+      "trend": "up",
+      "note": "黄金一代，赔率稳步上升"
+    },
+    {
+      "rank": 3,
+      "team": "英格兰",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "prob": 11.0,
+      "trend": "down",
+      "note": "防守端伤病困扰，价格下滑"
+    },
+    {
+      "rank": 4,
+      "team": "巴西",
+      "flag": "🇧🇷",
+      "prob": 9.0,
+      "trend": "down",
+      "note": "1-1平摩洛哥 + 核心伤病"
+    },
+    {
+      "rank": 5,
+      "team": "葡萄牙",
+      "flag": "🇵🇹",
+      "prob": 9.0,
+      "trend": "stable",
+      "note": "C罗最后一届，阵容深度良好"
+    },
+    {
+      "rank": 6,
+      "team": "阿根廷",
+      "flag": "🇦🇷",
+      "prob": 8.0,
+      "trend": "stable",
+      "note": "卫冕冠军，尚未出战"
+    },
+    {
+      "rank": 7,
+      "team": "德国",
+      "flag": "🇩🇪",
+      "prob": 5.0,
+      "trend": "up",
+      "note": "7-1大胜后信心飙升"
+    },
+    {
+      "rank": 8,
+      "team": "挪威",
+      "flag": "🇳🇴",
+      "prob": 3.0,
+      "trend": "stable",
+      "note": "Haaland效应持续"
+    },
+    {
+      "rank": 9,
+      "team": "荷兰",
+      "flag": "🇳🇱",
+      "prob": 3.0,
+      "trend": "down",
+      "note": "2-2被日本逼平后下滑"
+    },
+    {
+      "rank": 10,
+      "team": "美国",
+      "flag": "🇺🇸",
+      "prob": 2.0,
+      "trend": "up",
+      "note": "4-1大胜巴拉圭，东道主溢价"
+    },
+    {
+      "rank": 11,
+      "team": "哥伦比亚",
+      "flag": "🇨🇴",
+      "prob": 2.0,
+      "trend": "stable",
+      "note": "南美黑马，小组赛表现稳定"
+    },
+    {
+      "rank": 12,
+      "team": "日本",
+      "flag": "🇯🇵",
+      "prob": 2.0,
+      "trend": "up",
+      "note": "2-2逼平荷兰，亚洲之光"
+    },
+    {
+      "rank": 13,
+      "team": "摩洛哥",
+      "flag": "🇲🇦",
+      "prob": 2.0,
+      "trend": "up",
+      "note": "1-1逼平巴西，非洲黑马"
+    },
+    {
+      "rank": 14,
+      "team": "墨西哥",
+      "flag": "🇲🇽",
+      "prob": 1.5,
+      "trend": "up",
+      "note": "2-0完胜南非，揭幕战表现亮眼"
+    },
+    {
+      "rank": 15,
+      "team": "比利时",
+      "flag": "🇧🇪",
+      "prob": 1.0,
+      "trend": "stable",
+      "note": "黄金一代逐渐老去"
+    },
+    {
+      "rank": 16,
+      "team": "克罗地亚",
+      "flag": "🇭🇷",
+      "prob": 1.0,
+      "trend": "stable",
+      "note": "魔笛最后一届世界杯"
+    }
   ],
-  "matches":[
-    {"date":"2026-06-11","matchday":1,"home":"墨西哥","away":"南非","group":"A","score":"2-0","pred_home":70,"pred_draw":21,"pred_away":9,"favorite":"墨西哥","favorite_prob":70,"favorite_won":true,"volume":"$186万","note":"揭幕战，3张红牌创纪录"},
-    {"date":"2026-06-11","matchday":1,"home":"韩国","away":"捷克","group":"A","score":"2-1","pred_home":38,"pred_draw":32,"pred_away":33,"favorite":"韩国","favorite_prob":38,"favorite_won":true,"volume":"$107万","note":"三项价差仅5美分，韩国逆转获胜"},
-    {"date":"2026-06-12","matchday":2,"home":"加拿大","away":"波黑","group":"B","score":"1-1","pred_home":54,"pred_draw":23,"pred_away":23,"favorite":"加拿大","favorite_prob":54,"favorite_won":false,"volume":"N/A","note":"东道主温和热门未取胜"},
-    {"date":"2026-06-13","matchday":3,"home":"美国","away":"巴拉圭","group":"D","score":"4-1","pred_home":50,"pred_draw":28,"pred_away":22,"favorite":"美国","favorite_prob":50,"favorite_won":true,"volume":"$60.6万","note":"Balogun梅开二度"},
-    {"date":"2026-06-13","matchday":3,"home":"卡塔尔","away":"瑞士","group":"B","score":"1-1","pred_home":7,"pred_draw":14,"pred_away":79,"favorite":"瑞士","favorite_prob":79,"favorite_won":false,"volume":"N/A","note":"🔥 最大冷门！瑞士79%被卡塔尔逼平"},
-    {"date":"2026-06-13","matchday":3,"home":"巴西","away":"摩洛哥","group":"C","score":"1-1","pred_home":84,"pred_draw":10,"pred_away":6,"favorite":"巴西","favorite_prob":84,"favorite_won":false,"volume":"N/A","note":"🔥 巴西84%超级热门被逼平"},
-    {"date":"2026-06-13","matchday":3,"home":"海地","away":"苏格兰","group":"C","score":"0-1","pred_home":17,"pred_draw":24,"pred_away":64,"favorite":"苏格兰","favorite_prob":64,"favorite_won":true,"volume":"N/A","note":"苏格兰稳扎稳打"},
-    {"date":"2026-06-13","matchday":3,"home":"澳大利亚","away":"土耳其","group":"D","score":"2-0","pred_home":19,"pred_draw":26,"pred_away":57,"favorite":"土耳其","favorite_prob":57,"favorite_won":false,"volume":"N/A","note":"🔥 土耳其57%热门被爆冷"},
-    {"date":"2026-06-14","matchday":4,"home":"德国","away":"冰岛","group":"E","score":"7-1","pred_home":80,"pred_draw":13,"pred_away":7,"favorite":"德国","favorite_prob":80,"favorite_won":true,"volume":"N/A","note":"德国7-1大胜"},
-    {"date":"2026-06-14","matchday":4,"home":"日本","away":"荷兰","group":"F","score":"2-2","pred_home":22,"pred_draw":27,"pred_away":51,"favorite":"荷兰","favorite_prob":51,"favorite_won":false,"volume":"N/A","note":"荷兰温和热门被逼平"}
+  "matches": [
+    {
+      "date": "2026-06-11",
+      "matchday": 1,
+      "home": "墨西哥",
+      "away": "南非",
+      "group": "A",
+      "score": "2-0",
+      "pred_home": 70,
+      "pred_draw": 21,
+      "pred_away": 9,
+      "favorite": "墨西哥",
+      "favorite_prob": 70,
+      "favorite_won": true,
+      "volume": "$186万",
+      "note": "揭幕战，3张红牌创纪录"
+    },
+    {
+      "date": "2026-06-11",
+      "matchday": 1,
+      "home": "韩国",
+      "away": "捷克",
+      "group": "A",
+      "score": "2-1",
+      "pred_home": 38,
+      "pred_draw": 32,
+      "pred_away": 33,
+      "favorite": "韩国",
+      "favorite_prob": 38,
+      "favorite_won": true,
+      "volume": "$107万",
+      "note": "三项价差仅5美分，韩国逆转获胜"
+    },
+    {
+      "date": "2026-06-12",
+      "matchday": 2,
+      "home": "加拿大",
+      "away": "波黑",
+      "group": "B",
+      "score": "1-1",
+      "pred_home": 54,
+      "pred_draw": 23,
+      "pred_away": 23,
+      "favorite": "加拿大",
+      "favorite_prob": 54,
+      "favorite_won": false,
+      "volume": "N/A",
+      "note": "东道主温和热门未取胜，Larin第78分钟扳平"
+    },
+    {
+      "date": "2026-06-13",
+      "matchday": 3,
+      "home": "美国",
+      "away": "巴拉圭",
+      "group": "D",
+      "score": "4-1",
+      "pred_home": 50,
+      "pred_draw": 28,
+      "pred_away": 22,
+      "favorite": "美国",
+      "favorite_prob": 50,
+      "favorite_won": true,
+      "volume": "$60.6万",
+      "note": "Balogun梅开二度，大球市场被严重错估"
+    },
+    {
+      "date": "2026-06-13",
+      "matchday": 3,
+      "home": "卡塔尔",
+      "away": "瑞士",
+      "group": "B",
+      "score": "1-1",
+      "pred_home": 7,
+      "pred_draw": 14,
+      "pred_away": 79,
+      "favorite": "瑞士",
+      "favorite_prob": 79,
+      "favorite_won": false,
+      "volume": "N/A",
+      "note": "🔥 最大冷门！瑞士79%被卡塔尔逼平，94分钟绝平"
+    },
+    {
+      "date": "2026-06-13",
+      "matchday": 3,
+      "home": "巴西",
+      "away": "摩洛哥",
+      "group": "C",
+      "score": "1-1",
+      "pred_home": 84,
+      "pred_draw": 10,
+      "pred_away": 6,
+      "favorite": "巴西",
+      "favorite_prob": 84,
+      "favorite_won": false,
+      "volume": "N/A",
+      "note": "🔥 巴西84%超级热门被逼平，Saibari率先进球"
+    },
+    {
+      "date": "2026-06-13",
+      "matchday": 3,
+      "home": "海地",
+      "away": "苏格兰",
+      "group": "C",
+      "score": "0-1",
+      "pred_home": 17,
+      "pred_draw": 24,
+      "pred_away": 64,
+      "favorite": "苏格兰",
+      "favorite_prob": 64,
+      "favorite_won": true,
+      "volume": "N/A",
+      "note": "苏格兰稳扎稳打，中强热门命中"
+    },
+    {
+      "date": "2026-06-13",
+      "matchday": 3,
+      "home": "澳大利亚",
+      "away": "土耳其",
+      "group": "D",
+      "score": "2-0",
+      "pred_home": 19,
+      "pred_draw": 26,
+      "pred_away": 57,
+      "favorite": "土耳其",
+      "favorite_prob": 57,
+      "favorite_won": false,
+      "volume": "N/A",
+      "note": "🔥 土耳其57%热门被澳大利亚爆冷击败"
+    },
+    {
+      "date": "2026-06-14",
+      "matchday": 4,
+      "home": "德国",
+      "away": "冰岛",
+      "group": "E",
+      "score": "7-1",
+      "pred_home": 80,
+      "pred_draw": 13,
+      "pred_away": 7,
+      "favorite": "德国",
+      "favorite_prob": 80,
+      "favorite_won": true,
+      "volume": "N/A",
+      "note": "德国7-1大胜，超级热门唯一兑现"
+    },
+    {
+      "date": "2026-06-14",
+      "matchday": 4,
+      "home": "日本",
+      "away": "荷兰",
+      "group": "F",
+      "score": "2-2",
+      "pred_home": 22,
+      "pred_draw": 27,
+      "pred_away": 51,
+      "favorite": "荷兰",
+      "favorite_prob": 51,
+      "favorite_won": false,
+      "volume": "N/A",
+      "note": "日本队逆转能力再次展现，荷兰温和热门被逼平"
+    }
   ],
-  "analysis":{
-    "tiers":[
-      {"label":"超级热门 (>75%)","color":"super","count":3,"wins":1,"rate":33.3,"examples":"德国✅、巴西❌、瑞士❌"},
-      {"label":"中强热门 (60-75%)","color":"strong","count":2,"wins":2,"rate":100.0,"examples":"墨西哥✅、苏格兰✅"},
-      {"label":"温和热门 (50-60%)","color":"mild","count":3,"wins":1,"rate":33.3,"examples":"加拿大❌、美国✅、土耳其❌"},
-      {"label":"微弱优势 (35-50%)","color":"weak","count":2,"wins":2,"rate":100.0,"examples":"韩国✅、荷兰❌"}
+  "analysis": {
+    "tiers": [
+      {
+        "label": "超级热门 (>75%)",
+        "color": "super",
+        "count": 3,
+        "wins": 1,
+        "rate": 33.3,
+        "examples": "德国✅、巴西❌、瑞士❌"
+      },
+      {
+        "label": "中强热门 (60-75%)",
+        "color": "strong",
+        "count": 2,
+        "wins": 2,
+        "rate": 100.0,
+        "examples": "墨西哥✅、苏格兰✅"
+      },
+      {
+        "label": "温和热门 (50-60%)",
+        "color": "mild",
+        "count": 3,
+        "wins": 1,
+        "rate": 33.3,
+        "examples": "加拿大❌、美国✅、土耳其❌"
+      },
+      {
+        "label": "微弱优势 (35-50%)",
+        "color": "weak",
+        "count": 2,
+        "wins": 2,
+        "rate": 100.0,
+        "examples": "韩国✅、荷兰❌"
+      }
     ],
-    "brier_score":0.303,"brier_baseline":0.25,
-    "summary":"10场比赛中热门获胜5场（50%），与抛硬币基线一致。超级热门（>75%）翻车率67%（仅德国取胜），中强热门（60-75%）是当前唯一甜点区（100%命中）。整体Brier Score 0.303，校准度略低于随机基线（0.25），样本量小需持续追踪。"
+    "brier_score": 0.303,
+    "brier_baseline": 0.25,
+    "summary": "10场比赛中热门获胜5场（50%），与抛硬币基线一致。超级热门（>75%）翻车率67%（仅德国取胜），中强热门（60-75%）是当前唯一甜点区（100%命中）。整体Brier Score 0.303，校准度略低于随机基线（0.25），样本量小需持续追踪。"
   }
 };
 
@@ -344,7 +649,8 @@ function renderOdds(){
     <td>${t.rank}</td><td>${t.flag} <strong>${t.team}</strong></td>
     <td><span class="prob-bar" style="width:${t.prob*3}px"></span>${t.prob.toFixed(1)}%</td>
     <td>${t.trend==='up'?'<span class="t-up">↑ 上升</span>':t.trend==='down'?'<span class="t-down">↓ 下降</span>':'<span class="t-stable">→ 稳定</span>'}</td>
-    <td class="text-dim">${t.note}</td></tr>`).join('');
+    <td class="text-dim">${t.note}</td>
+    <td class="trade-col"><a href="https://polymarket.com/markets?tag=fifaWorldCup2026&utm_source=dobguski" target="_blank" rel="noopener" class="trade-btn" title="在Polymarket交易${t.team}">📈 交易</a></td></tr>`).join('');
   createBarChart();
   updateTrend(top.team);
 }
@@ -383,6 +689,7 @@ function renderMatches(filter){
       平: ${m.pred_draw}%${m.volume!=='N/A'?'<br>交易量: '+m.volume:''}
       <div style="margin-top:3px">${m.note}</div>
     </div>
+    <div style="text-align:center"><a href="https://polymarket.com/markets?tag=fifaWorldCup2026&utm_source=dobguski" target="_blank" rel="noopener" class="trade-btn">📈 交易 ${m.home}vs${m.away}</a></div>
   </div>`).join('');
 }
 

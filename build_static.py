@@ -74,15 +74,24 @@ def inject_data(template_path, cache_path, output_path):
     new_data_json = json.dumps(new_data, ensure_ascii=False, indent=2)
 
     # 替换 HTML 中的 DATA 块
-    # 匹配模式: const DATA = { ... };
-    pattern = r"const DATA = \{[\s\S]*?\n\};"
-    replacement = f"const DATA = {new_data_json};"
+    # 使用字符串定位替换（避免 re.sub 的转义问题）
+    start_marker = "const DATA = {"
+    end_marker = "\n};"
 
-    new_html = re.sub(pattern, replacement, html, count=1)
-
-    if new_html == html:
-        print("❌ 未找到 DATA 块，请检查模板中是否包含 'const DATA = {...};'")
+    start_idx = html.find(start_marker)
+    if start_idx == -1:
+        print("❌ 未找到 'const DATA = {' 标记")
         return False
+
+    # 找到对应的结束 };
+    end_idx = html.find(end_marker, start_idx)
+    if end_idx == -1:
+        print("❌ 未找到 DATA 结束标记 '};' ")
+        return False
+    end_idx += len(end_marker)  # 包含 };
+
+    new_data_str = f"const DATA = {new_data_json};"
+    new_html = html[:start_idx] + new_data_str + html[end_idx:]
 
     # 更新 meta 中的日期
     today = datetime.now().strftime("%Y-%m-%d")
