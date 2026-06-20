@@ -1,5 +1,5 @@
 {
-  "source": "Polymarket/Kalshi/Gate.com 公开市场数据 + 体育媒体交叉验证",
+  "source": "Polymarket Gamma API (event/30615)",
   "updated": "2026-06-20",
   "total_volume_champion_market": "$23.25亿",
   "matches": {
@@ -794,24 +794,37 @@
     }
   },
   "champion_odds": {
-    "Spain": 0.17,
-    "France": 0.16,
-    "Argentina": 0.09,
-    "Brazil": 0.07,
-    "Germany": 0.08,
-    "England": 0.06,
-    "Portugal": 0.05,
-    "Netherlands": 0.04,
-    "USA": 0.03,
-    "Australia": 0.01,
-    "Uruguay": 0.02,
-    "Belgium": 0.02,
-    "Mexico": 0.02,
-    "Japan": 0.01,
-    "Croatia": 0.01,
-    "Norway": 0.02,
-    "Colombia": 0.01,
-    "Morocco": 0.02
+    "Spain": 0.1365,
+    "Switzerland": 0.0085,
+    "England": 0.1255,
+    "France": 0.1845,
+    "South Korea": 0.0035,
+    "Brazil": 0.0665,
+    "Argentina": 0.1175,
+    "Germany": 0.0605,
+    "Colombia": 0.0165,
+    "Portugal": 0.0735,
+    "Netherlands": 0.0395,
+    "USA": 0.0335,
+    "Canada": 0.0035,
+    "Turkiye": 0.0045,
+    "Uruguay": 0.0055,
+    "Mexico": 0.0145,
+    "Paraguay": 0.0015,
+    "Scotland": 0.0015,
+    "Japan": 0.0135,
+    "Norway": 0.0245,
+    "Ecuador": 0.0045,
+    "Morocco": 0.0275,
+    "Senegal": 0.0055,
+    "Ivory Coast": 0.0045,
+    "Congo DR": 0.0015,
+    "Belgium": 0.0155,
+    "Australia": 0.0035,
+    "Austria": 0.0045,
+    "Croatia": 0.0065,
+    "Egypt": 0.0015,
+    "Sweden": 0.0045
   },
   "accuracy_stats": {
     "total_matches": 29,
@@ -821,5 +834,7 @@
     "overall_accuracy": "62% (18/29)"
   },
   "note": "已结束比赛基于实际PM盘口; 未开始比赛基于冠军赔率推算+交叉验证",
-  "total_matches": 70
+  "total_matches": 70,
+  "champion_odds_updated": "2026-06-20",
+  "champion_odds_volume": "$2,706,643,256"
 }
