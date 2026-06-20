@@ -388,12 +388,12 @@
     "home_team_cn": "土耳其",
     "away_team": "Paraguay",
     "away_team_cn": "巴拉圭",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 0,
+    "away_score": 1,
+    "halftime": "0-0",
     "venue": "San Francisco Bay Area (Santa Clara)",
     "group": "D",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-26",

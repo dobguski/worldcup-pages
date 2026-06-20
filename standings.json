@@ -161,26 +161,26 @@
       "team": "Australia"
     },
     {
-      "pts": 0,
-      "gp": 1,
-      "w": 0,
+      "pts": 3,
+      "gp": 2,
+      "w": 1,
       "d": 0,
       "l": 1,
-      "gf": 0,
-      "ga": 2,
+      "gf": 2,
+      "ga": 4,
       "gd": -2,
-      "team": "Turkey"
+      "team": "Paraguay"
     },
     {
       "pts": 0,
-      "gp": 1,
+      "gp": 2,
       "w": 0,
       "d": 0,
-      "l": 1,
-      "gf": 1,
-      "ga": 4,
+      "l": 2,
+      "gf": 0,
+      "ga": 3,
       "gd": -3,
-      "team": "Paraguay"
+      "team": "Turkey"
     }
   ],
   "E": [
