@@ -280,12 +280,12 @@
     "home_team_cn": "巴西",
     "away_team": "Haiti",
     "away_team_cn": "海地",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 3,
+    "away_score": 0,
+    "halftime": "0-0",
     "venue": "Philadelphia",
     "group": "C",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-25",
