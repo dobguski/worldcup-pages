@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>访问统计 · DobGuski 世界杯小站</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,'PingFang SC','Microsoft YaHei',sans-serif;background:#0f1724;color:#e2e8f0;min-height:100vh;padding:20px}
+.header{max-width:960px;margin:0 auto 20px;text-align:center}
+.header h1{color:#e2b04a;font-size:1.4em}
+.header p{color:#64748b;font-size:.7em;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;max-width:960px;margin:0 auto 20px}
+.card{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:16px;text-align:center}
+.card .label{font-size:.65em;color:#64748b;text-transform:uppercase;margin-bottom:4px}
+.card .value{font-size:2em;font-weight:bold;color:#e2b04a}
+.card .sub{font-size:.65em;color:#475569;margin-top:2px}
+.section{max-width:960px;margin:0 auto 20px}
+.section h2{color:#e2b04a;font-size:.95em;margin-bottom:10px;border-bottom:1px solid #1e293b;padding-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:.75em}
+th{background:#0f1724;padding:8px;text-align:left;color:#94a3b8;font-weight:600}
+td{padding:8px;border-bottom:1px solid #1e293b}
+tr:hover{background:#1e293b}
+.bar{height:20px;border-radius:3px;background:linear-gradient(90deg,#3b82f6,#60a5fa);min-width:2px;transition:width .3s}
+.bar.gold{background:linear-gradient(90deg,#e2b04a,#c99520)}
+.visitor-row{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:.72em}
+.visitor-row .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.refresh{font-size:.65em;color:#475569;text-align:center;margin-top:20px}
+footer{text-align:center;padding:14px;color:#475569;font-size:.65em;border-top:1px solid #1e293b;max-width:960px;margin:0 auto}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 访问统计后台</h1>
+  <p>仅内部使用 · DobGuski 世界杯小站</p>
+</div>
+
+<div class="grid" id="summaryCards"></div>
+
+<div class="section">
+  <h2>📈 UV / PV 趋势</h2>
+  <div style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:16px">
+    <div style="display:flex;align-items:flex-end;gap:4px;height:120px" id="trendChart"></div>
+    <div style="display:flex;justify-content:space-between;font-size:.6em;color:#64748b;margin-top:4px" id="trendLabels"></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🌍 时区分布 (Top 10)</h2>
+  <div id="tzTable"></div>
+</div>
+
+<div class="section">
+  <h2>🗣 语言分布</h2>
+  <div id="langTable"></div>
+</div>
+
+<div class="section">
+  <h2>👣 最近访客 (最新30条)</h2>
+  <div id="recentVisitors" style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px;max-height:300px;overflow-y:auto"></div>
+</div>
+
+<div class="refresh">数据每60秒自动刷新 · <span id="lastRefresh"></span></div>
+<footer>内部统计 · 不对外公开</footer>
+
+<script>
+const TZ_COLORS = {
+  'Asia/Shanghai': '#e2b04a', 'Asia/Tokyo': '#dc2626', 'Asia/Seoul': '#dc2626',
+  'America/New_York': '#3b82f6', 'America/Chicago': '#3b82f6', 'America/Los_Angeles': '#3b82f6',
+  'America/Toronto': '#3b82f6', 'America/Vancouver': '#3b82f6', 'America/Mexico_City': '#22c55e',
+  'Europe/London': '#a855f7', 'Europe/Paris': '#a855f7', 'Europe/Berlin': '#a855f7',
+  'Europe/Madrid': '#a855f7', 'Europe/Rome': '#a855f7',
+  'America/Sao_Paulo': '#22c55e', 'America/Buenos_Aires': '#22c55e',
+  'Africa/Cairo': '#f97316', 'Africa/Lagos': '#f97316',
+  'Asia/Dubai': '#06b6d4', 'Asia/Kolkata': '#ec4899',
+  'Australia/Sydney': '#14b8a6', 'Pacific/Auckland': '#14b8a6',
+};
+const DEF_COLOR = '#64748b';
+
+function tzColor(tz) {
+  for (const [k, v] of Object.entries(TZ_COLORS)) {
+    if (tz.startsWith(k.split('/')[0])) return v;
+  }
+  return DEF_COLOR;
+}
+
+function tzLabel(tz) {
+  return tz.replace('_', ' ').replace('/',' · ');
+}
+
+async function loadStats() {
+  try {
+    const cb = '?v=' + Date.now();
+    const [cRes, vRes] = await Promise.all([
+      fetch('counter.json' + cb),
+      fetch('visitors.json' + cb).catch(() => null)
+    ]);
+    const counter = await cRes.json();
+    const visitors = vRes ? await vRes.json() : { count: 0, visits: [], tz_dist: {}, lang_dist: {} };
+
+    renderSummary(counter, visitors);
+    renderTrend(counter);
+    renderTZ(visitors.tz_dist || {});
+    renderLang(visitors.lang_dist || {});
+    renderRecent(visitors.visits || []);
+    document.getElementById('lastRefresh').textContent = new Date().toLocaleTimeString('zh-CN');
+  } catch(e) {
+    document.getElementById('summaryCards').innerHTML = '<div class="card"><div class="label">加载失败</div><div class="value">--</div></div>';
+  }
+}
+
+function renderSummary(c, v) {
+  const cards = [
+    {label:'累计UV', value: c.uv || 0, sub: '唯一访客'},
+    {label:'累计PV', value: c.pv || 0, sub: '页面浏览'},
+    {label:'记录访客', value: v.count || 0, sub: 'visitors.json'},
+    {label:'时区数', value: Object.keys(v.tz_dist||{}).length, sub: '不同时区'},
+  ];
+  document.getElementById('summaryCards').innerHTML = cards.map(c =>
+    `<div class="card"><div class="label">${c.label}</div><div class="value">${c.value.toLocaleString()}</div><div class="sub">${c.sub}</div></div>`
+  ).join('');
+}
+
+function renderTrend(c) {
+  // Simple bar: UV vs PV ratio
+  const max = Math.max(c.uv || 1, c.pv || 1);
+  const uvPct = Math.round((c.uv || 0) / max * 100);
+  const pvPct = Math.round((c.pv || 0) / max * 100);
+  document.getElementById('trendChart').innerHTML = `
+    <div style="flex:1;text-align:center">
+      <div class="bar gold" style="height:${uvPct}%;width:40px;margin:0 auto"></div>
+      <div style="font-size:.65em;color:#94a3b8;margin-top:4px">UV<br>${c.uv||0}</div>
+    </div>
+    <div style="flex:1;text-align:center">
+      <div class="bar" style="height:${pvPct}%;width:40px;margin:0 auto"></div>
+      <div style="font-size:.65em;color:#94a3b8;margin-top:4px">PV<br>${c.pv||0}</div>
+    </div>`;
+  document.getElementById('trendLabels').innerHTML = '';
+}
+
+function renderTZ(dist) {
+  const sorted = Object.entries(dist).sort((a,b) => b[1] - a[1]).slice(0, 10);
+  const max = sorted.length > 0 ? sorted[0][1] : 1;
+  let html = '<table><tr><th>时区</th><th style="width:60px;text-align:right">访客数</th><th style="width:200px">占比</th></tr>';
+  sorted.forEach(([tz, n]) => {
+    const pct = Math.round(n / max * 100);
+    html += `<tr>
+      <td><span class="dot" style="background:${tzColor(tz)}"></span> ${tzLabel(tz)}</td>
+      <td style="text-align:right;font-weight:bold">${n}</td>
+      <td><div class="bar gold" style="width:${pct}%;height:16px"></div></td>
+    </tr>`;
+  });
+  html += '</table>';
+  if (sorted.length === 0) html = '<div style="color:#64748b;padding:12px;text-align:center">暂无数据</div>';
+  document.getElementById('tzTable').innerHTML = html;
+}
+
+function renderLang(dist) {
+  const sorted = Object.entries(dist).sort((a,b) => b[1] - a[1]);
+  const max = sorted.length > 0 ? sorted[0][1] : 1;
+  let html = '<table><tr><th>语言</th><th style="width:60px;text-align:right">访客数</th><th style="width:200px">占比</th></tr>';
+  sorted.forEach(([lang, n]) => {
+    const pct = Math.round(n / max * 100);
+    html += `<tr>
+      <td>${lang}</td>
+      <td style="text-align:right;font-weight:bold">${n}</td>
+      <td><div class="bar" style="width:${pct}%;height:16px"></div></td>
+    </tr>`;
+  });
+  html += '</table>';
+  if (sorted.length === 0) html = '<div style="color:#64748b;padding:12px;text-align:center">暂无数据</div>';
+  document.getElementById('langTable').innerHTML = html;
+}
+
+function renderRecent(visits) {
+  const recent = visits.slice(-30).reverse();
+  if (recent.length === 0) {
+    document.getElementById('recentVisitors').innerHTML = '<div style="color:#64748b;text-align:center;padding:12px">暂无访客记录</div>';
+    return;
+  }
+  let html = '';
+  recent.forEach(v => {
+    html += `<div class="visitor-row">
+      <span class="dot" style="background:${tzColor(v.tz)}"></span>
+      <span style="color:#94a3b8;flex:1">${v.time}</span>
+      <span>${tzLabel(v.tz)}</span>
+      <span style="color:#64748b">${v.lang}</span>
+    </div>`;
+  });
+  document.getElementById('recentVisitors').innerHTML = html;
+}
+
+loadStats();
+setInterval(loadStats, 60000);
+</script>
+</body>
+</html>

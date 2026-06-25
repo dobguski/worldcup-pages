@@ -11,7 +11,6 @@ Allow: /polymarket.json
 Allow: /sitemap.xml
 Disallow: /stats.html
 Disallow: /*.py$
-Disallow: /*.txt$
 Disallow: /2026--usa/
 Disallow: /*/
 Disallow: /.git/
