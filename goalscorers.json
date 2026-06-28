@@ -1,0 +1,198 @@
+{
+  "updated": "2026-06-28",
+  "wc2026": [
+    {
+      "name": "Julián Quiñones",
+      "goals": 1
+    },
+    {
+      "name": "Raúl Jiménez",
+      "goals": 1
+    },
+    {
+      "name": "Ladislav Krejcí",
+      "goals": 1
+    },
+    {
+      "name": "Cyle Larin",
+      "goals": 1
+    },
+    {
+      "name": "Breel Embolo",
+      "goals": 1
+    },
+    {
+      "name": "Vinícius Júnior",
+      "goals": 1
+    },
+    {
+      "name": "Ismael Saibari",
+      "goals": 1
+    },
+    {
+      "name": "Damian Bobadilla",
+      "goals": 1
+    },
+    {
+      "name": "Folarin Balogun",
+      "goals": 1
+    },
+    {
+      "name": "Mauricio",
+      "goals": 1
+    },
+    {
+      "name": "Nestory Irankunda",
+      "goals": 1
+    },
+    {
+      "name": "Connor Metcalfe",
+      "goals": 1
+    },
+    {
+      "name": "Felix Nmecha",
+      "goals": 1
+    },
+    {
+      "name": "Nico Schlotterbeck",
+      "goals": 1
+    },
+    {
+      "name": "Jamal Musiala",
+      "goals": 1
+    },
+    {
+      "name": "Nathaniel Brown",
+      "goals": 1
+    },
+    {
+      "name": "Deniz Undav",
+      "goals": 1
+    },
+    {
+      "name": "Livano Comenencia",
+      "goals": 1
+    },
+    {
+      "name": "Crysencio Summerville",
+      "goals": 1
+    },
+    {
+      "name": "Keito Nakamura",
+      "goals": 1
+    },
+    {
+      "name": "Daichi Kamada",
+      "goals": 1
+    }
+  ],
+  "all_time": [
+    {
+      "name": "Miroslav Klose",
+      "name_cn": "克洛泽",
+      "goals": 16,
+      "nation": "Germany",
+      "tournaments": "2002-2014"
+    },
+    {
+      "name": "Ronaldo",
+      "name_cn": "罗纳尔多",
+      "goals": 15,
+      "nation": "Brazil",
+      "tournaments": "1994-2006"
+    },
+    {
+      "name": "Gerd Müller",
+      "name_cn": "盖德·穆勒",
+      "goals": 14,
+      "nation": "Germany",
+      "tournaments": "1970-1974"
+    },
+    {
+      "name": "Just Fontaine",
+      "name_cn": "方丹",
+      "goals": 13,
+      "nation": "France",
+      "tournaments": "1958"
+    },
+    {
+      "name": "Lionel Messi",
+      "name_cn": "梅西",
+      "goals": 13,
+      "nation": "Argentina",
+      "tournaments": "2006-2022"
+    },
+    {
+      "name": "Pelé",
+      "name_cn": "贝利",
+      "goals": 12,
+      "nation": "Brazil",
+      "tournaments": "1958-1970"
+    },
+    {
+      "name": "Kylian Mbappé",
+      "name_cn": "姆巴佩",
+      "goals": 12,
+      "nation": "France",
+      "tournaments": "2018-2022"
+    },
+    {
+      "name": "Sándor Kocsis",
+      "name_cn": "柯奇士",
+      "goals": 11,
+      "nation": "Hungary",
+      "tournaments": "1954"
+    },
+    {
+      "name": "Jürgen Klinsmann",
+      "name_cn": "克林斯曼",
+      "goals": 11,
+      "nation": "Germany",
+      "tournaments": "1990-1998"
+    },
+    {
+      "name": "Helmut Rahn",
+      "name_cn": "拉恩",
+      "goals": 10,
+      "nation": "Germany",
+      "tournaments": "1954-1958"
+    },
+    {
+      "name": "Gary Lineker",
+      "name_cn": "莱因克尔",
+      "goals": 10,
+      "nation": "England",
+      "tournaments": "1986-1990"
+    },
+    {
+      "name": "Gabriel Batistuta",
+      "name_cn": "巴蒂斯图塔",
+      "goals": 10,
+      "nation": "Argentina",
+      "tournaments": "1994-2002"
+    },
+    {
+      "name": "Thomas Müller",
+      "name_cn": "托马斯·穆勒",
+      "goals": 10,
+      "nation": "Germany",
+      "tournaments": "2010-2022"
+    },
+    {
+      "name": "Teófilo Cubillas",
+      "name_cn": "库比拉斯",
+      "goals": 10,
+      "nation": "Peru",
+      "tournaments": "1970-1978"
+    },
+    {
+      "name": "Grzegorz Lato",
+      "name_cn": "拉托",
+      "goals": 10,
+      "nation": "Poland",
+      "tournaments": "1974-1982"
+    }
+  ],
+  "total_2026_scorers": 21,
+  "total_2026_goals": 21
+}
