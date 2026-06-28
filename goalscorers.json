@@ -3,87 +3,103 @@
   "wc2026": [
     {
       "name": "Julián Quiñones",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "奎尼奥内斯"
     },
     {
       "name": "Raúl Jiménez",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "劳尔·希门尼斯"
     },
     {
       "name": "Ladislav Krejcí",
-      "goals": 1
+      "goals": 1,
+      "name_cn": ""
     },
     {
       "name": "Cyle Larin",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "赛尔·拉林"
     },
     {
       "name": "Breel Embolo",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "布里尔·恩博洛"
     },
     {
       "name": "Vinícius Júnior",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "维尼修斯·儒尼奥尔"
     },
     {
       "name": "Ismael Saibari",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "伊斯梅尔·赛巴里"
     },
     {
       "name": "Damian Bobadilla",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "达米安·博瓦迪利亚"
     },
     {
       "name": "Folarin Balogun",
-      "goals": 1
-    },
-    {
-      "name": "Mauricio",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "福拉林·巴洛贡"
     },
     {
       "name": "Nestory Irankunda",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "内斯托里·伊兰昆达"
     },
     {
       "name": "Connor Metcalfe",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "康纳·梅特卡夫"
     },
     {
       "name": "Felix Nmecha",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "费利克斯·恩梅查"
     },
     {
       "name": "Nico Schlotterbeck",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "尼科·施洛特贝克"
     },
     {
       "name": "Jamal Musiala",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "贾马尔·穆西亚拉"
     },
     {
       "name": "Nathaniel Brown",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "纳撒尼尔·布朗"
     },
     {
       "name": "Deniz Undav",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "德尼兹·翁达夫"
     },
     {
       "name": "Livano Comenencia",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "利瓦诺·科梅内西亚"
     },
     {
       "name": "Crysencio Summerville",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "克里森西奥·萨默维尔"
     },
     {
       "name": "Keito Nakamura",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "中村敬斗"
     },
     {
       "name": "Daichi Kamada",
-      "goals": 1
+      "goals": 1,
+      "name_cn": "镰田大地"
     }
   ],
   "all_time": [
@@ -193,6 +209,6 @@
       "tournaments": "1974-1982"
     }
   ],
-  "total_2026_scorers": 21,
-  "total_2026_goals": 21
+  "total_2026_scorers": 20,
+  "total_2026_goals": 20
 }
