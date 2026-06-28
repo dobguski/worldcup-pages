@@ -510,7 +510,7 @@ function teamName(en) {
 async function loadData() {
   try {
     const cb = '?v=' + Date.now();  // cache-bust to avoid stale data
-    const [mRes, sRes, tRes, tmRes, pmRes] = await Promise.all([
+    const [mRes, sRes, tRes, tmRes, pmRes, goalsRes] = await Promise.all([
       fetch('match_data.json' + cb),
       fetch('standings.json' + cb),
       fetch('team_names.json' + cb),
