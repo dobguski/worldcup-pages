@@ -1126,18 +1126,84 @@ function renderPM() {
 
 function renderBracket() {
   const container = document.getElementById('bracketView');
-  container.innerHTML = `
-    <div style="text-align:center;color:#94a3b8;padding:30px;">
-      <h3>${t('bracket.title')}</h3>
-      <table style="margin:20px auto;text-align:left;border-collapse:collapse;">
-        <tr><td style="padding:8px;color:#e2b04a;">${t('bracket.r32')}</td><td style="padding:8px;">Jun 28 – Jul 3 / 6月28日–7月3日</td><td style="padding:8px;color:#64748b;">16 ${t('matches')}</td></tr>
-        <tr><td style="padding:8px;color:#e2b04a;">${t('bracket.r16')}</td><td style="padding:8px;">Jul 4 – 7 / 7月4日–7日</td><td style="padding:8px;color:#64748b;">8 ${t('matches')}</td></tr>
-        <tr><td style="padding:8px;color:#e2b04a;">${t('bracket.qf')}</td><td style="padding:8px;">Jul 9 – 11 / 7月9日–11日</td><td style="padding:8px;color:#64748b;">4 ${t('matches')}</td></tr>
-        <tr><td style="padding:8px;color:#e2b04a;">${t('bracket.sf')}</td><td style="padding:8px;">Jul 14 – 15 / 7月14日–15日</td><td style="padding:8px;color:#64748b;">2 ${t('matches')}</td></tr>
-        <tr><td style="padding:8px;color:#e2b04a;">${t('bracket.tp')}</td><td style="padding:8px;">Jul 18 ${t('bracket.venue.miami')}</td><td style="padding:8px;color:#64748b;">1 ${t('matches')}</td></tr>
-        <tr><td style="padding:8px;color:#e2b04a;font-size:1.2em;">${t('bracket.final')}</td><td style="padding:8px;font-size:1.1em;">Jul 19 ${t('bracket.venue.ny')}</td><td style="padding:8px;color:#e2b04a;font-weight:bold;">1 ${t('matches')}</td></tr>
-      </table>
+  if (!standings || Object.keys(standings).length === 0) {
+    container.innerHTML = '<div style=\"text-align:center;color:#64748b;padding:30px\">对阵数据加载中...</div>';
+    return;
+  }
+
+  // Get qualified teams from standings
+  const order = 'ABCDEFGHIJKL'.split('');
+  const qualified = [];  // [{team, group, pos}]
+  const thirds = [];
+  order.forEach(g => {
+    const table = standings[g] || [];
+    if (table.length < 3) return;
+    qualified.push({team: table[0].team, group: g, pos: 1, pts: table[0].pts});
+    qualified.push({team: table[1].team, group: g, pos: 2, pts: table[1].pts});
+    thirds.push({...table[2], group: g});
+  });
+  // 8 best thirds
+  thirds.sort((a,b) => b.pts - a.pts || (b.gd||0) - (a.gd||0) || (b.gf||0) - (a.gf||0));
+  thirds.slice(0, 8).forEach(t => qualified.push({team: t.team, group: t.group, pos: 3, pts: t.pts}));
+
+  let html = '';
+
+  // Group results table
+  html += '<div style=\"font-size:.9em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">📊 小组出线球队 (' + qualified.length + ' teams)</div>';
+  html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px;margin-bottom:16px;overflow-x:auto\">';
+  html += '<table style=\"width:100%;border-collapse:collapse;font-size:.72em\">';
+  html += '<tr style=\"background:#0f1724;color:#94a3b8\"><th>组</th><th>🥇第1</th><th>🥈第2</th><th>第3</th></tr>';
+  order.forEach(g => {
+    const t = standings[g] || [];
+    if (t.length < 3) return;
+    const t3 = t[2].team;
+    const isBest3 = thirds.slice(0,8).some(x => x.team === t3);
+    html += `<tr style=\"border-bottom:1px solid #1e293b\">
+      <td style=\"padding:4px;text-align:center;color:#e2b04a;font-weight:bold\">${g}</td>
+      <td style=\"padding:4px;color:#94a3b8\">${teamName(t[0].team)}</td>
+      <td style=\"padding:4px;color:#94a3b8\">${teamName(t[1].team)}</td>
+      <td style=\"padding:4px;color:#64748b\">${teamName(t3)}${isBest3?' <span style=\"color:#22c55e;font-size:.8em\">✓</span>':''}</td>
+    </tr>`;
+  });
+  html += '</table></div>';
+
+  // Knockout stage schedule
+  html += '<div style=\"font-size:.9em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">🏆 淘汰赛赛程</div>';
+  html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px\">';
+  const stages = [
+    {label: '32强赛 Round of 32', dates: 'Jun 28 – Jul 3', matches: 16},
+    {label: '16强赛 Round of 16', dates: 'Jul 4 – 7', matches: 8},
+    {label: '1/4决赛 Quarter-finals', dates: 'Jul 9 – 11', matches: 4},
+    {label: '半决赛 Semi-finals', dates: 'Jul 14 – 15', matches: 2},
+    {label: '三四名决赛 3rd Place', dates: 'Jul 18 @ Miami', matches: 1},
+    {label: '🏆 决赛 Final', dates: 'Jul 19 @ New York/New Jersey', matches: 1},
+  ];
+
+  // Check for knockout matches in matchData
+  const koMatches = matchData.filter(m => !m.group || !'ABCDEFGHIJKL'.includes(m.group));
+
+  stages.forEach(s => {
+    html += `<div style=\"display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1e293b;font-size:.72em\">
+      <span style=\"color:#e2b04a\">${s.label}</span>
+      <span style=\"color:#64748b\">${s.dates}</span>
+      <span style=\"color:#475569\">${s.matches} 场</span>
     </div>`;
+  });
+  html += '</div>';
+
+  // Show any knockout scores already in data
+  if (koMatches.length > 0) {
+    html += '<div style=\"font-size:.9em;color:#e2b04a;margin:12px 0 8px;font-weight:bold\">⚽ 淘汰赛比分</div>';
+    html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px\">';
+    koMatches.forEach(m => {
+      const s = m.home_score != null ? `${m.home_score}-${m.away_score}` : 'vs';
+      html += `<div style=\"font-size:.75em;padding:4px 0;border-bottom:1px solid #1e293b\">${m.date} ${teamName(m.home_team)} ${s} ${teamName(m.away_team)}</div>`;
+    });
+    html += '</div>';
+  }
+
+  container.innerHTML = html;
+}
 }
 
 // ==================== PREDICTION POLL (REDESIGNED) ====================
