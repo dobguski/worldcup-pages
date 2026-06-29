@@ -1342,12 +1342,12 @@
     "home_team_cn": "德国",
     "away_team": "Paraguay",
     "away_team_cn": "巴拉圭",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
+    "home_score": 1,
+    "away_score": 1,
+    "halftime": "1-1",
     "venue": "Gillette Stadium",
     "group": "KO",
-    "is_result": false
+    "is_result": true
   },
   {
     "date": "2026-06-30",
