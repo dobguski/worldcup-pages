@@ -1342,9 +1342,9 @@
     "home_team_cn": "德国",
     "away_team": "Paraguay",
     "away_team_cn": "巴拉圭",
-    "home_score": 1,
-    "away_score": 1,
-    "halftime": "Live",
+    "home_score": null,
+    "away_score": null,
+    "halftime": null,
     "venue": "Gillette Stadium",
     "group": "KO",
     "is_result": false
