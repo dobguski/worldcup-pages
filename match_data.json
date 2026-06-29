@@ -1310,7 +1310,7 @@
     "away_score": 1,
     "halftime": "0-0",
     "venue": "SoFi Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": true
   },
   {
@@ -1328,7 +1328,7 @@
     "away_score": 1,
     "halftime": "0-0",
     "venue": "NRG Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": true
   },
   {
@@ -1346,7 +1346,7 @@
     "away_score": 1,
     "halftime": "Live",
     "venue": "Gillette Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": true
   },
   {
@@ -1364,7 +1364,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Estadio BBVA",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1382,7 +1382,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "AT&T Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1400,7 +1400,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "MetLife Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1418,7 +1418,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Estadio Banorte",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1436,7 +1436,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Mercedes-Benz Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1454,7 +1454,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Lumen Field",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1472,7 +1472,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Levi's Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1490,7 +1490,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "SoFi Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1508,7 +1508,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "BMO Field",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1526,7 +1526,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "BC Place",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1544,7 +1544,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "AT&T Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1562,7 +1562,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Hard Rock Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1580,7 +1580,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "GEHA Field at Arrowhead Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1598,7 +1598,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "NRG Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1616,7 +1616,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Lincoln Financial Field",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1634,7 +1634,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "MetLife Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1652,7 +1652,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Estadio Banorte",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1670,7 +1670,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "AT&T Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1688,7 +1688,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Lumen Field",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1706,7 +1706,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Mercedes-Benz Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1724,7 +1724,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "BC Place",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1742,7 +1742,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Gillette Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1760,7 +1760,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "SoFi Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1778,7 +1778,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Hard Rock Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1796,7 +1796,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "GEHA Field at Arrowhead Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1814,7 +1814,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "AT&T Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1832,7 +1832,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Mercedes-Benz Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1850,7 +1850,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "Hard Rock Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   },
   {
@@ -1868,7 +1868,7 @@
     "away_score": null,
     "halftime": null,
     "venue": "MetLife Stadium",
-    "group": "L",
+    "group": "KO",
     "is_result": false
   }
 ]
