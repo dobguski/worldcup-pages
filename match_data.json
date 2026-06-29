@@ -1350,24 +1350,6 @@
     "is_result": true
   },
   {
-    "date": "2026-06-30",
-    "time": "10:00",
-    "tz": "UTC+8",
-    "utc_ts": "2026-06-30T02:00:00Z",
-    "time_label": "次日",
-    "venue_tz": "UTC-6",
-    "home_team": "Netherlands",
-    "home_team_cn": "荷兰",
-    "away_team": "Morocco",
-    "away_team_cn": "摩洛哥",
-    "home_score": null,
-    "away_score": null,
-    "halftime": null,
-    "venue": "Estadio BBVA",
-    "group": "KO",
-    "is_result": false
-  },
-  {
     "date": "2026-07-01",
     "time": "06:00",
     "tz": "UTC+8",
