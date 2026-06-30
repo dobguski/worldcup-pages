@@ -418,7 +418,7 @@ let currentLang = 'dual';
 
 // ── Tab Configuration (navigation decoupled from content) ──
 const TAB_CONFIG = [
-  { id: 'standings', icon: '📊', cn: '积分榜', en: 'Standings' },
+  { id: 'standings', icon: '📊', cn: '小组赛', en: 'Groups' },
   { id: 'matches',   icon: '📰', cn: '最新战报', en: 'Latest',   active: true },
   { id: 'live',      icon: '🔴', cn: '直播',     en: 'Live' },
   { id: 'teams',     icon: '👥', cn: '球队',     en: 'Teams' },
@@ -1176,37 +1176,45 @@ function renderBracket() {
   });
   html += '</table></div>';
 
-  // Knockout stage schedule
-  html += '<div style=\"font-size:.9em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">🏆 淘汰赛赛程</div>';
-  html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px\">';
-  const stages = [
-    {label: '32强赛 Round of 32', dates: 'Jun 28 – Jul 3', matches: 16},
-    {label: '16强赛 Round of 16', dates: 'Jul 4 – 7', matches: 8},
-    {label: '1/4决赛 Quarter-finals', dates: 'Jul 9 – 11', matches: 4},
-    {label: '半决赛 Semi-finals', dates: 'Jul 14 – 15', matches: 2},
-    {label: '三四名决赛 3rd Place', dates: 'Jul 18 @ Miami', matches: 1},
-    {label: '🏆 决赛 Final', dates: 'Jul 19 @ New York/New Jersey', matches: 1},
-  ];
-
-  // Check for knockout matches in matchData
-  const koMatches = matchData.filter(m => !m.group || !'ABCDEFGHIJKL'.includes(m.group));
-
-  stages.forEach(s => {
-    html += `<div style=\"display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1e293b;font-size:.72em\">
-      <span style=\"color:#e2b04a\">${s.label}</span>
-      <span style=\"color:#64748b\">${s.dates}</span>
-      <span style=\"color:#475569\">${s.matches} 场</span>
-    </div>`;
+  // Knockout stage with real scores (filter placeholder teams)
+  const koMatches = matchData.filter(m => {
+    if (!m.group || !'ABCDEFGHIJKL'.includes(m.group)) {
+      const hasPlaceholder = (m.home_team||'').includes('Winner') || (m.away_team||'').includes('Winner') ||
+                             (m.home_team||'').includes('Loser') || (m.away_team||'').includes('Loser');
+      return !hasPlaceholder;
+    }
+    return false;
   });
-  html += '</div>';
+  const koWithScores = koMatches.filter(m => m.home_score != null);
+  const koUpcoming = koMatches.filter(m => m.home_score == null);
 
-  // Show any knockout scores already in data
-  if (koMatches.length > 0) {
-    html += '<div style=\"font-size:.9em;color:#e2b04a;margin:12px 0 8px;font-weight:bold\">⚽ 淘汰赛比分</div>';
+  html += '<div style=\"font-size:.9em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">🏆 淘汰赛比分' + (koWithScores.length ? ' (' + koWithScores.length + '场)' : '') + '</div>';
+
+  if (koWithScores.length > 0) {
+    html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px;margin-bottom:16px\">';
+    koWithScores.forEach(m => {
+      const cn1 = teamName(m.home_team); const cn2 = teamName(m.away_team);
+      const pk = m.penalty_home != null ? ` <span style=\"font-size:.65em;color:#e2b04a\">(${m.penalty_home}-${m.penalty_away} PK)</span>` : '';
+      html += `<div style=\"display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #1e293b;font-size:.75em\">
+        <span style=\"color:#64748b;min-width:70px\">${m.date}</span>
+        <span style=\"flex:1;text-align:right;color:#94a3b8\">${cn1}</span>
+        <span style=\"font-weight:bold;color:#e2b04a;font-size:1.1em\">${m.home_score}-${m.away_score}${pk}</span>
+        <span style=\"flex:1;color:#94a3b8\">${cn2}</span>
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  if (koUpcoming.length > 0) {
+    html += '<div style=\"font-size:.85em;color:#94a3b8;margin-bottom:4px\">⏳ 即将进行</div>';
     html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px\">';
-    koMatches.forEach(m => {
-      const s = m.home_score != null ? `${m.home_score}-${m.away_score}` : 'vs';
-      html += `<div style=\"font-size:.75em;padding:4px 0;border-bottom:1px solid #1e293b\">${m.date} ${teamName(m.home_team)} ${s} ${teamName(m.away_team)}</div>`;
+    koUpcoming.slice(0, 8).forEach(m => {
+      html += `<div style=\"display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid #1e293b;font-size:.72em\">
+        <span style=\"color:#64748b;min-width:70px\">${m.date}</span>
+        <span style=\"flex:1;text-align:right;color:#94a3b8\">${teamName(m.home_team)}</span>
+        <span style=\"color:#475569\">vs</span>
+        <span style=\"flex:1;color:#94a3b8\">${teamName(m.away_team)}</span>
+      </div>`;
     });
     html += '</div>';
   }
