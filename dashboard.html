@@ -549,7 +549,7 @@ async function loadData() {
     // Apply live scores from local server (real-time, bypasses git push delay)
     await applyLiveScores();
     renderAll();
-    if (!window._hasAutoScrolled) { scrollToRelevantMatch(); window._hasAutoScrolled = true; }
+    scrollToRelevantMatch();
     scheduleNextRefresh();
     let updateText;
     if (currentLang === 'cn') updateText = t('lastUpdate') + ': ' + new Date().toLocaleString('zh-CN');
@@ -617,31 +617,33 @@ async function applyLiveScores() {
   _applyLiveScoresToMatchData();
 }
 
-// Auto-scroll to most relevant match after load + switch to right tab
+// Auto-scroll to most relevant match on every load
 function scrollToRelevantMatch() {
-  const today = new Date().toISOString().slice(0,10);
+  // 1) Live matches — scroll to first live card (stay on 最新战报)
   const liveCards = document.querySelectorAll('.match-card.live');
-
-  // 1) Live matches — switch to Live tab, scroll to first live match
   if (liveCards.length > 0) {
-    switchTab('live');
     liveCards[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
 
-  // 2) No live matches — stay on 最新战报, scroll to next upcoming match day
-  const allCards = document.querySelectorAll('.match-card[data-date]');
-  let nextCard = null;
-  for (const card of allCards) {
-    const d = card.getAttribute('data-date');
-    if (d && d >= today) { nextCard = card; break; }
-  }
-  if (nextCard) {
-    nextCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // 2) Most recently finished match (highest date that's past)
+  const finishedCards = document.querySelectorAll('.match-card.finished[data-date]');
+  if (finishedCards.length > 0) {
+    finishedCards[finishedCards.length - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
 
-  // 3) Fallback: scroll to last match
+  // 3) First upcoming match
+  const today = new Date().toISOString().slice(0,10);
+  const allCards = document.querySelectorAll('.match-card[data-date]');
+  for (const card of allCards) {
+    if ((card.getAttribute('data-date') || '') >= today) {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+  }
+
+  // 4) Fallback: last card
   if (allCards.length > 0) {
     allCards[allCards.length - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
