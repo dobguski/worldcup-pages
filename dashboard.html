@@ -1030,21 +1030,42 @@ function renderGoals() {
   container.innerHTML = html;
 }
 
-function renderPM() {
+async function renderPM() {
   const container = document.getElementById('pmContent');
-  if (!pmData || !pmData.matches) {
-    container.innerHTML = '<div style=\"text-align:center;color:#64748b;padding:40px\">PM数据加载中...</div>';
+
+  // Try Railway API first (real-time), fallback to local polymarket.json
+  let championOdds = null;
+  let sourceLabel = '';
+  let updated = '';
+  try {
+    const resp = await fetch('https://dobguski-fifa2026-production.up.railway.app/api/odds', { signal: AbortSignal.timeout(5000) });
+    const railData = await resp.json();
+    if (railData && railData.teams) {
+      championOdds = {};
+      railData.teams.forEach(t => {
+        if (t.name && t.probability) championOdds[t.name] = parseFloat(t.probability);
+      });
+      sourceLabel = 'Railway · Polymarket Live';
+      updated = railData.updated || '';
+    }
+  } catch(e) {}
+  // Fallback to local data
+  if (!championOdds && pmData && pmData.champion_odds) {
+    championOdds = pmData.champion_odds;
+    sourceLabel = 'Polymarket Gamma API';
+    updated = pmData.champion_odds_updated || pmData.updated || '';
+  }
+  if (!championOdds) {
+    container.innerHTML = '<div style=\"text-align:center;color:#64748b;padding:40px\">赔率数据加载中...</div>';
     return;
   }
 
   let html = '';
 
-  // ── Champion Odds (from Polymarket, real-time daily) ──
-  if (pmData.champion_odds && Object.keys(pmData.champion_odds).length > 5) {
-    const odds = pmData.champion_odds;
-    const sorted = Object.entries(odds).sort((a,b) => (b[1]||0) - (a[1]||0));
-    const volStr = pmData.champion_odds_volume || '';
-    html += '<div style=\"font-size:.95em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">🏆 冠军赔率 · Polymarket' + (volStr ? ' <span style=\"font-size:.6em;color:#475569;font-weight:normal\">(' + volStr + ')</span>' : '') + '</div>';
+  // ── Champion Odds ──
+  if (Object.keys(championOdds).length > 5) {
+    const sorted = Object.entries(championOdds).sort((a,b) => (b[1]||0) - (a[1]||0));
+    html += '<div style=\"font-size:.95em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">🏆 冠军赔率 · ' + sourceLabel + '</div>';
     html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;margin-bottom:20px\">';
     sorted.slice(0, 16).forEach(([team, prob], i) => {
       const pct = Math.round(prob*100);
@@ -1061,7 +1082,7 @@ function renderPM() {
       </div>`;
     });
     html += '</div>';
-    html += `<div style=\"text-align:center;font-size:.6em;color:#475569;margin:-12px 0 16px\">更新: ${pmData.champion_odds_updated||pmData.updated||'--'} | 来源: ${pmData.source||'Polymarket'}</div>`;
+    html += `<div style=\"text-align:center;font-size:.6em;color:#475569;margin:-12px 0 16px\">更新: ${updated||'--'} | 来源: ${sourceLabel}</div>`;
   }
 
   // ── Accuracy Summary Cards ──
