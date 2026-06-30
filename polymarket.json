@@ -1,6 +1,6 @@
 {
   "source": "Polymarket Gamma API (event/30615 daily)",
-  "updated": "2026-06-30T10:21:33.951685",
+  "updated": "2026-07-01T07:28:37.525276",
   "total_volume_champion_market": "$23.25亿",
   "matches": {
     "Mexico vs South Africa": {
@@ -794,31 +794,28 @@
     }
   },
   "champion_odds": {
-    "Spain": 0.1135,
+    "Spain": 0.1105,
     "Switzerland": 0.0085,
-    "England": 0.1005,
-    "France": 0.2655,
+    "England": 0.0975,
+    "France": 0.326,
     "Brazil": 0.0705,
-    "Argentina": 0.2025,
-    "Colombia": 0.0265,
-    "Portugal": 0.0555,
-    "Netherlands": 0.043,
+    "Argentina": 0.1925,
+    "Colombia": 0.0275,
+    "Portugal": 0.0525,
     "Algeria": 0.0015,
-    "USA": 0.0235,
+    "USA": 0.0305,
     "Canada": 0.0025,
-    "Mexico": 0.0125,
+    "Mexico": 0.0165,
     "Paraguay": 0.0025,
-    "Norway": 0.0225,
-    "Ecuador": 0.0055,
-    "Morocco": 0.0195,
-    "Senegal": 0.0045,
-    "Ivory Coast": 0.0025,
-    "Belgium": 0.0135,
+    "Norway": 0.0185,
+    "Ecuador": 0.0045,
+    "Morocco": 0.0315,
+    "Senegal": 0.0055,
+    "Belgium": 0.0115,
     "Australia": 0.0015,
     "Austria": 0.0015,
-    "Croatia": 0.0035,
-    "Egypt": 0.0015,
-    "Sweden": 0.0015
+    "Croatia": 0.0045,
+    "Egypt": 0.0015
   },
   "accuracy_stats": {
     "total_matches": 29,
@@ -829,6 +826,6 @@
   },
   "note": "已结束比赛基于实际PM盘口; 未开始比赛基于冠军赔率推算+交叉验证",
   "total_matches": 70,
-  "champion_odds_updated": "2026-06-30",
-  "champion_odds_volume": "$3,482,122,416"
+  "champion_odds_updated": "2026-07-01",
+  "champion_odds_volume": "$3,580,065,965"
 }
