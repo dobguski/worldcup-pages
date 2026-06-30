@@ -15,7 +15,10 @@
     "halftime": "1-0",
     "venue": "Mexico City",
     "group": "A",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-12",
@@ -33,7 +36,10 @@
     "halftime": "0-0",
     "venue": "Guadalajara (Zapopan)",
     "group": "A",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-19",
@@ -51,7 +57,10 @@
     "halftime": "0-0",
     "venue": "Atlanta",
     "group": "A",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-19",
@@ -69,7 +78,10 @@
     "halftime": "0-0",
     "venue": "Guadalajara (Zapopan)",
     "group": "A",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-25",
@@ -87,7 +99,10 @@
     "halftime": "0-0",
     "venue": "Mexico City",
     "group": "A",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-25",
@@ -105,7 +120,10 @@
     "halftime": "0-0",
     "venue": "Monterrey (Guadalupe)",
     "group": "A",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-13",
@@ -123,7 +141,10 @@
     "halftime": "0-1",
     "venue": "Toronto",
     "group": "B",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-14",
@@ -141,7 +162,10 @@
     "halftime": "0-1",
     "venue": "San Francisco Bay Area (Santa Clara)",
     "group": "B",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-19",
@@ -159,7 +183,10 @@
     "halftime": "0-0",
     "venue": "Los Angeles (Inglewood)",
     "group": "B",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-19",
@@ -177,7 +204,10 @@
     "halftime": "0-0",
     "venue": "Vancouver",
     "group": "B",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-25",
@@ -195,7 +225,10 @@
     "halftime": "0-0",
     "venue": "Vancouver",
     "group": "B",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-25",
@@ -213,7 +246,10 @@
     "halftime": "0-0",
     "venue": "Seattle",
     "group": "B",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-14",
@@ -231,7 +267,10 @@
     "halftime": "1-1",
     "venue": "New York/New Jersey (East Rutherford)",
     "group": "C",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-14",
@@ -249,7 +288,10 @@
     "halftime": "0-1",
     "venue": "Boston (Foxborough)",
     "group": "C",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-20",
@@ -267,7 +309,10 @@
     "halftime": "0-0",
     "venue": "Boston (Foxborough)",
     "group": "C",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-20",
@@ -285,7 +330,10 @@
     "halftime": "0-0",
     "venue": "Philadelphia",
     "group": "C",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-25",
@@ -303,7 +351,10 @@
     "halftime": "0-0",
     "venue": "Miami (Miami Gardens)",
     "group": "C",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-25",
@@ -321,7 +372,10 @@
     "halftime": "0-0",
     "venue": "Atlanta",
     "group": "C",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-13",
@@ -339,7 +393,10 @@
     "halftime": "3-0",
     "venue": "Los Angeles (Inglewood)",
     "group": "D",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-14",
@@ -357,7 +414,10 @@
     "halftime": "1-0",
     "venue": "Vancouver",
     "group": "D",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-20",
@@ -375,7 +435,10 @@
     "halftime": "0-0",
     "venue": "Seattle",
     "group": "D",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-20",
@@ -393,7 +456,10 @@
     "halftime": "0-0",
     "venue": "San Francisco Bay Area (Santa Clara)",
     "group": "D",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-26",
@@ -411,7 +477,10 @@
     "halftime": "0-0",
     "venue": "Los Angeles (Inglewood)",
     "group": "D",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-26",
@@ -429,7 +498,10 @@
     "halftime": "0-0",
     "venue": "San Francisco Bay Area (Santa Clara)",
     "group": "D",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-15",
@@ -447,7 +519,10 @@
     "halftime": "3-1",
     "venue": "Houston",
     "group": "E",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-15",
@@ -465,7 +540,10 @@
     "halftime": "0-0",
     "venue": "Philadelphia",
     "group": "E",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-21",
@@ -483,7 +561,10 @@
     "halftime": "0-0",
     "venue": "Toronto",
     "group": "E",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-21",
@@ -501,7 +582,10 @@
     "halftime": "0-0",
     "venue": "Kansas City",
     "group": "E",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-26",
@@ -519,7 +603,10 @@
     "halftime": "0-0",
     "venue": "Philadelphia",
     "group": "E",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-26",
@@ -537,7 +624,10 @@
     "halftime": "0-0",
     "venue": "New York/New Jersey (East Rutherford)",
     "group": "E",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-15",
@@ -555,7 +645,10 @@
     "halftime": "0-0",
     "venue": "Dallas (Arlington)",
     "group": "F",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-15",
@@ -573,7 +666,10 @@
     "halftime": "2-1",
     "venue": "Monterrey (Guadalupe)",
     "group": "F",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-21",
@@ -591,7 +687,10 @@
     "halftime": "0-0",
     "venue": "Houston",
     "group": "F",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-21",
@@ -609,7 +708,10 @@
     "halftime": "0-0",
     "venue": "Monterrey (Guadalupe)",
     "group": "F",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-26",
@@ -627,7 +729,10 @@
     "halftime": "0-0",
     "venue": "Dallas (Arlington)",
     "group": "F",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-26",
@@ -645,7 +750,10 @@
     "halftime": "0-0",
     "venue": "Kansas City",
     "group": "F",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-16",
@@ -663,7 +771,10 @@
     "halftime": "0-0",
     "venue": "Seattle",
     "group": "G",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-16",
@@ -681,7 +792,10 @@
     "halftime": "0-0",
     "venue": "Los Angeles (Inglewood)",
     "group": "G",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-22",
@@ -699,7 +813,10 @@
     "halftime": "0-0",
     "venue": "Los Angeles (Inglewood)",
     "group": "G",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-22",
@@ -717,7 +834,10 @@
     "halftime": "0-0",
     "venue": "Vancouver",
     "group": "G",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-27",
@@ -735,7 +855,10 @@
     "halftime": "0-0",
     "venue": "Seattle",
     "group": "G",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-27",
@@ -753,7 +876,10 @@
     "halftime": "0-0",
     "venue": "Vancouver",
     "group": "G",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-16",
@@ -771,7 +897,10 @@
     "halftime": "0-0",
     "venue": "Atlanta",
     "group": "H",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-16",
@@ -789,7 +918,10 @@
     "halftime": "0-0",
     "venue": "Miami (Miami Gardens)",
     "group": "H",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-22",
@@ -807,7 +939,10 @@
     "halftime": "0-0",
     "venue": "Atlanta",
     "group": "H",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-22",
@@ -825,7 +960,10 @@
     "halftime": "0-0",
     "venue": "Miami (Miami Gardens)",
     "group": "H",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-27",
@@ -843,7 +981,10 @@
     "halftime": "0-0",
     "venue": "Houston",
     "group": "H",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-27",
@@ -861,7 +1002,10 @@
     "halftime": "0-0",
     "venue": "Guadalajara (Zapopan)",
     "group": "H",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-17",
@@ -879,7 +1023,10 @@
     "halftime": "0-0",
     "venue": "New York/New Jersey (East Rutherford)",
     "group": "I",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-17",
@@ -897,7 +1044,10 @@
     "halftime": "0-0",
     "venue": "Boston (Foxborough)",
     "group": "I",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-23",
@@ -915,7 +1065,10 @@
     "halftime": "0-0",
     "venue": "Philadelphia",
     "group": "I",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-23",
@@ -933,7 +1086,10 @@
     "halftime": "0-0",
     "venue": "New York/New Jersey (East Rutherford)",
     "group": "I",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-27",
@@ -951,7 +1107,10 @@
     "halftime": "0-0",
     "venue": "Boston (Foxborough)",
     "group": "I",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-27",
@@ -969,7 +1128,10 @@
     "halftime": "0-0",
     "venue": "Toronto",
     "group": "I",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-17",
@@ -987,7 +1149,10 @@
     "halftime": "0-0",
     "venue": "Kansas City",
     "group": "J",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-17",
@@ -1005,7 +1170,10 @@
     "halftime": "0-0",
     "venue": "San Francisco Bay Area (Santa Clara)",
     "group": "J",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-23",
@@ -1023,7 +1191,10 @@
     "halftime": "0-0",
     "venue": "Dallas (Arlington)",
     "group": "J",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-23",
@@ -1041,7 +1212,10 @@
     "halftime": "0-0",
     "venue": "San Francisco Bay Area (Santa Clara)",
     "group": "J",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-28",
@@ -1059,7 +1233,10 @@
     "halftime": "0-0",
     "venue": "Kansas City",
     "group": "J",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-28",
@@ -1077,7 +1254,10 @@
     "halftime": "0-0",
     "venue": "Dallas (Arlington)",
     "group": "J",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-18",
@@ -1095,7 +1275,10 @@
     "halftime": "0-0",
     "venue": "Houston",
     "group": "K",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-18",
@@ -1113,7 +1296,10 @@
     "halftime": "0-0",
     "venue": "Mexico City",
     "group": "K",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-24",
@@ -1131,7 +1317,10 @@
     "halftime": "0-0",
     "venue": "Houston",
     "group": "K",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-24",
@@ -1149,7 +1338,10 @@
     "halftime": "0-0",
     "venue": "Guadalajara (Zapopan)",
     "group": "K",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-28",
@@ -1167,7 +1359,10 @@
     "halftime": "0-0",
     "venue": "Miami (Miami Gardens)",
     "group": "K",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-28",
@@ -1185,7 +1380,10 @@
     "halftime": "0-0",
     "venue": "Atlanta",
     "group": "K",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-18",
@@ -1203,7 +1401,10 @@
     "halftime": "0-0",
     "venue": "Dallas (Arlington)",
     "group": "L",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-18",
@@ -1221,7 +1422,10 @@
     "halftime": "0-0",
     "venue": "Toronto",
     "group": "L",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-24",
@@ -1239,7 +1443,10 @@
     "halftime": "0-0",
     "venue": "Boston (Foxborough)",
     "group": "L",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-24",
@@ -1257,7 +1464,10 @@
     "halftime": "0-0",
     "venue": "Toronto",
     "group": "L",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-28",
@@ -1275,7 +1485,10 @@
     "halftime": "0-0",
     "venue": "New York/New Jersey (East Rutherford)",
     "group": "L",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-28",
@@ -1293,7 +1506,10 @@
     "halftime": "0-0",
     "venue": "Philadelphia",
     "group": "L",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-29",
@@ -1311,7 +1527,10 @@
     "halftime": "0-0",
     "venue": "SoFi Stadium",
     "group": "KO",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-30",
@@ -1329,7 +1548,10 @@
     "halftime": "0-0",
     "venue": "NRG Stadium",
     "group": "KO",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-06-30",
@@ -1347,7 +1569,10 @@
     "halftime": "1-1",
     "venue": "Gillette Stadium",
     "group": "KO",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": 3,
+    "penalty_away": 4,
+    "penalty_winner": "away"
   },
   {
     "date": "2026-06-30",
@@ -1365,7 +1590,10 @@
     "halftime": "0-0",
     "venue": "Estadio BBVA",
     "group": "KO",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-07-01",
@@ -1383,7 +1611,10 @@
     "halftime": null,
     "venue": "AT&T Stadium",
     "group": "KO",
-    "is_result": false
+    "is_result": false,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-07-01",
@@ -1401,7 +1632,10 @@
     "halftime": null,
     "venue": "MetLife Stadium",
     "group": "KO",
-    "is_result": false
+    "is_result": false,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-07-01",
@@ -1419,7 +1653,10 @@
     "halftime": null,
     "venue": "Estadio Banorte",
     "group": "KO",
-    "is_result": false
+    "is_result": false,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-07-02",
@@ -1437,7 +1674,10 @@
     "halftime": null,
     "venue": "Mercedes-Benz Stadium",
     "group": "KO",
-    "is_result": false
+    "is_result": false,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-07-02",
@@ -1455,7 +1695,10 @@
     "halftime": null,
     "venue": "Lumen Field",
     "group": "KO",
-    "is_result": false
+    "is_result": false,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-07-02",
@@ -1473,7 +1716,10 @@
     "halftime": null,
     "venue": "Levi's Stadium",
     "group": "KO",
-    "is_result": false
+    "is_result": false,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-07-03",
@@ -1491,7 +1737,10 @@
     "halftime": null,
     "venue": "Hard Rock Stadium",
     "group": "KO",
-    "is_result": false
+    "is_result": false,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-07-03",
@@ -1509,7 +1758,10 @@
     "halftime": null,
     "venue": "BC Place",
     "group": "KO",
-    "is_result": false
+    "is_result": false,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-07-03",
@@ -1527,7 +1779,10 @@
     "halftime": null,
     "venue": "Arrowhead Stadium",
     "group": "KO",
-    "is_result": false
+    "is_result": false,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-07-04",
@@ -1545,7 +1800,10 @@
     "halftime": null,
     "venue": "BMO Field",
     "group": "KO",
-    "is_result": false
+    "is_result": false,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-07-04",
@@ -1563,7 +1821,10 @@
     "halftime": null,
     "venue": "MetLife Stadium",
     "group": "KO",
-    "is_result": false
+    "is_result": false,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   },
   {
     "date": "2026-07-04",
@@ -1581,6 +1842,9 @@
     "halftime": null,
     "venue": "Estadio Azteca",
     "group": "KO",
-    "is_result": false
+    "is_result": false,
+    "penalty_home": null,
+    "penalty_away": null,
+    "penalty_winner": null
   }
 ]
