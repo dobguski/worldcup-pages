@@ -753,7 +753,7 @@ function renderMatches() {
         <div class="match-date">${infoLine}</div>
         <div class="match-teams">
           <div class="team"><div class="team-name">${teamName(match.home_team)}</div></div>
-          <div class="score ${!isDone&&!isLive?'pending':''}">${isDone||isLive ? (match.home_score!=null?match.home_score:0)+'-'+(match.away_score!=null?match.away_score:0) : 'vs'}</div>
+          <div class="score ${!isDone&&!isLive?'pending':''}">${isDone||isLive ? (match.home_score!=null?match.home_score:0)+'-'+(match.away_score!=null?match.away_score:0)+(match.penalty_home!=null?' <span style=\"font-size:.6em;color:#e2b04a\">('+match.penalty_home+'-'+match.penalty_away+' PK)</span>':'') : 'vs'}</div>
           <div class="team"><div class="team-name">${teamName(match.away_team)}</div></div>
         </div>
         <div class="match-info"><span class="match-status ${statusCls}">${statusLabel}</span></div>
@@ -789,7 +789,7 @@ function renderLive() {
         <div class="match-date">${fmt.date} ${liveTimeDisplay} · ${m.group}${t('group')} · ${m.venue}</div>
         <div class="match-teams">
           <div class="team"><div class="team-name">${teamName(m.home_team)}</div></div>
-          <div class="score live-pulse">${hasScore ? (m.home_score!=null?m.home_score:0)+'-'+(m.away_score!=null?m.away_score:0) : '0-0'}</div>
+          <div class="score live-pulse">${hasScore ? (m.home_score!=null?m.home_score:0)+'-'+(m.away_score!=null?m.away_score:0)+(m.penalty_home!=null?' ('+m.penalty_home+'-'+m.penalty_away+' PK)':'') : '0-0'}</div>
           <div class="team"><div class="team-name">${teamName(m.away_team)}</div></div>
         </div>
         <div class="match-info"><span class="match-status status-live">🔴 ${t('status.live')}</span></div>

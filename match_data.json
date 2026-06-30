@@ -1347,7 +1347,10 @@
     "halftime": "1-1",
     "venue": "Gillette Stadium",
     "group": "KO",
-    "is_result": true
+    "is_result": true,
+    "penalty_home": 3,
+    "penalty_away": 4,
+    "penalty_winner": "away"
   },
   {
     "date": "2026-07-01",
