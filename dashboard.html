@@ -418,13 +418,12 @@ let currentLang = 'dual';
 
 // ── Tab Configuration (navigation decoupled from content) ──
 const TAB_CONFIG = [
-  { id: 'standings', icon: '📊', cn: '小组赛', en: 'Groups' },
+  { id: 'pm',        icon: '📈', cn: '猜冠军',   en: 'Champion' },
   { id: 'matches',   icon: '📰', cn: '最新战报', en: 'Latest',   active: true },
-  { id: 'live',      icon: '🔴', cn: '直播',     en: 'Live' },
-  { id: 'teams',     icon: '👥', cn: '球队',     en: 'Teams' },
   { id: 'bracket',   icon: '🏆', cn: '淘汰赛',   en: 'Bracket' },
-  { id: 'goals',     icon: '⚽', cn: '进球榜',   en: 'Goals' },
-  { id: 'pm',        icon: '📈', cn: 'PM预测',   en: 'PM Picks' },
+  { id: 'standings', icon: '📊', cn: '小组赛', en: 'Groups' },
+  { id: 'goals',     icon: '⚽', cn: '射手榜',   en: 'Goals' },
+  { id: 'teams',     icon: '👥', cn: '球队',     en: 'Teams' },
 ];
 
 function renderNav() {
@@ -438,6 +437,10 @@ function renderNav() {
     I18N.cn['tab.' + t.id] = t.icon + ' ' + t.cn;
     I18N.en['tab.' + t.id] = t.icon + ' ' + t.en;
   });
+  // Also update manual i18n entries
+  I18N.cn['tab.pm'] = '📈 猜冠军'; I18N.en['tab.pm'] = '📈 Champion';
+  I18N.cn['tab.goals'] = '⚽ 射手榜'; I18N.en['tab.goals'] = '⚽ Goals';
+  I18N.cn['tab.standings'] = '📊 小组赛'; I18N.en['tab.standings'] = '📊 Groups';
 }
 renderNav();  // Build nav on page load
 
