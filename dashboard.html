@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' http://localhost:8888 https://pagead2.googlesyndication.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
@@ -207,9 +210,6 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
 .tabs{display:flex;gap:5px;margin:0;flex-wrap:wrap;padding:8px 0 0 0}
 .tab{padding:8px 20px;background:#1e293b;border:1px solid #334155;border-radius:8px 8px 0 0;cursor:pointer;color:#94a3b8;font-size:.9em}
 .tab.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
-.tab-gold{background:linear-gradient(135deg,rgba(245,158,11,.25),rgba(239,68,68,.2))!important;border-color:rgba(245,158,11,.4)!important;color:#fbbf24!important;font-weight:700!important}
-.tab-gold.active{background:linear-gradient(135deg,#f59e0b,#e67e22)!important;color:#fff!important;animation:pulse-gold 2s infinite}
-@keyframes pulse-gold{0%,100%{box-shadow:0 0 6px rgba(245,158,11,.3)}50%{box-shadow:0 0 16px rgba(245,158,11,.7)}}
 .tab-content{display:none}
 .tab-content.active{display:block}
 @media(max-width:768px){
@@ -249,7 +249,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
   <div class="groups-grid" id="groupsGrid"></div>
 </div>
 
-<div class="tab-content" id="tab-matches">
+<div class="tab-content active" id="tab-matches">
   <div id="matchesByDate"></div>
 </div>
 
@@ -265,7 +265,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
   <div class="bracket-container" id="bracketView"></div>
 </div>
 
-<div class="tab-content active" id="tab-pm">
+<div class="tab-content" id="tab-pm">
   <div id="pmContent"></div>
 </div>
 
@@ -292,7 +292,7 @@ const I18N = {
     'tab.live': '🔴 直播中',
     'tab.teams': '👥 球队信息',
     'tab.bracket': '🏆 淘汰赛对阵',
-    'tab.pm': '🏆 猜冠军',
+    'tab.pm': '📈 PM预测',
     'banner.live': '比赛进行中 · 实时比分',
     'lastUpdate': '最后更新',
     'loading': '加载中...',
@@ -424,14 +424,14 @@ const TAB_CONFIG = [
   { id: 'teams',     icon: '👥', cn: '球队',     en: 'Teams' },
   { id: 'bracket',   icon: '🏆', cn: '淘汰赛',   en: 'Bracket' },
   { id: 'goals',     icon: '⚽', cn: '进球榜',   en: 'Goals' },
-  { id: 'pm',        icon: '🏆', cn: '猜冠军',   en: 'Champion' },
+  { id: 'pm',        icon: '📈', cn: 'PM预测',   en: 'PM Picks' },
 ];
 
 function renderNav() {
   const nav = document.getElementById('tabNav');
   if (!nav) return;
   nav.innerHTML = TAB_CONFIG.map(t =>
-    `<div class="tab${t.active?' active':''}${t.id==='pm'?' tab-gold':''}" onclick="switchTab('${t.id}')"><span>${t.icon} ${t.cn} / ${t.en}</span></div>`
+    `<div class="tab${t.active?' active':''}" onclick="switchTab('${t.id}')"><span>${t.icon} ${t.cn} / ${t.en}</span></div>`
   ).join('');
   // Update i18n labels
   TAB_CONFIG.forEach(t => {
@@ -512,14 +512,15 @@ function teamName(en) {
 
 async function loadData() {
   try {
-    const cb = '?v=' + Date.now();  // cache-bust to avoid stale data
+    const cb = '?v=' + Date.now();
+    const fetchOpts = { cache: 'no-store' };  // Force bypass browser cache
     const [mRes, sRes, tRes, tmRes, pmRes, goalsRes] = await Promise.all([
-      fetch('match_data.json' + cb),
-      fetch('standings.json' + cb),
-      fetch('team_names.json' + cb),
-      fetch('teams.json' + cb).catch(() => null),
-      fetch('polymarket.json' + cb).catch(() => null),
-      fetch('goalscorers.json' + cb).catch(() => null)
+      fetch('match_data.json' + cb, fetchOpts),
+      fetch('standings.json' + cb, fetchOpts),
+      fetch('team_names.json' + cb, fetchOpts),
+      fetch('teams.json' + cb, fetchOpts).catch(() => null),
+      fetch('polymarket.json' + cb, fetchOpts).catch(() => null),
+      fetch('goalscorers.json' + cb, fetchOpts).catch(() => null)
     ]);
     matchData = await mRes.json();
     standings = await sRes.json();
@@ -623,7 +624,7 @@ function scrollToRelevantMatch() {
 
   // 1) Live matches — switch to Live tab, scroll to first live match
   if (liveCards.length > 0) {
-    switchTab('pm');
+    switchTab('live');
     liveCards[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
@@ -1077,10 +1078,10 @@ function renderPM() {
   html += '</div>';
 
   // ── Match Prediction Table ──
-  html += '<div style=\"font-size:1em;color:#e2b04a;margin:16px 0 8px;font-weight:bold\">📊 已结束比赛：猜冠军 vs 实际结果</div>';
+  html += '<div style=\"font-size:1em;color:#e2b04a;margin:16px 0 8px;font-weight:bold\">📊 已结束比赛：PM预测 vs 实际结果</div>';
   html += '<div style=\"overflow-x:auto\"><table style=\"width:100%;border-collapse:collapse;font-size:.75em\">';
   html += '<thead><tr style=\"background:#0f1724;color:#94a3b8\">';
-  ['比赛','小组','猜冠军','概率','实际','判定'].forEach(h => html += `<th style=\"padding:6px;text-align:center\">${h}</th>`);
+  ['比赛','小组','PM预测','概率','实际','判定'].forEach(h => html += `<th style=\"padding:6px;text-align:center\">${h}</th>`);
   html += '</tr></thead><tbody>';
 
   // Match completed matches with PM data
@@ -1369,7 +1370,7 @@ function buildPMRow(match) {
     const predLabel = pm.predicted === 'home' ? t('poll.home') : (pm.predicted === 'away' ? t('poll.away') : t('poll.draw'));
     const ok = (pm.predicted === actual);
     const okText = ok ? '✅ 预测正确' : '❌ 预测失败';
-    html += `<div class="pm-compare ${ok?'correct':'wrong'}">${okText}: 猜冠军${predLabel}(${favPct}%) → 实际${actualLabel}(${match.home_score}-${match.away_score})</div>`;
+    html += `<div class="pm-compare ${ok?'correct':'wrong'}">${okText}: PM预测${predLabel}(${favPct}%) → 实际${actualLabel}(${match.home_score}-${match.away_score})</div>`;
   }
 
   // Note/context
