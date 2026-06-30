@@ -1,0 +1,740 @@
+{
+  "updated": "2026-06-30 06:09",
+  "wc2026": [
+    {
+      "name": "Lionel Messi",
+      "goals": 6,
+      "name_cn": "梅西"
+    },
+    {
+      "name": "Vinicius Junior",
+      "goals": 4,
+      "name_cn": "维尼修斯"
+    },
+    {
+      "name": "Ousmane Dembele",
+      "goals": 4,
+      "name_cn": "登贝莱"
+    },
+    {
+      "name": "Kylian Mbappe",
+      "goals": 4,
+      "name_cn": "姆巴佩"
+    },
+    {
+      "name": "Erling Haaland",
+      "goals": 4,
+      "name_cn": "哈兰德"
+    },
+    {
+      "name": "Matheus Cunha",
+      "goals": 3,
+      "name_cn": "库尼亚"
+    },
+    {
+      "name": "Jonathan David",
+      "goals": 3,
+      "name_cn": "乔纳森·大卫"
+    },
+    {
+      "name": "Yoane Wissa",
+      "goals": 3,
+      "name_cn": "维萨"
+    },
+    {
+      "name": "Harry Kane",
+      "goals": 3,
+      "name_cn": "凯恩"
+    },
+    {
+      "name": "Brian Brobbey",
+      "goals": 3,
+      "name_cn": "布罗比"
+    },
+    {
+      "name": "Elijah Just",
+      "goals": 3,
+      "name_cn": "贾斯特"
+    },
+    {
+      "name": "Ismaila Sarr",
+      "goals": 3,
+      "name_cn": "萨尔"
+    },
+    {
+      "name": "Johan Manzambi",
+      "goals": 3,
+      "name_cn": "曼赞比"
+    },
+    {
+      "name": "Riyad Mahrez",
+      "goals": 2,
+      "name_cn": "马赫雷斯"
+    },
+    {
+      "name": "Marko Arnautovic",
+      "goals": 2,
+      "name_cn": "阿瑙托维奇"
+    },
+    {
+      "name": "Leandro Trossard",
+      "goals": 2,
+      "name_cn": "特罗萨德"
+    },
+    {
+      "name": "Ermin Mahmic",
+      "goals": 2,
+      "name_cn": "马赫米奇"
+    },
+    {
+      "name": "Nicolas Pepe",
+      "goals": 2,
+      "name_cn": "佩佩"
+    },
+    {
+      "name": "Daniel Munoz",
+      "goals": 2,
+      "name_cn": "穆尼奥斯"
+    },
+    {
+      "name": "Jude Bellingham",
+      "goals": 2,
+      "name_cn": "贝林厄姆"
+    },
+    {
+      "name": "Mikel Oyarzabal",
+      "goals": 2,
+      "name_cn": "奥亚萨瓦尔"
+    },
+    {
+      "name": "Kai Havertz",
+      "goals": 2,
+      "name_cn": "凯·哈弗茨"
+    },
+    {
+      "name": "Ramin Rezaeian",
+      "goals": 2,
+      "name_cn": "雷扎扬"
+    },
+    {
+      "name": "Ayase Ueda",
+      "goals": 2,
+      "name_cn": "上田绮世"
+    },
+    {
+      "name": "Julian Quinones",
+      "goals": 2,
+      "name_cn": "朱利安·奎尼奥内斯"
+    },
+    {
+      "name": "Cody Gakpo",
+      "goals": 2,
+      "name_cn": "加克波"
+    },
+    {
+      "name": "Cristiano Ronaldo",
+      "goals": 2,
+      "name_cn": "C罗"
+    },
+    {
+      "name": "Pape Gueye",
+      "goals": 2,
+      "name_cn": "盖耶"
+    },
+    {
+      "name": "Ruben Vargas",
+      "goals": 2,
+      "name_cn": "瓦尔加斯"
+    },
+    {
+      "name": "Yasin Ayari",
+      "goals": 2,
+      "name_cn": "亚辛·阿亚里"
+    },
+    {
+      "name": "Anthony Elanga",
+      "goals": 2,
+      "name_cn": "埃兰加"
+    },
+    {
+      "name": "Maximiliano Araujo",
+      "goals": 2,
+      "name_cn": "阿劳霍"
+    },
+    {
+      "name": "Deniz Undav",
+      "goals": 1,
+      "name_cn": "德尼兹·翁达夫"
+    },
+    {
+      "name": "Ismael Saibari",
+      "goals": 1,
+      "name_cn": "伊斯梅尔·赛巴里"
+    },
+    {
+      "name": "Cyle Larin",
+      "goals": 1,
+      "name_cn": "赛尔·拉林"
+    },
+    {
+      "name": "Daichi Kamada",
+      "goals": 1,
+      "name_cn": "镰田大地"
+    },
+    {
+      "name": "Crysencio Summerville",
+      "goals": 1,
+      "name_cn": "萨默维尔"
+    },
+    {
+      "name": "Folarin Balogun",
+      "goals": 1,
+      "name_cn": "福拉林·巴洛贡"
+    },
+    {
+      "name": "James Rodriguez",
+      "goals": 1,
+      "name_cn": "J罗"
+    },
+    {
+      "name": "Luis Diaz",
+      "goals": 1,
+      "name_cn": "路易斯·迪亚斯"
+    },
+    {
+      "name": "Giovanni Reyna",
+      "goals": 1,
+      "name_cn": "雷纳"
+    },
+    {
+      "name": "Christian Pulisic",
+      "goals": 1,
+      "name_cn": "普利西奇"
+    },
+    {
+      "name": "Jamal Musiala",
+      "goals": 1,
+      "name_cn": "贾马尔·穆西亚拉"
+    },
+    {
+      "name": "Nico Schlotterbeck",
+      "goals": 1,
+      "name_cn": "尼科·施洛特贝克"
+    },
+    {
+      "name": "Felix Nmecha",
+      "goals": 1,
+      "name_cn": "费利克斯·恩梅查"
+    },
+    {
+      "name": "Nathaniel Brown",
+      "goals": 1,
+      "name_cn": "纳撒尼尔·布朗"
+    },
+    {
+      "name": "Breel Embolo",
+      "goals": 1,
+      "name_cn": "布里尔·恩博洛"
+    },
+    {
+      "name": "Nestory Irankunda",
+      "goals": 1,
+      "name_cn": "内斯托里·伊兰昆达"
+    },
+    {
+      "name": "Connor Metcalfe",
+      "goals": 1,
+      "name_cn": "康纳·梅特卡夫"
+    },
+    {
+      "name": "Ladislav Krejci",
+      "goals": 1,
+      "name_cn": "克雷伊奇"
+    },
+    {
+      "name": "Tomas Soucek",
+      "goals": 1,
+      "name_cn": "绍切克"
+    },
+    {
+      "name": "Patrik Schick",
+      "goals": 1,
+      "name_cn": "希克"
+    },
+    {
+      "name": "Jovo Lukic",
+      "goals": 1,
+      "name_cn": "卢基奇"
+    },
+    {
+      "name": "Ermedin Demirovic",
+      "goals": 1,
+      "name_cn": "德米罗维奇"
+    },
+    {
+      "name": "Mohamed Salah",
+      "goals": 1,
+      "name_cn": "萨拉赫"
+    },
+    {
+      "name": "Omar Marmoush",
+      "goals": 1,
+      "name_cn": "马尔穆什"
+    },
+    {
+      "name": "Sardar Azmoun",
+      "goals": 1,
+      "name_cn": "阿兹蒙"
+    },
+    {
+      "name": "Mehdi Taremi",
+      "goals": 1,
+      "name_cn": "塔雷米"
+    },
+    {
+      "name": "Musa Al-Tamari",
+      "goals": 1,
+      "name_cn": "塔马里"
+    },
+    {
+      "name": "Takefusa Kubo",
+      "goals": 1,
+      "name_cn": "久保建英"
+    },
+    {
+      "name": "Keito Nakamura",
+      "goals": 1,
+      "name_cn": "中村敬斗"
+    },
+    {
+      "name": "Ritsu Doan",
+      "goals": 1,
+      "name_cn": "堂安律"
+    },
+    {
+      "name": "Lee Kang-in",
+      "goals": 1,
+      "name_cn": "李刚仁"
+    },
+    {
+      "name": "Son Heung-min",
+      "goals": 1,
+      "name_cn": "孙兴慜"
+    },
+    {
+      "name": "Cho Gue-sung",
+      "goals": 1,
+      "name_cn": "曹圭成"
+    },
+    {
+      "name": "Brahim Diaz",
+      "goals": 1,
+      "name_cn": "迪亚斯"
+    },
+    {
+      "name": "Achraf Hakimi",
+      "goals": 1,
+      "name_cn": "哈基米"
+    },
+    {
+      "name": "Santiago Gimenez",
+      "goals": 1,
+      "name_cn": "希门尼斯"
+    },
+    {
+      "name": "Raul Jimenez",
+      "goals": 1,
+      "name_cn": "劳尔·希门尼斯"
+    },
+    {
+      "name": "Memphis Depay",
+      "goals": 1,
+      "name_cn": "德佩"
+    },
+    {
+      "name": "Virgil van Dijk",
+      "goals": 1,
+      "name_cn": "范戴克"
+    },
+    {
+      "name": "Martin Odegaard",
+      "goals": 1,
+      "name_cn": "厄德高"
+    },
+    {
+      "name": "Chris Wood",
+      "goals": 1,
+      "name_cn": "克里斯·伍德"
+    },
+    {
+      "name": "Miguel Almiron",
+      "goals": 1,
+      "name_cn": "阿尔米隆"
+    },
+    {
+      "name": "Ruben Neves",
+      "goals": 1,
+      "name_cn": "内维斯"
+    },
+    {
+      "name": "Rafael Leao",
+      "goals": 1,
+      "name_cn": "莱奥"
+    },
+    {
+      "name": "Bruno Fernandes",
+      "goals": 1,
+      "name_cn": "B费"
+    },
+    {
+      "name": "Akram Afif",
+      "goals": 1,
+      "name_cn": "阿菲夫"
+    },
+    {
+      "name": "Almoez Ali",
+      "goals": 1,
+      "name_cn": "阿里"
+    },
+    {
+      "name": "Percy Tau",
+      "goals": 1,
+      "name_cn": "陶"
+    },
+    {
+      "name": "Granit Xhaka",
+      "goals": 1,
+      "name_cn": "扎卡"
+    },
+    {
+      "name": "Xherdan Shaqiri",
+      "goals": 1,
+      "name_cn": "沙奇里"
+    },
+    {
+      "name": "Alexander Isak",
+      "goals": 1,
+      "name_cn": "伊萨克"
+    },
+    {
+      "name": "Viktor Gyokeres",
+      "goals": 1,
+      "name_cn": "哲凯赖什"
+    },
+    {
+      "name": "Dejan Kulusevski",
+      "goals": 1,
+      "name_cn": "库卢塞夫斯基"
+    },
+    {
+      "name": "Cenk Tosun",
+      "goals": 1,
+      "name_cn": "托松"
+    },
+    {
+      "name": "Hakan Calhanoglu",
+      "goals": 1,
+      "name_cn": "恰尔汗奥卢"
+    },
+    {
+      "name": "Darwin Nunez",
+      "goals": 1,
+      "name_cn": "努涅斯"
+    },
+    {
+      "name": "Federico Valverde",
+      "goals": 1,
+      "name_cn": "巴尔韦德"
+    },
+    {
+      "name": "Jaloliddin Masharipov",
+      "goals": 1,
+      "name_cn": "马沙里波夫"
+    },
+    {
+      "name": "Eldor Shomurodov",
+      "goals": 1,
+      "name_cn": "肖穆罗多夫"
+    },
+    {
+      "name": "Julián Quiñones",
+      "goals": 1,
+      "name_cn": "奎尼奥内斯"
+    },
+    {
+      "name": "Raúl Jiménez",
+      "goals": 1,
+      "name_cn": "劳尔·希门尼斯"
+    },
+    {
+      "name": "Ladislav Krejcí",
+      "goals": 1,
+      "name_cn": ""
+    },
+    {
+      "name": "Vinícius Júnior",
+      "goals": 1,
+      "name_cn": "维尼修斯·儒尼奥尔"
+    },
+    {
+      "name": "Damian Bobadilla",
+      "goals": 1,
+      "name_cn": ""
+    },
+    {
+      "name": "Livano Comenencia",
+      "goals": 1,
+      "name_cn": ""
+    }
+  ],
+  "all_time": [
+    {
+      "name": "Miroslav Klose",
+      "name_cn": "克洛泽",
+      "goals": 16,
+      "nation": "Germany",
+      "tournaments": "2002-2014"
+    },
+    {
+      "name": "Ronaldo",
+      "name_cn": "罗纳尔多",
+      "goals": 15,
+      "nation": "Brazil",
+      "tournaments": "1994-2006"
+    },
+    {
+      "name": "Gerd Muller",
+      "name_cn": "盖德·穆勒",
+      "goals": 14,
+      "nation": "Germany",
+      "tournaments": "1970-1974"
+    },
+    {
+      "name": "Just Fontaine",
+      "name_cn": "方丹",
+      "goals": 13,
+      "nation": "France",
+      "tournaments": "1958"
+    },
+    {
+      "name": "Lionel Messi",
+      "name_cn": "梅西",
+      "goals": 13,
+      "nation": "Argentina",
+      "tournaments": "2006-2022"
+    },
+    {
+      "name": "Pele",
+      "name_cn": "贝利",
+      "goals": 12,
+      "nation": "Brazil",
+      "tournaments": "1958-1970"
+    },
+    {
+      "name": "Kylian Mbappe",
+      "name_cn": "姆巴佩",
+      "goals": 12,
+      "nation": "France",
+      "tournaments": "2018-2022"
+    },
+    {
+      "name": "Sandor Kocsis",
+      "name_cn": "柯奇士",
+      "goals": 11,
+      "nation": "Hungary",
+      "tournaments": "1954"
+    },
+    {
+      "name": "Jurgen Klinsmann",
+      "name_cn": "克林斯曼",
+      "goals": 11,
+      "nation": "Germany",
+      "tournaments": "1990-1998"
+    },
+    {
+      "name": "Helmut Rahn",
+      "name_cn": "拉恩",
+      "goals": 10,
+      "nation": "Germany",
+      "tournaments": "1954-1958"
+    },
+    {
+      "name": "Gary Lineker",
+      "name_cn": "莱因克尔",
+      "goals": 10,
+      "nation": "England",
+      "tournaments": "1986-1990"
+    },
+    {
+      "name": "Gabriel Batistuta",
+      "name_cn": "巴蒂斯图塔",
+      "goals": 10,
+      "nation": "Argentina",
+      "tournaments": "1994-2002"
+    },
+    {
+      "name": "Thomas Muller",
+      "name_cn": "托马斯·穆勒",
+      "goals": 10,
+      "nation": "Germany",
+      "tournaments": "2010-2022"
+    },
+    {
+      "name": "Teofilo Cubillas",
+      "name_cn": "库比拉斯",
+      "goals": 10,
+      "nation": "Peru",
+      "tournaments": "1970-1978"
+    },
+    {
+      "name": "Grzegorz Lato",
+      "name_cn": "拉托",
+      "goals": 10,
+      "nation": "Poland",
+      "tournaments": "1974-1982"
+    },
+    {
+      "name": "David Villa",
+      "name_cn": "比利亚",
+      "goals": 9,
+      "nation": "Spain",
+      "tournaments": "2006-2014"
+    },
+    {
+      "name": "Eusebio",
+      "name_cn": "尤西比奥",
+      "goals": 9,
+      "nation": "Portugal",
+      "tournaments": "1966"
+    },
+    {
+      "name": "Christian Vieri",
+      "name_cn": "维埃里",
+      "goals": 9,
+      "nation": "Italy",
+      "tournaments": "1998-2002"
+    },
+    {
+      "name": "Diego Maradona",
+      "name_cn": "马拉多纳",
+      "goals": 8,
+      "nation": "Argentina",
+      "tournaments": "1982-1994"
+    },
+    {
+      "name": "Rudi Voller",
+      "name_cn": "沃勒尔",
+      "goals": 8,
+      "nation": "Germany",
+      "tournaments": "1986-1994"
+    },
+    {
+      "name": "Enner Valencia",
+      "name_cn": "",
+      "goals": 4,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Cody Gakpo",
+      "name_cn": "",
+      "goals": 3,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Breel Embolo",
+      "name_cn": "",
+      "goals": 3,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Robin Van Persie",
+      "name_cn": "",
+      "goals": 2,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Arjen Robben",
+      "name_cn": "",
+      "goals": 2,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Wilfried Bony",
+      "name_cn": "",
+      "goals": 2,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Karim Benzema",
+      "name_cn": "",
+      "goals": 2,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Olivier Giroud",
+      "name_cn": "",
+      "goals": 2,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Xherdan Shaqiri",
+      "name_cn": "",
+      "goals": 2,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Marcos Rojo",
+      "name_cn": "",
+      "goals": 2,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Clint Dempsey",
+      "name_cn": "",
+      "goals": 2,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Asamoah Gyan",
+      "name_cn": "",
+      "goals": 2,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Cristiano Ronaldo",
+      "name_cn": "",
+      "goals": 2,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Islam Slimani",
+      "name_cn": "",
+      "goals": 2,
+      "nation": "",
+      "tournaments": ""
+    },
+    {
+      "name": "Wahbi Khazri",
+      "name_cn": "",
+      "goals": 2,
+      "nation": "",
+      "tournaments": ""
+    }
+  ],
+  "total_2026_scorers": 97,
+  "total_2026_goals": 149,
+  "source": "Wikipedia zh + EN"
+}

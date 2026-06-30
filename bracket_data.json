@@ -1,0 +1,142 @@
+{
+  "qualified": {
+    "A": {
+      "1st": "Mexico",
+      "2nd": "South Africa",
+      "3rd": "South Korea",
+      "3rd_best": false
+    },
+    "B": {
+      "1st": "Switzerland",
+      "2nd": "Canada",
+      "3rd": "Bosnia & Herzegovina",
+      "3rd_best": true
+    },
+    "C": {
+      "1st": "Brazil",
+      "2nd": "Morocco",
+      "3rd": "Scotland",
+      "3rd_best": false
+    },
+    "D": {
+      "1st": "USA",
+      "2nd": "Australia",
+      "3rd": "Paraguay",
+      "3rd_best": true
+    },
+    "E": {
+      "1st": "Germany",
+      "2nd": "Ivory Coast",
+      "3rd": "Ecuador",
+      "3rd_best": true
+    },
+    "F": {
+      "1st": "Netherlands",
+      "2nd": "Japan",
+      "3rd": "Sweden",
+      "3rd_best": true
+    },
+    "G": {
+      "1st": "Belgium",
+      "2nd": "Egypt",
+      "3rd": "Iran",
+      "3rd_best": false
+    },
+    "H": {
+      "1st": "Spain",
+      "2nd": "Cape Verde",
+      "3rd": "Uruguay",
+      "3rd_best": false
+    },
+    "I": {
+      "1st": "France",
+      "2nd": "Norway",
+      "3rd": "Senegal",
+      "3rd_best": true
+    },
+    "J": {
+      "1st": "Argentina",
+      "2nd": "Austria",
+      "3rd": "Algeria",
+      "3rd_best": true
+    },
+    "K": {
+      "1st": "Colombia",
+      "2nd": "Portugal",
+      "3rd": "DR Congo",
+      "3rd_best": true
+    },
+    "L": {
+      "1st": "England",
+      "2nd": "Croatia",
+      "3rd": "Ghana",
+      "3rd_best": true
+    }
+  },
+  "r32": {
+    "0": [
+      "Mexico",
+      "DR Congo"
+    ],
+    "1": [
+      "Australia",
+      "Ivory Coast"
+    ],
+    "2": [
+      "Brazil",
+      "DR Congo"
+    ],
+    "3": [
+      "South Africa",
+      "Canada"
+    ],
+    "4": [
+      "Germany",
+      "DR Congo"
+    ],
+    "5": [
+      "Egypt",
+      "Cape Verde"
+    ],
+    "6": [
+      "Belgium",
+      "DR Congo"
+    ],
+    "7": [
+      "Portugal",
+      "Croatia"
+    ],
+    "8": [
+      "France",
+      "DR Congo"
+    ],
+    "9": [
+      "Morocco",
+      "Japan"
+    ],
+    "10": [
+      "Colombia",
+      "DR Congo"
+    ],
+    "11": [
+      "Norway",
+      "Austria"
+    ],
+    "12": [
+      "Switzerland",
+      "DR Congo"
+    ],
+    "13": [
+      "Australia",
+      "Morocco"
+    ],
+    "14": [
+      "USA",
+      "DR Congo"
+    ],
+    "15": [
+      "South Africa",
+      "Canada"
+    ]
+  }
+}
