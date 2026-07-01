@@ -207,8 +207,9 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
 .player-pos{color:#94a3b8;text-align:center;font-size:.85em}
 .player-club{color:#64748b;font-size:.85em}
 .sticky-header{position:sticky;top:0;z-index:100;background:#0f1724;padding:4px 0 0 0;box-shadow:0 4px 12px rgba(0,0,0,.4);min-height:36px}
-.tabs{display:flex;gap:5px;margin:0;flex-wrap:wrap;padding:8px 0 0 0}
-.tab{padding:8px 20px;background:#1e293b;border:1px solid #334155;border-radius:8px 8px 0 0;cursor:pointer;color:#94a3b8;font-size:.9em}
+.tabs{display:flex;gap:3px;margin:0;flex-wrap:nowrap;overflow-x:auto;padding:4px 0 0 0;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:6px 12px;background:#1e293b;border:1px solid #334155;border-radius:6px 6px 0 0;cursor:pointer;color:#94a3b8;font-size:.75em;white-space:nowrap;flex-shrink:0}
 .tab.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
 .tab.pm-tab{background:linear-gradient(135deg,#1e3a5f,#16223a);border-color:#e2b04a}
 .tab.pm-tab:hover{border-color:#c99520;background:linear-gradient(135deg,#2a4a6f,#1e3a5f)}
@@ -1383,6 +1384,10 @@ function switchTab(name) {
   document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', i === idx));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
+  // Auto-scroll to latest match when switching to matches tab
+  if (name === 'matches') {
+    setTimeout(() => scrollToRelevantMatch(), 200);
+  }
 }
 
 let refreshTimer = null;
