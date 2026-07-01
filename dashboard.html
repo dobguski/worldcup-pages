@@ -210,6 +210,9 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172
 .tabs{display:flex;gap:5px;margin:0;flex-wrap:wrap;padding:8px 0 0 0}
 .tab{padding:8px 20px;background:#1e293b;border:1px solid #334155;border-radius:8px 8px 0 0;cursor:pointer;color:#94a3b8;font-size:.9em}
 .tab.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
+.tab.pm-tab{background:linear-gradient(135deg,#1e3a5f,#16223a);border-color:#e2b04a}
+.tab.pm-tab:hover{border-color:#c99520;background:linear-gradient(135deg,#2a4a6f,#1e3a5f)}
+.tab.pm-tab.active{background:linear-gradient(135deg,#e2b04a,#c99520);color:#0f1724;border-color:#e2b04a;font-weight:bold;box-shadow:0 0 12px rgba(226,176,74,.4)}
 .tab-content{display:none}
 .tab-content.active{display:block}
 @media(max-width:768px){
@@ -418,8 +421,8 @@ let currentLang = 'dual';
 
 // ── Tab Configuration (navigation decoupled from content) ──
 const TAB_CONFIG = [
-  { id: 'pm',        icon: '📈', cn: '猜冠军',   en: 'Champion' },
-  { id: 'matches',   icon: '📰', cn: '最新战报', en: 'Latest',   active: true },
+  { id: 'pm',        icon: '📈', cn: '猜冠军',   en: 'Champion', active: true },
+  { id: 'matches',   icon: '📰', cn: '最新战报', en: 'Latest' },
   { id: 'bracket',   icon: '🏆', cn: '淘汰赛',   en: 'Bracket' },
   { id: 'standings', icon: '📊', cn: '小组赛', en: 'Groups' },
   { id: 'goals',     icon: '⚽', cn: '射手榜',   en: 'Goals' },
@@ -430,7 +433,7 @@ function renderNav() {
   const nav = document.getElementById('tabNav');
   if (!nav) return;
   nav.innerHTML = TAB_CONFIG.map(t =>
-    `<div class="tab${t.active?' active':''}" onclick="switchTab('${t.id}')"><span>${t.icon} ${t.cn} / ${t.en}</span></div>`
+    `<div class="tab${t.active?' active':''}${t.id==='pm'?' pm-tab':''}" onclick="switchTab('${t.id}')"><span>${t.icon} ${t.cn} / ${t.en}</span></div>`
   ).join('');
   // Update i18n labels
   TAB_CONFIG.forEach(t => {
