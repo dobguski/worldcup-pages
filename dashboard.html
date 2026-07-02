@@ -756,7 +756,14 @@ function renderMatches() {
       const hasPlaceholder = (match.home_team||'').includes('Winner') || (match.away_team||'').includes('Winner') ||
                              (match.home_team||'').includes('Loser') || (match.away_team||'').includes('Loser');
       if (hasPlaceholder && !isDone) return;  // Skip placeholder future matches
-      let infoLine = `${fmt.date} ${timeDisplay} · ${groupLabel} · ${match.venue||''}`;
+      let venueTime = '';
+      if (match.venue_tz) {
+        const off = parseInt((match.venue_tz||'UTC+0').replace('UTC',''));
+        const local = new Date(new Date(match.utc_ts).getTime() + off * 3600000);
+        const vt = local.toLocaleTimeString('zh-CN', {hour:'2-digit',minute:'2-digit',hour12:false});
+        venueTime = ` <span style=\"font-size:.6em;color:#475569\">场地${vt}</span>`;
+      }
+      let infoLine = `${fmt.date} ${timeDisplay}${venueTime} · ${groupLabel} · ${match.venue||''}`;
 
       html += `<div class="match-card ${cardClass}" data-date="${fmt.date}" data-key="${match.home_team}-${match.away_team}">
         <div class="match-date">${infoLine}</div>
