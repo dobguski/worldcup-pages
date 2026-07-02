@@ -759,8 +759,10 @@ function renderMatches() {
       let venueTime = '';
       if (match.venue_tz) {
         const off = parseInt((match.venue_tz||'UTC+0').replace('UTC',''));
-        const local = new Date(new Date(match.utc_ts).getTime() + off * 3600000);
-        const vt = local.toLocaleTimeString('zh-CN', {hour:'2-digit',minute:'2-digit',hour12:false});
+        const utcMs = new Date(match.utc_ts).getTime();
+        const venueMs = utcMs + off * 3600000;
+        const vd = new Date(venueMs);
+        const vt = vd.getUTCHours().toString().padStart(2,'0') + ':' + vd.getUTCMinutes().toString().padStart(2,'0');
         venueTime = ` <span style=\"font-size:.6em;color:#475569\">场地${vt}</span>`;
       }
       let infoLine = `${fmt.date} ${timeDisplay}${venueTime} · ${groupLabel} · ${match.venue||''}`;
