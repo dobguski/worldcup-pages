@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-01 (Wikipedia KO stage)",
+  "updated": "2026-07-03 21:31",
   "wc2026": [
     {
       "name": "Lionel Messi",
@@ -52,16 +52,6 @@
       "name_cn": "哈弗茨"
     },
     {
-      "name": "Deniz Undav",
-      "goals": 3,
-      "name_cn": "德尼兹·翁达夫"
-    },
-    {
-      "name": "Ismael Saibari",
-      "goals": 3,
-      "name_cn": "伊斯梅尔·赛巴里"
-    },
-    {
       "name": "Brian Brobbey",
       "goals": 3,
       "name_cn": "布莱恩·布罗比"
@@ -107,11 +97,6 @@
       "name_cn": ""
     },
     {
-      "name": "Cyle Larin",
-      "goals": 2,
-      "name_cn": "赛尔·拉林"
-    },
-    {
       "name": "Nicolas Pepe",
       "goals": 2,
       "name_cn": ""
@@ -137,11 +122,6 @@
       "name_cn": ""
     },
     {
-      "name": "Daichi Kamada",
-      "goals": 2,
-      "name_cn": "镰田大地"
-    },
-    {
       "name": "Ayase Ueda",
       "goals": 2,
       "name_cn": "上田绮世"
@@ -150,11 +130,6 @@
       "name": "Julian Quinones",
       "goals": 2,
       "name_cn": "基尼奥内斯"
-    },
-    {
-      "name": "Crysencio Summerville",
-      "goals": 2,
-      "name_cn": "克里森西奥·萨默维尔"
     },
     {
       "name": "Cristiano Ronaldo",
@@ -187,8 +162,33 @@
       "name_cn": "阿劳霍"
     },
     {
+      "name": "Deniz Undav",
+      "goals": 1,
+      "name_cn": "德尼兹·翁达夫"
+    },
+    {
+      "name": "Ismael Saibari",
+      "goals": 1,
+      "name_cn": "伊斯梅尔·赛巴里"
+    },
+    {
+      "name": "Cyle Larin",
+      "goals": 1,
+      "name_cn": "赛尔·拉林"
+    },
+    {
+      "name": "Daichi Kamada",
+      "goals": 1,
+      "name_cn": "镰田大地"
+    },
+    {
+      "name": "Crysencio Summerville",
+      "goals": 1,
+      "name_cn": "克里森西奥·萨默维尔"
+    },
+    {
       "name": "Folarin Balogun",
-      "goals": 2,
+      "goals": 1,
       "name_cn": "巴洛贡"
     },
     {
@@ -745,6 +745,31 @@
       "name": "Eldor Shomurodov",
       "goals": 1,
       "name_cn": "埃尔多尔·绍穆罗多夫"
+    },
+    {
+      "name": "Julián Quiñones",
+      "goals": 1,
+      "name_cn": "奎尼奥内斯"
+    },
+    {
+      "name": "Raúl Jiménez",
+      "goals": 1,
+      "name_cn": "劳尔·希门尼斯"
+    },
+    {
+      "name": "Ladislav Krejcí",
+      "goals": 1,
+      "name_cn": ""
+    },
+    {
+      "name": "Vinícius Júnior",
+      "goals": 1,
+      "name_cn": "维尼修斯·儒尼奥尔"
+    },
+    {
+      "name": "Damian Bobadilla",
+      "goals": 1,
+      "name_cn": ""
     }
   ],
   "all_time": [
@@ -994,7 +1019,7 @@
       "tournaments": ""
     }
   ],
-  "total_2026_scorers": 149,
-  "total_2026_goals": 213,
+  "total_2026_scorers": 154,
+  "total_2026_goals": 210,
   "source": "Wikipedia zh"
 }
