@@ -992,7 +992,7 @@ function renderGoals() {
 
   // 2026 tournament
   const wc2026 = goalsData.wc2026 || [];
-  html += '<div style=\"font-size:.95em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">⚽ 2026世界杯 射手榜</div>';
+  html += '<div id=\"wc2026-section\" style=\"font-size:.95em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">⚽ 2026世界杯 射手榜</div>';
   if (wc2026.length > 0) {
     html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;margin-bottom:20px\">';
     wc2026.slice(0, 20).forEach((p, i) => {
@@ -1396,6 +1396,15 @@ function switchTab(name) {
   // Auto-scroll to latest match when switching to matches tab
   if (name === 'matches') {
     setTimeout(() => scrollToRelevantMatch(), 200);
+  }
+  // Auto-scroll to 2026 section when switching to goals tab
+  if (name === 'goals') {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const el = document.getElementById('wc2026-section');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
   }
 }
 
