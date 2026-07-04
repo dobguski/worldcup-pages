@@ -474,6 +474,7 @@ let standings = {};
 let teamNamesCN = {};
 let teamsData = {};
 let goalsData = {};
+let bracketData = {};
 
 // User's local timezone (detected from browser)
 const userTZ = (() => {
@@ -521,13 +522,14 @@ async function loadData() {
   try {
     const cb = '?v=' + Date.now();
     const fetchOpts = { cache: 'no-store' };  // Force bypass browser cache
-    const [mRes, sRes, tRes, tmRes, pmRes, goalsRes] = await Promise.all([
+    const [mRes, sRes, tRes, tmRes, pmRes, goalsRes, bracketRes] = await Promise.all([
       fetch('match_data.json' + cb, fetchOpts),
       fetch('standings.json' + cb, fetchOpts),
       fetch('team_names.json' + cb, fetchOpts),
       fetch('teams.json' + cb, fetchOpts).catch(() => null),
       fetch('polymarket.json' + cb, fetchOpts).catch(() => null),
-      fetch('goalscorers.json' + cb, fetchOpts).catch(() => null)
+      fetch('goalscorers.json' + cb, fetchOpts).catch(() => null),
+      fetch('bracket_data.json' + cb, fetchOpts).catch(() => null)
     ]);
     matchData = await mRes.json();
     standings = await sRes.json();
@@ -538,6 +540,8 @@ async function loadData() {
     else pmData = {};
     if (goalsRes) goalsData = await goalsRes.json();
     else goalsData = {};
+    if (bracketRes) bracketData = await bracketRes.json();
+    else bracketData = {};
     loadVotes();
     loadPlayerDetails();
     // Load data quality report
@@ -1072,7 +1076,7 @@ function renderBracket() {
 
   let html = '';
 
-  // Group results table
+  // ── Group qualifying table ──
   html += '<div style=\"font-size:.9em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">📊 小组出线球队 (' + qualified.length + ' teams)</div>';
   html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px;margin-bottom:16px;overflow-x:auto\">';
   html += '<table style=\"width:100%;border-collapse:collapse;font-size:.72em\">';
@@ -1091,46 +1095,141 @@ function renderBracket() {
   });
   html += '</table></div>';
 
-  // Knockout stage with real scores (filter placeholder teams)
+  // ── R32 Knockout Results ──
   const koMatches = matchData.filter(m => {
-    if (!m.group || !'ABCDEFGHIJKL'.includes(m.group)) {
+    if (m.group && m.group === 'KO') {
       const hasPlaceholder = (m.home_team||'').includes('Winner') || (m.away_team||'').includes('Winner') ||
                              (m.home_team||'').includes('Loser') || (m.away_team||'').includes('Loser');
       return !hasPlaceholder;
     }
     return false;
   });
-  const koWithScores = koMatches.filter(m => m.home_score != null);
-  const koUpcoming = koMatches.filter(m => m.home_score == null);
 
-  html += '<div style=\"font-size:.9em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">🏆 淘汰赛比分' + (koWithScores.length ? ' (' + koWithScores.length + '场)' : '') + '</div>';
+  // Deduplicate by (date, home, away)
+  const seen = new Set();
+  const koUnique = [];
+  koMatches.forEach(m => {
+    const key = m.date + '|' + m.home_team + '|' + m.away_team;
+    if (!seen.has(key)) { seen.add(key); koUnique.push(m); }
+  });
 
-  if (koWithScores.length > 0) {
-    html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px;margin-bottom:16px\">';
-    koWithScores.forEach(m => {
-      const cn1 = teamName(m.home_team); const cn2 = teamName(m.away_team);
-      const pk = m.penalty_home != null ? ` <span style=\"font-size:.65em;color:#e2b04a\">(${m.penalty_home}-${m.penalty_away} PK)</span>` : '';
-      html += `<div style=\"display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #1e293b;font-size:.75em\">
-        <span style=\"color:#64748b;min-width:70px\">${m.date}</span>
-        <span style=\"flex:1;text-align:right;color:#94a3b8\">${cn1}</span>
-        <span style=\"font-weight:bold;color:#e2b04a;font-size:1.1em\">${m.home_score}-${m.away_score}${pk}</span>
-        <span style=\"flex:1;color:#94a3b8\">${cn2}</span>
+  // Split: finished (has scores) vs upcoming (no scores)
+  const koDone = koUnique.filter(m => m.home_score != null).sort((a,b) => {
+    // newest first (descending date)
+    if (a.date !== b.date) return b.date.localeCompare(a.date);
+    return (b.time||'').localeCompare(a.time||'');
+  });
+  const koUpcoming = koUnique.filter(m => m.home_score == null);
+
+  // Helper: clean team name (remove "   2-3 pen." suffix)
+  function cleanTeam(name) {
+    return (name||'').replace(/\s{2,}[\d-]+\s*pen\.?/i, '').trim();
+  }
+
+  // Helper: determine winner
+  function getWinner(m) {
+    const hs = m.home_score, aws = m.away_score;
+    if (hs == null || aws == null) return null;
+    if (hs > aws) return 'home';
+    if (aws > hs) return 'away';
+    const ph = m.penalty_home, pa = m.penalty_away;
+    if (ph != null && pa != null) return ph > pa ? 'home' : 'away';
+    return null;
+  }
+
+  html += '<div style=\"font-size:.9em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">🏆 1/16决赛 · Round of 32 (' + koDone.length + '场完赛)</div>';
+
+  // ── Upcoming KO matches (if any) at top ──
+  if (koUpcoming.length > 0) {
+    html += '<div style=\"font-size:.8em;color:#fbbf24;margin-bottom:4px\">⏳ 即将进行</div>';
+    html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px;margin-bottom:12px\">';
+    koUpcoming.forEach(m => {
+      html += `<div style=\"display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid #1e293b;font-size:.72em\">
+        <span style=\"color:#64748b;min-width:65px\">${m.date}</span>
+        <span style=\"flex:1;text-align:right;color:#94a3b8\">${teamName(cleanTeam(m.home_team))}</span>
+        <span style=\"color:#475569;font-size:.85em\">vs</span>
+        <span style=\"flex:1;color:#94a3b8\">${teamName(cleanTeam(m.away_team))}</span>
+        <span style=\"color:#64748b;font-size:.65em;min-width:80px;text-align:right\">${m.venue||''}</span>
       </div>`;
     });
     html += '</div>';
   }
 
-  if (koUpcoming.length > 0) {
-    html += '<div style=\"font-size:.85em;color:#94a3b8;margin-bottom:4px\">⏳ 即将进行</div>';
-    html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px\">';
-    koUpcoming.slice(0, 8).forEach(m => {
-      html += `<div style=\"display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid #1e293b;font-size:.72em\">
-        <span style=\"color:#64748b;min-width:70px\">${m.date}</span>
-        <span style=\"flex:1;text-align:right;color:#94a3b8\">${teamName(m.home_team)}</span>
-        <span style=\"color:#475569\">vs</span>
-        <span style=\"flex:1;color:#94a3b8\">${teamName(m.away_team)}</span>
+  // ── Finished KO matches — sorted newest→oldest at bottom ──
+  if (koDone.length > 0) {
+    html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px;margin-bottom:16px\">';
+    koDone.forEach((m, i) => {
+      const cn1 = teamName(cleanTeam(m.home_team));
+      const cn2 = teamName(cleanTeam(m.away_team));
+      const winner = getWinner(m);
+      const homeBold = winner === 'home';
+      const awayBold = winner === 'away';
+      // Penalty shootout badge
+      let pkBadge = '';
+      if (m.penalty_home != null && m.penalty_away != null) {
+        pkBadge = ` <span style=\"font-size:.65em;color:#e2b04a\">(${m.penalty_home}-${m.penalty_away} PK)</span>`;
+      }
+      // Winner arrow
+      const homeArrow = homeBold ? ' ▶' : '';
+      const awayArrow = awayBold ? '◀ ' : '';
+      html += `<div style=\"display:flex;align-items:center;gap:6px;padding:5px 0;border-bottom:1px solid #1e293b;font-size:.73em\">
+        <span style=\"color:#64748b;min-width:70px;font-size:.85em\">${m.date}</span>
+        <span style=\"flex:1;text-align:right;color:${homeBold?'#f8fafc':'#94a3b8'};font-weight:${homeBold?'bold':'normal'}\">${homeArrow}${cn1}</span>
+        <span style=\"font-weight:bold;color:#e2b04a;font-size:1.05em;min-width:40px;text-align:center\">${m.home_score}-${m.away_score}${pkBadge}</span>
+        <span style=\"flex:1;color:${awayBold?'#f8fafc':'#94a3b8'};font-weight:${awayBold?'bold':'normal'}\">${cn2}${awayArrow}</span>
+        <span style=\"color:#475569;font-size:.6em;min-width:70px;text-align:right\">${m.venue||''}</span>
       </div>`;
     });
+    html += '</div>';
+  }
+
+  // ── R16 Bracket (from bracket_data.json or computed) ──
+  // Get 16 winners from KO matches
+  const r16teams = [];
+  const winnerSeen = new Set();
+  koDone.forEach(m => {
+    const w = getWinner(m);
+    if (!w) return;
+    const t = cleanTeam(w === 'home' ? m.home_team : m.away_team);
+    if (!winnerSeen.has(t)) {
+      winnerSeen.add(t);
+      r16teams.push(t);
+    }
+  });
+
+  if (r16teams.length >= 16) {
+    html += '<div style=\"font-size:.9em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">🔮 1/8决赛 · Round of 16 对阵</div>';
+    html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;margin-bottom:16px\">';
+
+    // Use bracket_data.json r16 if available, otherwise compute adjacent pairs
+    let r16matches = [];
+    if (typeof bracketData !== 'undefined' && bracketData && bracketData.r16) {
+      bracketData.r16.forEach((m, i) => {
+        r16matches.push({home: m.home, away: m.away, label: m.label || ('R16-' + (i+1))});
+      });
+    } else {
+      // Fallback: pair winners in order of match completion
+      for (let i = 0; i < r16teams.length; i += 2) {
+        if (i + 1 < r16teams.length) {
+          r16matches.push({home: r16teams[i], away: r16teams[i+1], label: 'R16-' + (i/2+1)});
+        }
+      }
+    }
+
+    // Display as 2-column grid
+    html += '<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:10px\">';
+    r16matches.forEach(m => {
+      html += `<div style=\"background:#0a0f1a;border:1px solid #334155;border-radius:8px;padding:10px;text-align:center\">
+        <div style=\"font-size:.6em;color:#64748b;margin-bottom:4px\">${m.label}</div>
+        <div style=\"display:flex;align-items:center;justify-content:center;gap:8px;font-size:.78em\">
+          <span style=\"flex:1;text-align:right;color:#94a3b8\">${teamName(cleanTeam(m.home))}</span>
+          <span style=\"color:#475569;font-size:.8em\">vs</span>
+          <span style=\"flex:1;text-align:left;color:#94a3b8\">${teamName(cleanTeam(m.away))}</span>
+        </div>
+      </div>`;
+    });
+    html += '</div>';
+    html += '<div style=\"text-align:center;font-size:.55em;color:#475569;margin-top:6px\">* 对阵基于小组排名和官方签表推算，以FIFA官方公布为准</div>';
     html += '</div>';
   }
 

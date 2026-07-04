@@ -73,70 +73,65 @@
       "3rd_best": true
     }
   },
-  "r32": {
-    "0": [
-      "Mexico",
-      "DR Congo"
-    ],
-    "1": [
-      "Australia",
-      "Ivory Coast"
-    ],
-    "2": [
-      "Brazil",
-      "DR Congo"
-    ],
-    "3": [
-      "South Africa",
-      "Canada"
-    ],
-    "4": [
-      "Germany",
-      "DR Congo"
-    ],
-    "5": [
-      "Egypt",
-      "Cape Verde"
-    ],
-    "6": [
-      "Belgium",
-      "DR Congo"
-    ],
-    "7": [
-      "Portugal",
-      "Croatia"
-    ],
-    "8": [
-      "France",
-      "DR Congo"
-    ],
-    "9": [
-      "Morocco",
-      "Japan"
-    ],
-    "10": [
-      "Colombia",
-      "DR Congo"
-    ],
-    "11": [
-      "Norway",
-      "Austria"
-    ],
-    "12": [
-      "Switzerland",
-      "DR Congo"
-    ],
-    "13": [
-      "Australia",
-      "Morocco"
-    ],
-    "14": [
-      "USA",
-      "DR Congo"
-    ],
-    "15": [
-      "South Africa",
-      "Canada"
-    ]
-  }
+  "r32_winners": [
+    "Canada",
+    "Brazil",
+    "Norway",
+    "Paraguay",
+    "France",
+    "Morocco   2-3 pen.",
+    "Mexico",
+    "England",
+    "USA",
+    "Belgium",
+    "Spain",
+    "Switzerland",
+    "Portugal",
+    "Egypt",
+    "Colombia",
+    "Argentina"
+  ],
+  "r16": [
+    {
+      "home": "Canada",
+      "away": "Brazil",
+      "label": "R16-1"
+    },
+    {
+      "home": "Norway",
+      "away": "Paraguay",
+      "label": "R16-2"
+    },
+    {
+      "home": "France",
+      "away": "Morocco   2-3 pen.",
+      "label": "R16-3"
+    },
+    {
+      "home": "Mexico",
+      "away": "England",
+      "label": "R16-4"
+    },
+    {
+      "home": "USA",
+      "away": "Belgium",
+      "label": "R16-5"
+    },
+    {
+      "home": "Spain",
+      "away": "Switzerland",
+      "label": "R16-6"
+    },
+    {
+      "home": "Portugal",
+      "away": "Egypt",
+      "label": "R16-7"
+    },
+    {
+      "home": "Colombia",
+      "away": "Argentina",
+      "label": "R16-8"
+    }
+  ],
+  "updated": "2026-07-04T16:39:54.490891"
 }
