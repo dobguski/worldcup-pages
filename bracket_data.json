@@ -1,4 +1,5 @@
 {
+  "updated": "2026-07-05",
   "qualified": {
     "A": {
       "1st": "Mexico",
@@ -79,7 +80,7 @@
     "Norway",
     "Paraguay",
     "France",
-    "Morocco   2-3 pen.",
+    "Morocco",
     "Mexico",
     "England",
     "USA",
@@ -94,44 +95,72 @@
   "r16": [
     {
       "home": "Canada",
-      "away": "Brazil",
-      "label": "R16-1"
+      "away": "Morocco",
+      "label": "R16-1",
+      "date": "2026-07-04",
+      "venue": "NRG Stadium, Houston",
+      "score": "0-3",
+      "winner": "Morocco"
     },
     {
-      "home": "Norway",
-      "away": "Paraguay",
-      "label": "R16-2"
+      "home": "Paraguay",
+      "away": "France",
+      "label": "R16-2",
+      "date": "2026-07-04",
+      "venue": "Lincoln Financial Field, Philadelphia",
+      "score": "0-1",
+      "winner": "France"
     },
     {
-      "home": "France",
-      "away": "Morocco   2-3 pen.",
-      "label": "R16-3"
+      "home": "Brazil",
+      "away": "Norway",
+      "label": "R16-3",
+      "date": "2026-07-05",
+      "venue": "MetLife Stadium, East Rutherford"
     },
     {
       "home": "Mexico",
       "away": "England",
-      "label": "R16-4"
+      "label": "R16-4",
+      "date": "2026-07-05",
+      "venue": "Estadio Azteca, Mexico City"
+    },
+    {
+      "home": "Portugal",
+      "away": "Spain",
+      "label": "R16-5",
+      "date": "2026-07-06",
+      "venue": "AT&T Stadium, Arlington"
     },
     {
       "home": "USA",
       "away": "Belgium",
-      "label": "R16-5"
+      "label": "R16-6",
+      "date": "2026-07-06",
+      "venue": "Lumen Field, Seattle"
     },
     {
-      "home": "Spain",
-      "away": "Switzerland",
-      "label": "R16-6"
-    },
-    {
-      "home": "Portugal",
+      "home": "Argentina",
       "away": "Egypt",
-      "label": "R16-7"
+      "label": "R16-7",
+      "date": "2026-07-07",
+      "venue": "Mercedes-Benz Stadium, Atlanta"
     },
     {
-      "home": "Colombia",
-      "away": "Argentina",
-      "label": "R16-8"
+      "home": "Switzerland",
+      "away": "Colombia",
+      "label": "R16-8",
+      "date": "2026-07-07",
+      "venue": "BC Place, Vancouver"
     }
   ],
-  "updated": "2026-07-04T16:39:54.490891"
+  "qf": [
+    {
+      "home": "France",
+      "away": "Morocco",
+      "label": "QF1",
+      "date": "2026-07-09",
+      "venue": "Gillette Stadium, Foxborough"
+    }
+  ]
 }

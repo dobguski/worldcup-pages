@@ -1183,54 +1183,76 @@ function renderBracket() {
     html += '</div>';
   }
 
-  // ── R16 Bracket (from bracket_data.json or computed) ──
-  // Get 16 winners from KO matches
-  const r16teams = [];
-  const winnerSeen = new Set();
-  koDone.forEach(m => {
-    const w = getWinner(m);
-    if (!w) return;
-    const t = cleanTeam(w === 'home' ? m.home_team : m.away_team);
-    if (!winnerSeen.has(t)) {
-      winnerSeen.add(t);
-      r16teams.push(t);
-    }
-  });
+  // ── R16 Bracket (from bracket_data.json) ──
+  const r16Done = [], r16Upcoming = [];
 
-  if (r16teams.length >= 16) {
-    html += '<div style=\"font-size:.9em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">🔮 1/8决赛 · Round of 16 对阵</div>';
+  if (typeof bracketData !== 'undefined' && bracketData && bracketData.r16) {
+    bracketData.r16.forEach(m => {
+      const entry = {
+        home: m.home, away: m.away,
+        label: m.label || '', date: m.date || '', venue: m.venue || '',
+        score: m.score || null, winner: m.winner || null
+      };
+      if (entry.score) r16Done.push(entry); else r16Upcoming.push(entry);
+    });
+  }
+
+  if (r16Done.length + r16Upcoming.length > 0) {
+    html += '<div style=\"font-size:.9em;color:#e2b04a;margin-bottom:8px;font-weight:bold\">🔮 1/8决赛 · Round of 16</div>';
     html += '<div style=\"background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px;margin-bottom:16px\">';
 
-    // Use bracket_data.json r16 if available, otherwise compute adjacent pairs
-    let r16matches = [];
-    if (typeof bracketData !== 'undefined' && bracketData && bracketData.r16) {
-      bracketData.r16.forEach((m, i) => {
-        r16matches.push({home: m.home, away: m.away, label: m.label || ('R16-' + (i+1))});
-      });
-    } else {
-      // Fallback: pair winners in order of match completion
-      for (let i = 0; i < r16teams.length; i += 2) {
-        if (i + 1 < r16teams.length) {
-          r16matches.push({home: r16teams[i], away: r16teams[i+1], label: 'R16-' + (i/2+1)});
+    // Completed R16 matches first
+    if (r16Done.length > 0) {
+      html += '<div style=\"font-size:.75em;color:#4ade80;margin-bottom:6px\">✅ 已完赛</div>';
+      r16Done.forEach(m => {
+        const hBold = m.winner === m.home;
+        const aBold = m.winner === m.away;
+        html += `<div style=\"display:flex;align-items:center;gap:6px;padding:6px 0;border-bottom:1px solid #1e293b;font-size:.76em\">
+          <span style=\"color:#64748b;min-width:55px;font-size:.85em\">${m.date}</span>
+          <span style=\"flex:1;text-align:right;color:${hBold?'#f8fafc':'#94a3b8'};font-weight:${hBold?'bold':'normal'}\">${hBold?'▶ ':''}${teamName(cleanTeam(m.home))}</span>
+          <span style=\"font-weight:bold;color:#e2b04a;min-width:36px;text-align:center\">${m.score}</span>
+          <span style=\"flex:1;color:${aBold?'#f8fafc':'#94a3b8'};font-weight:${aBold?'bold':'normal'}\">${teamName(cleanTeam(m.away))}${aBold?' ◀':''}</span>
+          <span style=\"color:#475569;font-size:.6em;min-width:80px;text-align:right\">${m.venue}</span>
+        </div>`;
+        if (m.winner) {
+          html += `<div style=\"text-align:center;font-size:.65em;color:#4ade80;padding:2px 0\">⬆ ${teamName(cleanTeam(m.winner))} 晋级 1/4决赛</div>`;
         }
-      }
+      });
     }
 
-    // Display as 2-column grid
-    html += '<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:10px\">';
-    r16matches.forEach(m => {
-      html += `<div style=\"background:#0a0f1a;border:1px solid #334155;border-radius:8px;padding:10px;text-align:center\">
-        <div style=\"font-size:.6em;color:#64748b;margin-bottom:4px\">${m.label}</div>
-        <div style=\"display:flex;align-items:center;justify-content:center;gap:8px;font-size:.78em\">
-          <span style=\"flex:1;text-align:right;color:#94a3b8\">${teamName(cleanTeam(m.home))}</span>
-          <span style=\"color:#475569;font-size:.8em\">vs</span>
-          <span style=\"flex:1;text-align:left;color:#94a3b8\">${teamName(cleanTeam(m.away))}</span>
-        </div>
-      </div>`;
-    });
+    // Upcoming R16 matches
+    if (r16Upcoming.length > 0) {
+      html += '<div style=\"font-size:.75em;color:#fbbf24;margin:8px 0 4px\">⏳ 即将进行</div>';
+      html += '<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:8px\">';
+      r16Upcoming.forEach(m => {
+        html += `<div style=\"background:#0a0f1a;border:1px solid #334155;border-radius:8px;padding:8px;text-align:center\">
+          <div style=\"font-size:.6em;color:#64748b;margin-bottom:2px\">${m.date} · ${m.venue}</div>
+          <div style=\"display:flex;align-items:center;justify-content:center;gap:6px;font-size:.76em\">
+            <span style=\"flex:1;text-align:right;color:#94a3b8\">${teamName(cleanTeam(m.home))}</span>
+            <span style=\"color:#475569;font-size:.8em\">vs</span>
+            <span style=\"flex:1;text-align:left;color:#94a3b8\">${teamName(cleanTeam(m.away))}</span>
+          </div>
+        </div>`;
+      });
+      html += '</div>';
+    }
+
     html += '</div>';
-    html += '<div style=\"text-align:center;font-size:.55em;color:#475569;margin-top:6px\">* 对阵基于小组排名和官方签表推算，以FIFA官方公布为准</div>';
-    html += '</div>';
+
+    // QF preview if we have R16 winners
+    if (typeof bracketData !== 'undefined' && bracketData && bracketData.qf && bracketData.qf.length > 0) {
+      html += '<div style=\"font-size:.85em;color:#e2b04a;margin-bottom:6px;font-weight:bold\">🏆 1/4决赛 · Quarter-finals 预览</div>';
+      html += '<div style=\"background:#1e293b;border:1px solid #e2b04a;border-radius:10px;padding:12px;margin-bottom:16px\">';
+      bracketData.qf.forEach(m => {
+        html += `<div style=\"display:flex;align-items:center;justify-content:center;gap:8px;font-size:.82em;padding:4px 0\">
+          <span style=\"color:#94a3b8\">${teamName(cleanTeam(m.home))}</span>
+          <span style=\"color:#64748b\">vs</span>
+          <span style=\"color:#94a3b8\">${teamName(cleanTeam(m.away))}</span>
+          <span style=\"color:#475569;font-size:.7em\">| ${m.date} · ${m.venue}</span>
+        </div>`;
+      });
+      html += '</div>';
+    }
   }
 
   container.innerHTML = html;
