@@ -116,7 +116,9 @@
       "away": "Norway",
       "label": "R16-3",
       "date": "2026-07-05",
-      "venue": "MetLife Stadium, East Rutherford"
+      "venue": "MetLife Stadium, East Rutherford",
+      "score": "1-2",
+      "winner": "Norway"
     },
     {
       "home": "Mexico",
@@ -161,6 +163,13 @@
       "label": "QF1",
       "date": "2026-07-09",
       "venue": "Gillette Stadium, Foxborough"
+    },
+    {
+      "home": "Norway",
+      "away": "Winner MEX/ENG",
+      "label": "QF2",
+      "date": "2026-07-11",
+      "venue": "Hard Rock Stadium, Miami Gardens"
     }
   ]
 }
