@@ -125,7 +125,9 @@
       "away": "England",
       "label": "R16-4",
       "date": "2026-07-05",
-      "venue": "Estadio Azteca, Mexico City"
+      "venue": "Estadio Azteca, Mexico City",
+      "score": "1-2",
+      "winner": "England"
     },
     {
       "home": "Portugal",
@@ -166,7 +168,7 @@
     },
     {
       "home": "Norway",
-      "away": "Winner MEX/ENG",
+      "away": "England",
       "label": "QF2",
       "date": "2026-07-11",
       "venue": "Hard Rock Stadium, Miami Gardens"
