@@ -126,7 +126,7 @@
       "label": "R16-4",
       "date": "2026-07-05",
       "venue": "Estadio Azteca, Mexico City",
-      "score": "1-2",
+      "score": "2-3",
       "winner": "England"
     },
     {
@@ -134,14 +134,18 @@
       "away": "Spain",
       "label": "R16-5",
       "date": "2026-07-06",
-      "venue": "AT&T Stadium, Arlington"
+      "venue": "AT&T Stadium, Arlington",
+      "score": "0-1",
+      "winner": "Spain"
     },
     {
       "home": "USA",
       "away": "Belgium",
       "label": "R16-6",
       "date": "2026-07-06",
-      "venue": "Lumen Field, Seattle"
+      "venue": "Lumen Field, Seattle",
+      "score": "1-2",
+      "winner": "Belgium"
     },
     {
       "home": "Argentina",
@@ -172,6 +176,13 @@
       "label": "QF2",
       "date": "2026-07-11",
       "venue": "Hard Rock Stadium, Miami Gardens"
+    },
+    {
+      "home": "Spain",
+      "away": "Belgium",
+      "label": "QF3",
+      "date": "2026-07-11",
+      "venue": "Mercedes-Benz Stadium, Atlanta"
     }
   ]
 }
