@@ -152,14 +152,18 @@
       "away": "Egypt",
       "label": "R16-7",
       "date": "2026-07-07",
-      "venue": "Mercedes-Benz Stadium, Atlanta"
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "score": "3-2",
+      "winner": "Argentina"
     },
     {
       "home": "Switzerland",
       "away": "Colombia",
       "label": "R16-8",
       "date": "2026-07-07",
-      "venue": "BC Place, Vancouver"
+      "venue": "BC Place, Vancouver",
+      "score": "0-0 (4-3 PK)",
+      "winner": "Switzerland"
     }
   ],
   "qf": [
@@ -185,8 +189,8 @@
       "venue": "Mercedes-Benz Stadium, Atlanta"
     },
     {
-      "home": "Winner ARG/EGY",
-      "away": "Winner SUI/COL",
+      "home": "Argentina",
+      "away": "Switzerland",
       "label": "QF4",
       "date": "2026-07-12",
       "venue": "SoFi Stadium, Los Angeles"
