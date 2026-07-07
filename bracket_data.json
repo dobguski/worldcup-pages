@@ -144,7 +144,7 @@
       "label": "R16-6",
       "date": "2026-07-06",
       "venue": "Lumen Field, Seattle",
-      "score": "1-2",
+      "score": "1-4",
       "winner": "Belgium"
     },
     {
@@ -183,6 +183,13 @@
       "label": "QF3",
       "date": "2026-07-11",
       "venue": "Mercedes-Benz Stadium, Atlanta"
+    },
+    {
+      "home": "Winner ARG/EGY",
+      "away": "Winner SUI/COL",
+      "label": "QF4",
+      "date": "2026-07-12",
+      "venue": "SoFi Stadium, Los Angeles"
     }
   ]
 }
