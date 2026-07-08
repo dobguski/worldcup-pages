@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-05",
+  "updated": "2026-07-08",
   "qualified": {
     "A": {
       "1st": "Mexico",
@@ -172,28 +172,52 @@
       "away": "Morocco",
       "label": "QF1",
       "date": "2026-07-09",
-      "venue": "Gillette Stadium, Foxborough"
+      "venue": "Gillette Stadium, Foxborough",
+      "score": null,
+      "winner": null
     },
     {
       "home": "Norway",
       "away": "England",
       "label": "QF2",
       "date": "2026-07-11",
-      "venue": "Hard Rock Stadium, Miami Gardens"
+      "venue": "Hard Rock Stadium, Miami Gardens",
+      "score": null,
+      "winner": null
     },
     {
       "home": "Spain",
       "away": "Belgium",
       "label": "QF3",
       "date": "2026-07-11",
-      "venue": "Mercedes-Benz Stadium, Atlanta"
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "score": null,
+      "winner": null
     },
     {
       "home": "Argentina",
       "away": "Switzerland",
       "label": "QF4",
       "date": "2026-07-12",
-      "venue": "SoFi Stadium, Los Angeles"
+      "venue": "SoFi Stadium, Los Angeles",
+      "score": null,
+      "winner": null
+    }
+  ],
+  "sf": [
+    {
+      "home": "Winner QF1",
+      "away": "Winner QF2",
+      "label": "SF1",
+      "date": "2026-07-14",
+      "venue": "AT&T Stadium, Arlington"
+    },
+    {
+      "home": "Winner QF3",
+      "away": "Winner QF4",
+      "label": "SF2",
+      "date": "2026-07-15",
+      "venue": "Mercedes-Benz Stadium, Atlanta"
     }
   ]
 }
