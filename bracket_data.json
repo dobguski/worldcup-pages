@@ -173,8 +173,8 @@
       "label": "QF1",
       "date": "2026-07-09",
       "venue": "Gillette Stadium, Foxborough",
-      "score": null,
-      "winner": null
+      "score": "2-0",
+      "winner": "France"
     },
     {
       "home": "Norway",
@@ -206,7 +206,7 @@
   ],
   "sf": [
     {
-      "home": "Winner QF1",
+      "home": "France",
       "away": "Winner QF2",
       "label": "SF1",
       "date": "2026-07-14",
