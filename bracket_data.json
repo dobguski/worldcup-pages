@@ -191,8 +191,8 @@
       "label": "QF3",
       "date": "2026-07-11",
       "venue": "Mercedes-Benz Stadium, Atlanta",
-      "score": null,
-      "winner": null
+      "score": "2-1",
+      "winner": "Spain"
     },
     {
       "home": "Argentina",
@@ -213,7 +213,7 @@
       "venue": "AT&T Stadium, Arlington"
     },
     {
-      "home": "Winner QF3",
+      "home": "Spain",
       "away": "Winner QF4",
       "label": "SF2",
       "date": "2026-07-15",
