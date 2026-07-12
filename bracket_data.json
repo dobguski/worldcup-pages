@@ -97,7 +97,7 @@
       "home": "Canada",
       "away": "Morocco",
       "label": "R16-1",
-      "date": "2026-07-04",
+      "date": "2026-07-05",
       "venue": "NRG Stadium, Houston",
       "score": "0-3",
       "winner": "Morocco"
@@ -106,7 +106,7 @@
       "home": "Paraguay",
       "away": "France",
       "label": "R16-2",
-      "date": "2026-07-04",
+      "date": "2026-07-05",
       "venue": "Lincoln Financial Field, Philadelphia",
       "score": "0-1",
       "winner": "France"
@@ -115,7 +115,7 @@
       "home": "Brazil",
       "away": "Norway",
       "label": "R16-3",
-      "date": "2026-07-05",
+      "date": "2026-07-06",
       "venue": "MetLife Stadium, East Rutherford",
       "score": "1-2",
       "winner": "Norway"
@@ -124,7 +124,7 @@
       "home": "Mexico",
       "away": "England",
       "label": "R16-4",
-      "date": "2026-07-05",
+      "date": "2026-07-06",
       "venue": "Estadio Azteca, Mexico City",
       "score": "2-3",
       "winner": "England"
@@ -133,7 +133,7 @@
       "home": "Portugal",
       "away": "Spain",
       "label": "R16-5",
-      "date": "2026-07-06",
+      "date": "2026-07-07",
       "venue": "AT&T Stadium, Arlington",
       "score": "0-1",
       "winner": "Spain"
@@ -142,7 +142,7 @@
       "home": "USA",
       "away": "Belgium",
       "label": "R16-6",
-      "date": "2026-07-06",
+      "date": "2026-07-07",
       "venue": "Lumen Field, Seattle",
       "score": "1-4",
       "winner": "Belgium"
@@ -151,7 +151,7 @@
       "home": "Argentina",
       "away": "Egypt",
       "label": "R16-7",
-      "date": "2026-07-07",
+      "date": "2026-07-08",
       "venue": "Mercedes-Benz Stadium, Atlanta",
       "score": "3-2",
       "winner": "Argentina"
@@ -160,7 +160,7 @@
       "home": "Switzerland",
       "away": "Colombia",
       "label": "R16-8",
-      "date": "2026-07-07",
+      "date": "2026-07-08",
       "venue": "BC Place, Vancouver",
       "score": "0-0 (4-3 PK)",
       "winner": "Switzerland"
@@ -171,7 +171,7 @@
       "home": "France",
       "away": "Morocco",
       "label": "QF1",
-      "date": "2026-07-09",
+      "date": "2026-07-10",
       "venue": "Gillette Stadium, Foxborough",
       "score": "2-0",
       "winner": "France"
@@ -180,7 +180,7 @@
       "home": "Norway",
       "away": "England",
       "label": "QF2",
-      "date": "2026-07-11",
+      "date": "2026-07-12",
       "venue": "Hard Rock Stadium, Miami Gardens",
       "score": null,
       "winner": null
@@ -189,7 +189,7 @@
       "home": "Spain",
       "away": "Belgium",
       "label": "QF3",
-      "date": "2026-07-11",
+      "date": "2026-07-12",
       "venue": "Mercedes-Benz Stadium, Atlanta",
       "score": "2-1",
       "winner": "Spain"
@@ -198,7 +198,7 @@
       "home": "Argentina",
       "away": "Switzerland",
       "label": "QF4",
-      "date": "2026-07-12",
+      "date": "2026-07-13",
       "venue": "SoFi Stadium, Los Angeles",
       "score": null,
       "winner": null
@@ -209,14 +209,14 @@
       "home": "France",
       "away": "Winner QF2",
       "label": "SF1",
-      "date": "2026-07-14",
+      "date": "2026-07-15",
       "venue": "AT&T Stadium, Arlington"
     },
     {
       "home": "Spain",
       "away": "Winner QF4",
       "label": "SF2",
-      "date": "2026-07-15",
+      "date": "2026-07-16",
       "venue": "Mercedes-Benz Stadium, Atlanta"
     }
   ]
