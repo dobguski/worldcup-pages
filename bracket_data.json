@@ -182,8 +182,8 @@
       "label": "QF2",
       "date": "2026-07-12",
       "venue": "Hard Rock Stadium, Miami Gardens",
-      "score": null,
-      "winner": null
+      "score": "1-2",
+      "winner": "England"
     },
     {
       "home": "Spain",
@@ -200,24 +200,33 @@
       "label": "QF4",
       "date": "2026-07-13",
       "venue": "SoFi Stadium, Los Angeles",
-      "score": null,
-      "winner": null
+      "score": "3-1",
+      "winner": "Argentina"
     }
   ],
   "sf": [
     {
       "home": "France",
-      "away": "Winner QF2",
+      "away": "England",
       "label": "SF1",
       "date": "2026-07-15",
       "venue": "AT&T Stadium, Arlington"
     },
     {
       "home": "Spain",
-      "away": "Winner QF4",
+      "away": "Argentina",
       "label": "SF2",
       "date": "2026-07-16",
       "venue": "Mercedes-Benz Stadium, Atlanta"
+    }
+  ],
+  "final": [
+    {
+      "home": "Winner SF1",
+      "away": "Winner SF2",
+      "label": "Final",
+      "date": "2026-07-19",
+      "venue": "MetLife Stadium, East Rutherford"
     }
   ]
 }
