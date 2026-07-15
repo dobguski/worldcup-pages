@@ -207,26 +207,22 @@
   "sf": [
     {
       "home": "France",
-      "away": "Spain",
+      "away": "England",
       "label": "SF1",
       "date": "2026-07-15",
-      "venue": "AT&T Stadium, Arlington",
-      "score": "0-2",
-      "winner": "Spain"
+      "venue": "AT&T Stadium, Arlington"
     },
     {
-      "home": "England",
+      "home": "Spain",
       "away": "Argentina",
       "label": "SF2",
       "date": "2026-07-16",
-      "venue": "Mercedes-Benz Stadium, Atlanta",
-      "score": null,
-      "winner": null
+      "venue": "Mercedes-Benz Stadium, Atlanta"
     }
   ],
   "final": [
     {
-      "home": "Spain",
+      "home": "Winner SF1",
       "away": "Winner SF2",
       "label": "Final",
       "date": "2026-07-19",
