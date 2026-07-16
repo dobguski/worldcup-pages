@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-15 11:24",
+  "updated": "2026-07-16 08:20",
   "wc2026": [
     {
       "name": "Kylian Mbappé",
@@ -32,6 +32,12 @@
       "nation": "England"
     },
     {
+      "name": "Mikel Oyarzabal",
+      "goals": 5,
+      "name_cn": "奥亚萨瓦尔",
+      "nation": "Spain"
+    },
+    {
       "name": "Ousmane Dembélé",
       "goals": 5,
       "name_cn": "登贝莱",
@@ -48,12 +54,6 @@
       "goals": 4,
       "name_cn": "维尼修斯·儒尼奥尔",
       "nation": "Brazil"
-    },
-    {
-      "name": "Mikel Oyarzabal",
-      "goals": 4,
-      "name_cn": "奥亚萨瓦尔",
-      "nation": "Spain"
     },
     {
       "name": "Ismaïla Sarr",
@@ -144,6 +144,12 @@
       "goals": 3,
       "name_cn": "罗梅卢·卢卡库",
       "nation": "Belgium"
+    },
+    {
+      "name": "Lautaro Martínez",
+      "goals": 3,
+      "name_cn": "劳塔罗·马丁内斯",
+      "nation": "Argentina"
     },
     {
       "name": "Charles De Ketelaere",
@@ -290,12 +296,6 @@
       "nation": "Algeria"
     },
     {
-      "name": "Lautaro Martínez",
-      "goals": 2,
-      "name_cn": "劳塔罗·马丁内斯",
-      "nation": "Argentina"
-    },
-    {
       "name": "Youri Tielemans",
       "goals": 2,
       "name_cn": "尤里·蒂勒曼斯",
@@ -306,6 +306,12 @@
       "goals": 2,
       "name_cn": "马利克·蒂尔曼",
       "nation": "USA"
+    },
+    {
+      "name": "Pedro Porro",
+      "goals": 2,
+      "name_cn": "波罗",
+      "nation": "Spain"
     },
     {
       "name": "Dan Ndoye",
@@ -324,6 +330,12 @@
       "goals": 2,
       "name_cn": "梅里诺",
       "nation": "Spain"
+    },
+    {
+      "name": "Enzo Fernández",
+      "goals": 2,
+      "name_cn": "恩佐·费尔南德斯",
+      "nation": "Argentina"
     },
     {
       "name": "Ladislav Krejcí",
@@ -944,12 +956,6 @@
       "nation": "DR Congo"
     },
     {
-      "name": "Pedro Porro",
-      "goals": 1,
-      "name_cn": "波罗",
-      "nation": "Spain"
-    },
-    {
       "name": "Ivan Perisic",
       "goals": 1,
       "name_cn": "",
@@ -1010,12 +1016,6 @@
       "nation": "Argentina"
     },
     {
-      "name": "Enzo Fernández",
-      "goals": 1,
-      "name_cn": "恩佐·费尔南德斯",
-      "nation": "Argentina"
-    },
-    {
       "name": "Fabián Ruiz",
       "goals": 1,
       "name_cn": "法比安·鲁伊斯",
@@ -1038,6 +1038,12 @@
       "goals": 1,
       "name_cn": "胡利安·阿尔瓦雷斯",
       "nation": "Argentina"
+    },
+    {
+      "name": "Anthony Gordon",
+      "goals": 1,
+      "name_cn": "安东尼·戈登",
+      "nation": ""
     }
   ],
   "all_time": [
@@ -1287,7 +1293,7 @@
       "tournaments": ""
     }
   ],
-  "total_2026_scorers": 173,
-  "total_2026_goals": 278,
-  "source": "ESPN API + Wikipedia cross-reference"
+  "total_2026_scorers": 174,
+  "total_2026_goals": 283,
+  "source": "ESPN multi-range"
 }
