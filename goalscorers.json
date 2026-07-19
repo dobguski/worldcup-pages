@@ -1,9 +1,9 @@
 {
-  "updated": "2026-07-20 07:47",
+  "updated": "2026-07-20 (final)",
   "wc2026": [
     {
       "name": "Kylian Mbappé",
-      "goals": 8,
+      "goals": 10,
       "name_cn": "姆巴佩"
     },
     {
@@ -17,19 +17,29 @@
       "name_cn": "埃尔林·哈兰德"
     },
     {
+      "name": "Jude Bellingham",
+      "goals": 7,
+      "name_cn": "裘德·贝林厄姆"
+    },
+    {
       "name": "Harry Kane",
       "goals": 6,
       "name_cn": "哈里·凯恩"
     },
     {
-      "name": "Jude Bellingham",
+      "name": "Ousmane Dembélé",
       "goals": 6,
-      "name_cn": "裘德·贝林厄姆"
+      "name_cn": "登贝莱"
     },
     {
-      "name": "Ousmane Dembélé",
+      "name": "Lautaro Martínez",
       "goals": 5,
-      "name_cn": "登贝莱"
+      "name_cn": "劳塔罗·马丁内斯"
+    },
+    {
+      "name": "Bukayo Saka",
+      "goals": 5,
+      "name_cn": "布卡约·萨卡"
     },
     {
       "name": "Julián Quiñones",
@@ -42,14 +52,14 @@
       "name_cn": "维尼修斯·儒尼奥尔"
     },
     {
-      "name": "Mikel Oyarzabal",
-      "goals": 4,
-      "name_cn": "奥亚萨瓦尔"
-    },
-    {
       "name": "Ismaïla Sarr",
       "goals": 4,
       "name_cn": "伊斯梅拉·萨尔"
+    },
+    {
+      "name": "Julián Álvarez",
+      "goals": 4,
+      "name_cn": "胡利安·阿尔瓦雷斯"
     },
     {
       "name": "Raúl Jiménez",
@@ -125,6 +135,21 @@
       "name": "Charles De Ketelaere",
       "goals": 3,
       "name_cn": "夏尔·德凯特拉雷"
+    },
+    {
+      "name": "Enzo Fernández",
+      "goals": 3,
+      "name_cn": "恩佐·费尔南德斯"
+    },
+    {
+      "name": "Ferran Torres",
+      "goals": 3,
+      "name_cn": "费兰·托雷斯"
+    },
+    {
+      "name": "Mikel Oyarzabal",
+      "goals": 2,
+      "name_cn": "奥亚萨瓦尔"
     },
     {
       "name": "Cyle Larin",
@@ -242,11 +267,6 @@
       "name_cn": "里亚德·马赫雷斯"
     },
     {
-      "name": "Lautaro Martínez",
-      "goals": 2,
-      "name_cn": "劳塔罗·马丁内斯"
-    },
-    {
       "name": "Youri Tielemans",
       "goals": 2,
       "name_cn": "尤里·蒂勒曼斯"
@@ -270,6 +290,11 @@
       "name": "Mikel Merino",
       "goals": 2,
       "name_cn": "梅里诺"
+    },
+    {
+      "name": "Anthony Gordon",
+      "goals": 2,
+      "name_cn": "安东尼·戈登"
     },
     {
       "name": "Ladislav Krejcí",
@@ -842,11 +867,6 @@
       "name_cn": "克里斯蒂安·罗梅罗"
     },
     {
-      "name": "Enzo Fernández",
-      "goals": 1,
-      "name_cn": "恩佐·费尔南德斯"
-    },
-    {
       "name": "Fabián Ruiz",
       "goals": 1,
       "name_cn": "法比安·鲁伊斯"
@@ -860,11 +880,6 @@
       "name": "Alexis Mac Allister",
       "goals": 1,
       "name_cn": "亚历克西斯·麦卡利斯特"
-    },
-    {
-      "name": "Julián Álvarez",
-      "goals": 1,
-      "name_cn": "胡利安·阿尔瓦雷斯"
     },
     {
       "name": "Boualem Khoukhi",
@@ -882,16 +897,6 @@
       "name_cn": "穆罕默德·哈尼"
     },
     {
-      "name": "Ferran Torres",
-      "goals": 1,
-      "name_cn": "费兰·托雷斯"
-    },
-    {
-      "name": "Anthony Gordon",
-      "goals": 1,
-      "name_cn": "安东尼·戈登"
-    },
-    {
       "name": "Declan Rice",
       "goals": 1,
       "name_cn": "德克兰·赖斯"
@@ -900,11 +905,6 @@
       "name": "Ezri Konsa",
       "goals": 1,
       "name_cn": "埃兹里·孔萨"
-    },
-    {
-      "name": "Bukayo Saka",
-      "goals": 1,
-      "name_cn": "布卡约·萨卡"
     }
   ],
   "all_time": [
@@ -1155,6 +1155,6 @@
     }
   ],
   "total_2026_scorers": 181,
-  "total_2026_goals": 286,
+  "total_2026_goals": 303,
   "source": "ESPN API (multi-range, shootout-filtered)"
 }
