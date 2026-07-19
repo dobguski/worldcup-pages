@@ -220,17 +220,28 @@
       "label": "SF2",
       "date": "2026-07-16",
       "venue": "Mercedes-Benz Stadium, Atlanta",
-      "score": null,
-      "winner": null
+      "score": "1-2",
+      "winner": "Argentina"
     }
   ],
   "final": [
     {
       "home": "Spain",
-      "away": "Winner SF2",
+      "away": "Argentina",
       "label": "Final",
       "date": "2026-07-19",
       "venue": "MetLife Stadium, East Rutherford"
+    }
+  ],
+  "third": [
+    {
+      "home": "France",
+      "away": "England",
+      "label": "3rd Place",
+      "date": "2026-07-19",
+      "venue": "Hard Rock Stadium, Miami Gardens",
+      "score": "4-6",
+      "winner": "England"
     }
   ]
 }
