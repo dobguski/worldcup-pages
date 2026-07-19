@@ -1,1049 +1,890 @@
 {
-  "updated": "2026-07-16 08:20",
+  "updated": "2026-07-20 07:26",
   "wc2026": [
     {
       "name": "Kylian Mbappé",
       "goals": 8,
-      "name_cn": "姆巴佩",
-      "nation": "France"
+      "name_cn": "姆巴佩"
     },
     {
       "name": "Lionel Messi",
       "goals": 8,
-      "name_cn": "利昂内尔·梅西",
-      "nation": "Argentina"
+      "name_cn": "利昂内尔·梅西"
     },
     {
       "name": "Erling Haaland",
       "goals": 7,
-      "name_cn": "埃尔林·哈兰德",
-      "nation": "Norway"
+      "name_cn": "埃尔林·哈兰德"
     },
     {
       "name": "Harry Kane",
       "goals": 6,
-      "name_cn": "哈里·凯恩",
-      "nation": "England"
+      "name_cn": "哈里·凯恩"
     },
     {
       "name": "Jude Bellingham",
       "goals": 6,
-      "name_cn": "裘德·贝林厄姆",
-      "nation": "England"
-    },
-    {
-      "name": "Mikel Oyarzabal",
-      "goals": 5,
-      "name_cn": "奥亚萨瓦尔",
-      "nation": "Spain"
+      "name_cn": "裘德·贝林厄姆"
     },
     {
       "name": "Ousmane Dembélé",
       "goals": 5,
-      "name_cn": "登贝莱",
-      "nation": "France"
+      "name_cn": "登贝莱"
     },
     {
       "name": "Julián Quiñones",
       "goals": 4,
-      "name_cn": "奎尼奥内斯",
-      "nation": "Mexico"
+      "name_cn": "奎尼奥内斯"
     },
     {
       "name": "Vinícius Júnior",
       "goals": 4,
-      "name_cn": "维尼修斯·儒尼奥尔",
-      "nation": "Brazil"
+      "name_cn": "维尼修斯·儒尼奥尔"
+    },
+    {
+      "name": "Mikel Oyarzabal",
+      "goals": 4,
+      "name_cn": "奥亚萨瓦尔"
     },
     {
       "name": "Ismaïla Sarr",
       "goals": 4,
-      "name_cn": "伊斯梅拉·萨尔",
-      "nation": "Senegal"
+      "name_cn": "伊斯梅拉·萨尔"
     },
     {
       "name": "Raúl Jiménez",
       "goals": 3,
-      "name_cn": "劳尔·希门尼斯",
-      "nation": "Mexico"
+      "name_cn": "劳尔·希门尼斯"
     },
     {
       "name": "Folarin Balogun",
       "goals": 3,
-      "name_cn": "福拉林·巴洛贡",
-      "nation": "USA"
+      "name_cn": "福拉林·巴洛贡"
     },
     {
       "name": "Ismael Saibari",
       "goals": 3,
-      "name_cn": "伊斯梅尔·赛巴里",
-      "nation": "Morocco"
+      "name_cn": "伊斯梅尔·赛巴里"
     },
     {
       "name": "Kai Havertz",
       "goals": 3,
-      "name_cn": "凯·哈弗茨",
-      "nation": "Germany"
+      "name_cn": "凯·哈弗茨"
     },
     {
       "name": "Deniz Undav",
       "goals": 3,
-      "name_cn": "德尼兹·翁达夫",
-      "nation": "Germany"
+      "name_cn": "德尼兹·翁达夫"
     },
     {
       "name": "Elijah Just",
       "goals": 3,
-      "name_cn": "以利亚·贾斯特",
-      "nation": "New Zealand"
+      "name_cn": "以利亚·贾斯特"
     },
     {
       "name": "Yoane Wissa",
       "goals": 3,
-      "name_cn": "约安·维萨",
-      "nation": "DR Congo"
+      "name_cn": "约安·维萨"
     },
     {
       "name": "Johan Manzambi",
       "goals": 3,
-      "name_cn": "约翰·曼赞比",
-      "nation": "Switzerland"
+      "name_cn": "约翰·曼赞比"
     },
     {
       "name": "Jonathan David",
       "goals": 3,
-      "name_cn": "乔纳森·大卫",
-      "nation": "Canada"
+      "name_cn": "乔纳森·大卫"
     },
     {
       "name": "Matheus Cunha",
       "goals": 3,
-      "name_cn": "马特乌斯·库尼亚",
-      "nation": "Brazil"
+      "name_cn": "马特乌斯·库尼亚"
     },
     {
       "name": "Brian Brobbey",
       "goals": 3,
-      "name_cn": "布莱恩·布罗比",
-      "nation": "Netherlands"
+      "name_cn": "布莱恩·布罗比"
     },
     {
       "name": "Cody Gakpo",
       "goals": 3,
-      "name_cn": "科迪·加克波",
-      "nation": "Netherlands"
+      "name_cn": "科迪·加克波"
     },
     {
       "name": "Cristiano Ronaldo",
       "goals": 3,
-      "name_cn": "克里斯蒂亚诺·罗纳尔多",
-      "nation": "Portugal"
+      "name_cn": "克里斯蒂亚诺·罗纳尔多"
     },
     {
       "name": "Romelu Lukaku",
       "goals": 3,
-      "name_cn": "罗梅卢·卢卡库",
-      "nation": "Belgium"
-    },
-    {
-      "name": "Lautaro Martínez",
-      "goals": 3,
-      "name_cn": "劳塔罗·马丁内斯",
-      "nation": "Argentina"
+      "name_cn": "罗梅卢·卢卡库"
     },
     {
       "name": "Charles De Ketelaere",
       "goals": 3,
-      "name_cn": "夏尔·德凯特拉雷",
-      "nation": "Belgium"
+      "name_cn": "夏尔·德凯特拉雷"
     },
     {
       "name": "Cyle Larin",
       "goals": 2,
-      "name_cn": "赛尔·拉林",
-      "nation": "Canada"
+      "name_cn": "赛尔·拉林"
     },
     {
       "name": "Breel Embolo",
       "goals": 2,
-      "name_cn": "布里尔·恩博洛",
-      "nation": "Switzerland"
+      "name_cn": "布里尔·恩博洛"
     },
     {
       "name": "Crysencio Summerville",
       "goals": 2,
-      "name_cn": "克里森西奥·萨默维尔",
-      "nation": "Netherlands"
+      "name_cn": "克里森西奥·萨默维尔"
     },
     {
       "name": "Daichi Kamada",
       "goals": 2,
-      "name_cn": "镰田大地",
-      "nation": "Japan"
+      "name_cn": "镰田大地"
     },
     {
       "name": "Amad Diallo",
       "goals": 2,
-      "name_cn": "阿马德·迪亚洛",
-      "nation": "Ivory Coast"
+      "name_cn": "阿马德·迪亚洛"
     },
     {
       "name": "Yasin Ayari",
       "goals": 2,
-      "name_cn": "亚辛·阿亚里",
-      "nation": "Sweden"
+      "name_cn": "亚辛·阿亚里"
     },
     {
       "name": "Emam Ashour",
       "goals": 2,
-      "name_cn": "伊马姆·阿舒尔",
-      "nation": "Egypt"
+      "name_cn": "伊马姆·阿舒尔"
     },
     {
       "name": "Maxi Araújo",
       "goals": 2,
-      "name_cn": "",
-      "nation": "Uruguay"
+      "name_cn": ""
     },
     {
       "name": "Ramin Rezaeian",
       "goals": 2,
-      "name_cn": "",
-      "nation": "Iran"
+      "name_cn": ""
     },
     {
       "name": "Bradley Barcola",
       "goals": 2,
-      "name_cn": "巴尔科拉",
-      "nation": "France"
+      "name_cn": "巴尔科拉"
     },
     {
       "name": "Marko Arnautovic",
       "goals": 2,
-      "name_cn": "",
-      "nation": "Austria"
+      "name_cn": ""
     },
     {
       "name": "Daniel Muñoz",
       "goals": 2,
-      "name_cn": "丹尼尔·穆尼奥斯",
-      "nation": "Colombia"
+      "name_cn": "丹尼尔·穆尼奥斯"
     },
     {
       "name": "Rubén Vargas",
       "goals": 2,
-      "name_cn": "",
-      "nation": "Switzerland"
+      "name_cn": ""
     },
     {
       "name": "Ermin Mahmic",
       "goals": 2,
-      "name_cn": "",
-      "nation": "Bosnia & Herzegovina"
+      "name_cn": ""
     },
     {
       "name": "Anthony Elanga",
       "goals": 2,
-      "name_cn": "安东尼·埃兰加",
-      "nation": "Sweden"
+      "name_cn": "安东尼·埃兰加"
     },
     {
       "name": "Ayase Ueda",
       "goals": 2,
-      "name_cn": "上田绮世",
-      "nation": "Japan"
+      "name_cn": "上田绮世"
     },
     {
       "name": "Mostafa Zico",
       "goals": 2,
-      "name_cn": "",
-      "nation": "Egypt"
+      "name_cn": ""
     },
     {
       "name": "Soufiane Rahimi",
       "goals": 2,
-      "name_cn": "苏菲安·拉希米",
-      "nation": "Morocco"
+      "name_cn": "苏菲安·拉希米"
     },
     {
       "name": "Nicolas Pépé",
       "goals": 2,
-      "name_cn": "尼古拉·佩佩",
-      "nation": "Ivory Coast"
+      "name_cn": "尼古拉·佩佩"
     },
     {
       "name": "Habib Diarra",
       "goals": 2,
-      "name_cn": "",
-      "nation": "Senegal"
+      "name_cn": ""
     },
     {
       "name": "Pape Gueye",
       "goals": 2,
-      "name_cn": "",
-      "nation": "Senegal"
+      "name_cn": ""
     },
     {
       "name": "Leandro Trossard",
       "goals": 2,
-      "name_cn": "莱安德罗·特罗萨德",
-      "nation": "Belgium"
+      "name_cn": "莱安德罗·特罗萨德"
     },
     {
       "name": "Riyad Mahrez",
       "goals": 2,
-      "name_cn": "里亚德·马赫雷斯",
-      "nation": "Algeria"
+      "name_cn": "里亚德·马赫雷斯"
+    },
+    {
+      "name": "Lautaro Martínez",
+      "goals": 2,
+      "name_cn": "劳塔罗·马丁内斯"
     },
     {
       "name": "Youri Tielemans",
       "goals": 2,
-      "name_cn": "尤里·蒂勒曼斯",
-      "nation": "Belgium"
+      "name_cn": "尤里·蒂勒曼斯"
     },
     {
       "name": "Malik Tillman",
       "goals": 2,
-      "name_cn": "马利克·蒂尔曼",
-      "nation": "USA"
-    },
-    {
-      "name": "Pedro Porro",
-      "goals": 2,
-      "name_cn": "波罗",
-      "nation": "Spain"
+      "name_cn": "马利克·蒂尔曼"
     },
     {
       "name": "Dan Ndoye",
       "goals": 2,
-      "name_cn": "丹·恩多耶",
-      "nation": "Switzerland"
+      "name_cn": "丹·恩多耶"
     },
     {
       "name": "Azzedine Ounahi",
       "goals": 2,
-      "name_cn": "阿泽丁·欧纳希",
-      "nation": "Morocco"
+      "name_cn": "阿泽丁·欧纳希"
     },
     {
       "name": "Mikel Merino",
       "goals": 2,
-      "name_cn": "梅里诺",
-      "nation": "Spain"
-    },
-    {
-      "name": "Enzo Fernández",
-      "goals": 2,
-      "name_cn": "恩佐·费尔南德斯",
-      "nation": "Argentina"
+      "name_cn": "梅里诺"
     },
     {
       "name": "Ladislav Krejcí",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Czech Republic"
+      "name_cn": ""
     },
     {
       "name": "Hwang In-Beom",
       "goals": 1,
-      "name_cn": "",
-      "nation": "South Korea"
+      "name_cn": ""
     },
     {
       "name": "Oh Hyeon-Gyu",
       "goals": 1,
-      "name_cn": "",
-      "nation": "South Korea"
+      "name_cn": ""
     },
     {
       "name": "Jovo Lukic",
       "goals": 1,
-      "name_cn": "约沃·卢基奇",
-      "nation": "Bosnia & Herzegovina"
+      "name_cn": "约沃·卢基奇"
     },
     {
       "name": "Maurício",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Paraguay"
+      "name_cn": ""
     },
     {
       "name": "Giovanni Reyna",
       "goals": 1,
-      "name_cn": "",
-      "nation": "USA"
+      "name_cn": ""
     },
     {
       "name": "John McGinn",
       "goals": 1,
-      "name_cn": "约翰·麦金",
-      "nation": "Scotland"
+      "name_cn": "约翰·麦金"
     },
     {
       "name": "Nestory Irankunda",
       "goals": 1,
-      "name_cn": "内斯托里·伊兰昆达",
-      "nation": "Australia"
+      "name_cn": "内斯托里·伊兰昆达"
     },
     {
       "name": "Connor Metcalfe",
       "goals": 1,
-      "name_cn": "康纳·梅特卡夫",
-      "nation": "Australia"
+      "name_cn": "康纳·梅特卡夫"
     },
     {
       "name": "Felix Nmecha",
       "goals": 1,
-      "name_cn": "费利克斯·恩梅查",
-      "nation": "Germany"
+      "name_cn": "费利克斯·恩梅查"
     },
     {
       "name": "Livano Comenencia",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Curaçao"
+      "name_cn": ""
     },
     {
       "name": "Nico Schlotterbeck",
       "goals": 1,
-      "name_cn": "尼科·施洛特贝克",
-      "nation": "Germany"
+      "name_cn": "尼科·施洛特贝克"
     },
     {
       "name": "Jamal Musiala",
       "goals": 1,
-      "name_cn": "贾马尔·穆西亚拉",
-      "nation": "Germany"
+      "name_cn": "贾马尔·穆西亚拉"
     },
     {
       "name": "Nathaniel Brown",
       "goals": 1,
-      "name_cn": "纳撒尼尔·布朗",
-      "nation": "Germany"
+      "name_cn": "纳撒尼尔·布朗"
     },
     {
       "name": "Virgil van Dijk",
       "goals": 1,
-      "name_cn": "维吉尔·范戴克",
-      "nation": "Netherlands"
+      "name_cn": "维吉尔·范戴克"
     },
     {
       "name": "Keito Nakamura",
       "goals": 1,
-      "name_cn": "中村敬斗",
-      "nation": "Japan"
+      "name_cn": "中村敬斗"
     },
     {
       "name": "Alexander Isak",
       "goals": 1,
-      "name_cn": "亚历山大·伊萨克",
-      "nation": "Sweden"
+      "name_cn": "亚历山大·伊萨克"
     },
     {
       "name": "Omar Rekik",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Tunisia"
+      "name_cn": ""
     },
     {
       "name": "Viktor Gyökeres",
       "goals": 1,
-      "name_cn": "维克托·哲凯赖什",
-      "nation": "Sweden"
+      "name_cn": "维克托·哲凯赖什"
     },
     {
       "name": "Mattias Svanberg",
       "goals": 1,
-      "name_cn": "马蒂亚斯·斯万贝里",
-      "nation": "Sweden"
+      "name_cn": "马蒂亚斯·斯万贝里"
     },
     {
       "name": "Abdulelah Al-Amri",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Saudi Arabia"
+      "name_cn": ""
     },
     {
       "name": "Mohammad Mohebbi",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Iran"
+      "name_cn": ""
     },
     {
       "name": "Ibrahim Mbaye",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Senegal"
+      "name_cn": ""
     },
     {
       "name": "Aymen Hussein",
       "goals": 1,
-      "name_cn": "艾曼·侯赛因",
-      "nation": "Iraq"
+      "name_cn": "艾曼·侯赛因"
     },
     {
       "name": "Leo Østigard",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Norway"
+      "name_cn": ""
     },
     {
       "name": "Romano Schmid",
       "goals": 1,
-      "name_cn": "罗马诺·施密德",
-      "nation": "Austria"
+      "name_cn": "罗马诺·施密德"
     },
     {
       "name": "Ali Olwan",
       "goals": 1,
-      "name_cn": "阿里·奥尔万",
-      "nation": "Jordan"
+      "name_cn": "阿里·奥尔万"
     },
     {
       "name": "João Neves",
       "goals": 1,
-      "name_cn": "若昂·内维斯",
-      "nation": "Portugal"
+      "name_cn": "若昂·内维斯"
     },
     {
       "name": "Martin Baturina",
       "goals": 1,
-      "name_cn": "马丁·巴图里纳",
-      "nation": "Croatia"
+      "name_cn": "马丁·巴图里纳"
     },
     {
       "name": "Petar Musa",
       "goals": 1,
-      "name_cn": "佩塔尔·穆萨",
-      "nation": "Croatia"
+      "name_cn": "佩塔尔·穆萨"
     },
     {
       "name": "Marcus Rashford",
       "goals": 1,
-      "name_cn": "马库斯·拉什福德",
-      "nation": "England"
+      "name_cn": "马库斯·拉什福德"
     },
     {
       "name": "Caleb Yirenkyi",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Ghana"
+      "name_cn": ""
     },
     {
       "name": "Abbosbek Fayzullaev",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Uzbekistan"
+      "name_cn": ""
     },
     {
       "name": "Luis Díaz",
       "goals": 1,
-      "name_cn": "路易斯·迪亚斯",
-      "nation": "Colombia"
+      "name_cn": "路易斯·迪亚斯"
     },
     {
       "name": "Jáminton Campaz",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Colombia"
+      "name_cn": ""
     },
     {
       "name": "Michal Sadílek",
       "goals": 1,
-      "name_cn": "米哈尔·萨迪莱克",
-      "nation": "Czech Republic"
+      "name_cn": "米哈尔·萨迪莱克"
     },
     {
       "name": "Teboho Mokoena",
       "goals": 1,
-      "name_cn": "特博霍·莫科纳",
-      "nation": "South Africa"
+      "name_cn": "特博霍·莫科纳"
     },
     {
       "name": "Granit Xhaka",
       "goals": 1,
-      "name_cn": "格拉尼特·扎卡",
-      "nation": "Switzerland"
+      "name_cn": "格拉尼特·扎卡"
     },
     {
       "name": "Nathan Saliba",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Canada"
+      "name_cn": ""
     },
     {
       "name": "Luis Romo",
       "goals": 1,
-      "name_cn": "路易斯·罗莫",
-      "nation": "Mexico"
+      "name_cn": "路易斯·罗莫"
     },
     {
       "name": "Alex Freeman",
       "goals": 1,
-      "name_cn": "亚历克斯·弗里曼",
-      "nation": "USA"
+      "name_cn": "亚历克斯·弗里曼"
     },
     {
       "name": "Matías Galarza",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Paraguay"
+      "name_cn": ""
     },
     {
       "name": "Franck Kessié",
       "goals": 1,
-      "name_cn": "弗兰克·凯西",
-      "nation": "Ivory Coast"
+      "name_cn": "弗兰克·凯西"
     },
     {
       "name": "Junya Ito",
       "goals": 1,
-      "name_cn": "伊东纯也",
-      "nation": "Japan"
+      "name_cn": "伊东纯也"
     },
     {
       "name": "Lamine Yamal",
       "goals": 1,
-      "name_cn": "拉明·亚马尔",
-      "nation": "Spain"
+      "name_cn": "拉明·亚马尔"
     },
     {
       "name": "Kevin Pina",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Cape Verde"
+      "name_cn": ""
     },
     {
       "name": "Agustín Canobbio",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Uruguay"
+      "name_cn": ""
     },
     {
       "name": "Hélio Varela",
       "goals": 1,
-      "name_cn": "埃利奥·瓦雷拉",
-      "nation": "Cape Verde"
+      "name_cn": "埃利奥·瓦雷拉"
     },
     {
       "name": "Finn Surman",
       "goals": 1,
-      "name_cn": "",
-      "nation": "New Zealand"
+      "name_cn": ""
     },
     {
       "name": "Mohamed Salah",
       "goals": 1,
-      "name_cn": "穆罕默德·萨拉赫",
-      "nation": "Egypt"
+      "name_cn": "穆罕默德·萨拉赫"
     },
     {
       "name": "Trézéguet",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Egypt"
+      "name_cn": ""
     },
     {
       "name": "Marcus Holmgren Pedersen",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Norway"
+      "name_cn": ""
     },
     {
       "name": "Nizar Al-Rashdan",
       "goals": 1,
-      "name_cn": "尼扎尔·拉什丹",
-      "nation": "Jordan"
+      "name_cn": "尼扎尔·拉什丹"
     },
     {
       "name": "Nadhir Benbouali",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Algeria"
+      "name_cn": ""
     },
     {
       "name": "Amine Gouiri",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Algeria"
+      "name_cn": ""
     },
     {
       "name": "Nuno Mendes",
       "goals": 1,
-      "name_cn": "努诺·门德斯",
-      "nation": "Portugal"
+      "name_cn": "努诺·门德斯"
     },
     {
       "name": "Rafael Leão",
       "goals": 1,
-      "name_cn": "拉斐尔·莱奥",
-      "nation": "Portugal"
+      "name_cn": "拉斐尔·莱奥"
     },
     {
       "name": "Ante Budimir",
       "goals": 1,
-      "name_cn": "安特·布迪米尔",
-      "nation": "Croatia"
+      "name_cn": "安特·布迪米尔"
     },
     {
       "name": "Kerim Alajbegovic",
       "goals": 1,
-      "name_cn": "克雷西米尔·阿拉伊贝戈维奇",
-      "nation": "Bosnia & Herzegovina"
+      "name_cn": "克雷西米尔·阿拉伊贝戈维奇"
     },
     {
       "name": "Hassan Al-Haydos",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Qatar"
+      "name_cn": ""
     },
     {
       "name": "Promise David",
       "goals": 1,
-      "name_cn": "普洛米斯·大卫",
-      "nation": "Canada"
+      "name_cn": "普洛米斯·大卫"
     },
     {
       "name": "Achraf Hakimi",
       "goals": 1,
-      "name_cn": "阿什拉夫·哈基米",
-      "nation": "Morocco"
+      "name_cn": "阿什拉夫·哈基米"
     },
     {
       "name": "Wilson Isidor",
       "goals": 1,
-      "name_cn": "威尔逊·伊西多尔",
-      "nation": "Haiti"
+      "name_cn": "威尔逊·伊西多尔"
     },
     {
       "name": "Gessime Yassine",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Morocco"
+      "name_cn": ""
     },
     {
       "name": "Mateo Chávez",
       "goals": 1,
-      "name_cn": "马特奥·查韦斯",
-      "nation": "Mexico"
+      "name_cn": "马特奥·查韦斯"
     },
     {
       "name": "Álvaro Fidalgo",
       "goals": 1,
-      "name_cn": "阿尔瓦罗·菲达尔戈",
-      "nation": "Mexico"
+      "name_cn": "阿尔瓦罗·菲达尔戈"
     },
     {
       "name": "Thapelo Maseko",
       "goals": 1,
-      "name_cn": "塔佩洛·马塞科",
-      "nation": "South Africa"
+      "name_cn": "塔佩洛·马塞科"
     },
     {
       "name": "Leroy Sané",
       "goals": 1,
-      "name_cn": "勒鲁瓦·萨内",
-      "nation": "Germany"
+      "name_cn": "勒鲁瓦·萨内"
     },
     {
       "name": "Nilson Angulo",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Ecuador"
+      "name_cn": ""
     },
     {
       "name": "Gonzalo Plata",
       "goals": 1,
-      "name_cn": "贡萨洛·普拉塔",
-      "nation": "Ecuador"
+      "name_cn": "贡萨洛·普拉塔"
     },
     {
       "name": "Daizen Maeda",
       "goals": 1,
-      "name_cn": "前田大然",
-      "nation": "Japan"
+      "name_cn": "前田大然"
     },
     {
       "name": "Hazem Mastouri",
       "goals": 1,
-      "name_cn": "哈泽姆·马斯图里",
-      "nation": "Tunisia"
+      "name_cn": "哈泽姆·马斯图里"
     },
     {
       "name": "Jan Paul van Hecke",
       "goals": 1,
-      "name_cn": "扬·保罗·范黑克",
-      "nation": "Netherlands"
+      "name_cn": "扬·保罗·范黑克"
     },
     {
       "name": "Auston Trusty",
       "goals": 1,
-      "name_cn": "奥斯顿·特鲁斯蒂",
-      "nation": "USA"
+      "name_cn": "奥斯顿·特鲁斯蒂"
     },
     {
       "name": "Arda Güler",
       "goals": 1,
-      "name_cn": "阿尔达·居莱尔",
-      "nation": "Turkey"
+      "name_cn": "阿尔达·居莱尔"
     },
     {
       "name": "Baris Alper Yilmaz",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Turkey"
+      "name_cn": ""
     },
     {
       "name": "Sebastian Berhalter",
       "goals": 1,
-      "name_cn": "塞巴斯蒂安·贝尔哈特",
-      "nation": "USA"
+      "name_cn": "塞巴斯蒂安·贝尔哈特"
     },
     {
       "name": "Kaan Ayhan",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Turkey"
+      "name_cn": ""
     },
     {
       "name": "Thelo Aasgaard",
       "goals": 1,
-      "name_cn": "特洛·奥斯高",
-      "nation": "Norway"
+      "name_cn": "特洛·奥斯高"
     },
     {
       "name": "Désiré Doué",
       "goals": 1,
-      "name_cn": "杜埃",
-      "nation": "France"
+      "name_cn": "杜埃"
     },
     {
       "name": "Iliman Ndiaye",
       "goals": 1,
-      "name_cn": "伊利曼·恩迪亚耶",
-      "nation": "Senegal"
+      "name_cn": "伊利曼·恩迪亚耶"
     },
     {
       "name": "Álex Baena",
       "goals": 1,
-      "name_cn": "巴埃纳",
-      "nation": "Spain"
+      "name_cn": "巴埃纳"
     },
     {
       "name": "Mahmoud Saber",
       "goals": 1,
-      "name_cn": "马哈茂德·萨贝尔",
-      "nation": "Egypt"
+      "name_cn": "马哈茂德·萨贝尔"
     },
     {
       "name": "Kevin De Bruyne",
       "goals": 1,
-      "name_cn": "凯文·德布劳内",
-      "nation": "Belgium"
+      "name_cn": "凯文·德布劳内"
     },
     {
       "name": "Alexis Saelemaekers",
       "goals": 1,
-      "name_cn": "亚历克西斯·萨勒马克尔斯",
-      "nation": "Belgium"
+      "name_cn": "亚历克西斯·萨勒马克尔斯"
     },
     {
       "name": "Petar Sucic",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Croatia"
+      "name_cn": ""
     },
     {
       "name": "Derrick Luckassen",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Ghana"
+      "name_cn": ""
     },
     {
       "name": "Nikola Vlasic",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Croatia"
+      "name_cn": ""
     },
     {
       "name": "Eldor Shomurodov",
       "goals": 1,
-      "name_cn": "埃尔多尔·绍穆罗多夫",
-      "nation": "Uzbekistan"
+      "name_cn": "埃尔多尔·绍穆罗多夫"
     },
     {
       "name": "Fiston Mayele",
       "goals": 1,
-      "name_cn": "",
-      "nation": "DR Congo"
+      "name_cn": ""
     },
     {
       "name": "Rafik Belghali",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Algeria"
+      "name_cn": ""
     },
     {
       "name": "Marcel Sabitzer",
       "goals": 1,
-      "name_cn": "马塞尔·萨比策",
-      "nation": "Austria"
+      "name_cn": "马塞尔·萨比策"
     },
     {
       "name": "Sasa Kalajdzic",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Austria"
+      "name_cn": ""
     },
     {
       "name": "Giovani Lo Celso",
       "goals": 1,
-      "name_cn": "乔瓦尼·洛塞尔索",
-      "nation": "Argentina"
+      "name_cn": "乔瓦尼·洛塞尔索"
     },
     {
       "name": "Mousa Al-Tamari",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Jordan"
+      "name_cn": ""
     },
     {
       "name": "Stephen Eustáquio",
       "goals": 1,
-      "name_cn": "斯蒂芬·欧斯塔基奥",
-      "nation": "Canada"
+      "name_cn": "斯蒂芬·欧斯塔基奥"
     },
     {
       "name": "Kaishu Sano",
       "goals": 1,
-      "name_cn": "佐野海舟",
-      "nation": "Japan"
+      "name_cn": "佐野海舟"
     },
     {
       "name": "Casemiro",
       "goals": 1,
-      "name_cn": "卡塞米罗",
-      "nation": "Brazil"
+      "name_cn": "卡塞米罗"
     },
     {
       "name": "Gabriel Martinelli",
       "goals": 1,
-      "name_cn": "加布里埃尔·马丁内利",
-      "nation": "Brazil"
+      "name_cn": "加布里埃尔·马丁内利"
     },
     {
       "name": "Julio Enciso",
       "goals": 1,
-      "name_cn": "胡利奥·恩西索",
-      "nation": "Paraguay"
+      "name_cn": "胡利奥·恩西索"
     },
     {
       "name": "Issa Diop",
       "goals": 1,
-      "name_cn": "伊萨·迪奥普",
-      "nation": "Morocco"
+      "name_cn": "伊萨·迪奥普"
     },
     {
       "name": "Antonio Nusa",
       "goals": 1,
-      "name_cn": "安东尼奥·努萨",
-      "nation": "Norway"
+      "name_cn": "安东尼奥·努萨"
     },
     {
       "name": "Brian Cipenga",
       "goals": 1,
-      "name_cn": "",
-      "nation": "DR Congo"
+      "name_cn": ""
+    },
+    {
+      "name": "Pedro Porro",
+      "goals": 1,
+      "name_cn": "波罗"
     },
     {
       "name": "Ivan Perisic",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Croatia"
+      "name_cn": ""
     },
     {
       "name": "Gonçalo Ramos",
       "goals": 1,
-      "name_cn": "贡萨洛·拉莫斯",
-      "nation": "Portugal"
+      "name_cn": "贡萨洛·拉莫斯"
     },
     {
       "name": "Deroy Duarte",
       "goals": 1,
-      "name_cn": "德罗伊·杜阿尔特",
-      "nation": "Cape Verde"
+      "name_cn": "德罗伊·杜阿尔特"
     },
     {
       "name": "Lisandro Martínez",
       "goals": 1,
-      "name_cn": "利桑德罗·马丁内斯",
-      "nation": "Argentina"
+      "name_cn": "利桑德罗·马丁内斯"
     },
     {
       "name": "Sidny Lopes Cabral",
       "goals": 1,
-      "name_cn": "",
-      "nation": "Cape Verde"
+      "name_cn": ""
     },
     {
       "name": "Jhon Arias",
       "goals": 1,
-      "name_cn": "约翰·阿里亚斯",
-      "nation": "Colombia"
+      "name_cn": "约翰·阿里亚斯"
     },
     {
       "name": "Neymar",
       "goals": 1,
-      "name_cn": "内马尔",
-      "nation": "Brazil"
+      "name_cn": "内马尔"
     },
     {
       "name": "Hans Vanaken",
       "goals": 1,
-      "name_cn": "汉斯·瓦纳肯",
-      "nation": "Belgium"
+      "name_cn": "汉斯·瓦纳肯"
     },
     {
       "name": "Yasser Ibrahim",
       "goals": 1,
-      "name_cn": "亚西尔·易卜拉欣",
-      "nation": "Egypt"
+      "name_cn": "亚西尔·易卜拉欣"
     },
     {
       "name": "Cristian Romero",
       "goals": 1,
-      "name_cn": "克里斯蒂安·罗梅罗",
-      "nation": "Argentina"
+      "name_cn": "克里斯蒂安·罗梅罗"
+    },
+    {
+      "name": "Enzo Fernández",
+      "goals": 1,
+      "name_cn": "恩佐·费尔南德斯"
     },
     {
       "name": "Fabián Ruiz",
       "goals": 1,
-      "name_cn": "法比安·鲁伊斯",
-      "nation": "Spain"
+      "name_cn": "法比安·鲁伊斯"
     },
     {
       "name": "Andreas Schjelderup",
       "goals": 1,
-      "name_cn": "安德烈亚斯·谢尔德鲁普",
-      "nation": "Norway"
+      "name_cn": "安德烈亚斯·谢尔德鲁普"
     },
     {
       "name": "Alexis Mac Allister",
       "goals": 1,
-      "name_cn": "亚历克西斯·麦卡利斯特",
-      "nation": "Argentina"
+      "name_cn": "亚历克西斯·麦卡利斯特"
     },
     {
       "name": "Julián Álvarez",
       "goals": 1,
-      "name_cn": "胡利安·阿尔瓦雷斯",
-      "nation": "Argentina"
+      "name_cn": "胡利安·阿尔瓦雷斯"
     },
     {
-      "name": "Anthony Gordon",
+      "name": "Boualem Khoukhi",
       "goals": 1,
-      "name_cn": "安东尼·戈登",
-      "nation": "England"
+      "name_cn": "布瓦勒姆·胡赫"
+    },
+    {
+      "name": "Damian Bobadilla",
+      "goals": 1,
+      "name_cn": ""
+    },
+    {
+      "name": "Mohamed Hany",
+      "goals": 1,
+      "name_cn": "穆罕默德·哈尼"
+    },
+    {
+      "name": "Ferran Torres",
+      "goals": 1,
+      "name_cn": "费兰·托雷斯"
     }
   ],
   "all_time": [
@@ -1293,7 +1134,7 @@
       "tournaments": ""
     }
   ],
-  "total_2026_scorers": 174,
-  "total_2026_goals": 283,
-  "source": "ESPN multi-range"
+  "total_2026_scorers": 177,
+  "total_2026_goals": 282,
+  "source": "ESPN API (multi-range, shootout-filtered)"
 }

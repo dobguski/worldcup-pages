@@ -468,7 +468,7 @@ function setLang(lang) {
   renderAll();
 }
 
-// ==================== DATA ====================
+// ==================== DATA (v2) ====================
 let matchData = [];
 let standings = {};
 let teamNamesCN = {};
@@ -1410,6 +1410,15 @@ function renderBracket() {
             }
             html += `<div style=\"text-align:center;font-size:.65em;color:#64748b\">${m.date} · ${m.venue}</div>`;
           });
+          html += '</div>';
+        }
+
+        // ── Champion ──
+        if (bracketData.champion && bracketData.champion.team) {
+          html += '<div style=\"text-align:center;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);border:2px solid #e2b04a;border-radius:12px;padding:20px;margin-bottom:16px\">';
+          html += '<div style=\"font-size:.7em;color:#94a3b8;margin-bottom:4px\">🏆 2026 FIFA WORLD CUP CHAMPION</div>';
+          html += `<div style=\"font-size:1.6em;font-weight:bold;color:#e2b04a\">${teamName(cleanTeam(bracketData.champion.team))} ${bracketData.champion.flag||''}</div>`;
+          html += `<div style=\"font-size:.75em;color:#94a3b8;margin-top:4px\">亚军: ${teamName(cleanTeam(bracketData.champion.runners_up||''))}</div>`;
           html += '</div>';
         }
       }

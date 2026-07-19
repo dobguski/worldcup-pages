@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-08",
+  "updated": "2026-07-16",
   "qualified": {
     "A": {
       "1st": "Mexico",
@@ -229,8 +229,10 @@
       "home": "Spain",
       "away": "Argentina",
       "label": "Final",
-      "date": "2026-07-19",
-      "venue": "MetLife Stadium, East Rutherford"
+      "date": "2026-07-20",
+      "venue": "MetLife Stadium, East Rutherford",
+      "score": "1-0",
+      "winner": "Spain"
     }
   ],
   "third": [
@@ -243,5 +245,10 @@
       "score": "4-6",
       "winner": "England"
     }
-  ]
+  ],
+  "champion": {
+    "team": "Spain",
+    "flag": "🇪🇸",
+    "runners_up": "Argentina"
+  }
 }
