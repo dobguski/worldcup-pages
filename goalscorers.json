@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-20 07:26",
+  "updated": "2026-07-20 07:47",
   "wc2026": [
     {
       "name": "Kylian Mbappé",
@@ -885,6 +885,26 @@
       "name": "Ferran Torres",
       "goals": 1,
       "name_cn": "费兰·托雷斯"
+    },
+    {
+      "name": "Anthony Gordon",
+      "goals": 1,
+      "name_cn": "安东尼·戈登"
+    },
+    {
+      "name": "Declan Rice",
+      "goals": 1,
+      "name_cn": "德克兰·赖斯"
+    },
+    {
+      "name": "Ezri Konsa",
+      "goals": 1,
+      "name_cn": "埃兹里·孔萨"
+    },
+    {
+      "name": "Bukayo Saka",
+      "goals": 1,
+      "name_cn": "布卡约·萨卡"
     }
   ],
   "all_time": [
@@ -1134,7 +1154,7 @@
       "tournaments": ""
     }
   ],
-  "total_2026_scorers": 177,
-  "total_2026_goals": 282,
+  "total_2026_scorers": 181,
+  "total_2026_goals": 286,
   "source": "ESPN API (multi-range, shootout-filtered)"
 }
